@@ -5,7 +5,7 @@ from dotenv import load_dotenv; load_dotenv()
 SCALER_PATH  = Path("models/segmentation/scaler.pkl")
 MODEL_PATH   = Path("models/segmentation/kmeans_model.pkl")
 PROFILE_PATH = Path("data/processed/unified_customer_profile.csv")
-FEATURES_PATH = Path("data/feature_store/customer_features.parquet")
+FEATURES_PATH = Path("data/features/customer_features.parquet")
 
 FEATURE_ORDER = ['Credit_Limit', 'Total_Trans_Amt', 'Total_Trans_Ct',
                  'Avg_Utilization_Ratio', 'Total_Revolving_Bal',
@@ -27,15 +27,16 @@ def predict_segment(features: dict) -> str:
         return model.cluster_map_.get(cluster_id, f"Cluster {cluster_id}")
     # fallback: read from profile and get most common segment for that cluster
     df = pd.read_csv(PROFILE_PATH)
-    if 'cluster_id' in df.columns and 'segment_name' in df.columns:
-        mapping = df.groupby('cluster_id')['segment_name'].agg(lambda x: x.mode()[0])
+    if 'cluster' in df.columns and 'segment' in df.columns:
+        mapping = df.groupby('cluster')['segment'].agg(lambda x: x.mode()[0])
         return mapping.get(cluster_id, f"Cluster {cluster_id}")
     return f"Cluster {cluster_id}"
 
 def get_segment_distribution() -> dict:
     """Return {segment_name: count} from unified customer profile."""
     df = pd.read_csv(PROFILE_PATH)
-    return df['segment_name'].value_counts().to_dict()
+    col = 'segment' if 'segment' in df.columns else 'segment_name'
+    return df[col].value_counts().to_dict()
 
 def get_segment_profiles() -> list:
     """Return mean feature values per segment as list of dicts for frontend table."""
@@ -44,6 +45,7 @@ def get_segment_profiles() -> list:
                     'Avg_Utilization_Ratio', 'Months_Inactive_12_mon',
                     'churn_probability', 'activity_score']
     available = [c for c in numeric_cols if c in df.columns]
-    if 'segment_name' not in df.columns:
+    col = 'segment' if 'segment' in df.columns else 'segment_name'
+    if col not in df.columns:
         return []
-    return df.groupby('segment_name')[available].mean().round(4).reset_index().to_dict(orient='records')
+    return df.groupby(col)[available].mean().round(4).reset_index().to_dict(orient='records')
