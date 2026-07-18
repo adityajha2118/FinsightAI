@@ -1,0 +1,15 @@
+Classify the following customer complaint into exactly ONE of these categories:
+- Billing
+- Fraud
+- Account Management
+- Credit Reporting
+- Debt Collection
+- Mortgage
+- Other
+
+Respond with only the category name.
+
+Complaint:
+{narrative}
+
+Category:

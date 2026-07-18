@@ -1,0 +1,41 @@
+# ──────────────────────────────────────────────────────────
+# FinSight AI — Pipeline Configuration
+# ──────────────────────────────────────────────────────────
+
+data:
+  raw_dir: "data/raw"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  feature_store_dir: "data/feature_store"
+
+  sources:
+    customer: "data/raw/customer/customer_data.csv"
+    transactions: "data/raw/transactions/transactions.csv"
+    campaign: "data/raw/campaigns/bank_campaign.csv"
+    kyc_part1: "data/raw/kyc/kyc_part1.csv"
+    kyc_part2: "data/raw/kyc/kyc_part2.csv"
+    complaints: "data/raw/complaints/cfpb_complaints.csv"
+
+processing:
+  customer:
+    drop_columns: ["Naive_Bayes_1", "Naive_Bayes_2"]
+    target_column: "Attrition_Flag"
+    test_size: 0.2
+    random_state: 42
+
+  campaign:
+    smote_enabled: true
+    smote_random_state: 42
+    target_column: "y"
+
+  kyc:
+    merge_on: "entity_id"
+    risk_tiers:
+      critical: 0.75
+      high: 0.50
+      medium: 0.25
+      low: 0.0
+
+  complaints:
+    min_narrative_length: 20
+    batch_size: 100

@@ -1,0 +1,52 @@
+/* ──────────────────────────────────────────────────────────
+   FinSight AI — Global CSS Theme
+   Applied across all Streamlit dashboard pages
+   ────────────────────────────────────────────────────────── */
+
+/* Hide Streamlit default hamburger menu and footer */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* Dark theme base */
+.stApp {
+    background-color: #0e1117;
+}
+
+/* Gradient headers */
+h1 {
+    background: linear-gradient(135deg, #635BFF, #3498DB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* Metric cards */
+[data-testid="metric-container"] {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid rgba(99, 91, 255, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+/* Tab styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: #CBD5E1;
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #635BFF, #3498DB);
+    color: white;
+}
+
+/* Table styling */
+.stDataFrame {
+    border-radius: 8px;
+    overflow: hidden;
+}

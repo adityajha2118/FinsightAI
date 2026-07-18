@@ -1,0 +1,48 @@
+# ──────────────────────────────────────────────────────────
+# FinSight AI — Model Configuration
+# ──────────────────────────────────────────────────────────
+
+models:
+  churn:
+    path: "models/churn/xgboost_model.pkl"
+    type: "xgboost"
+    threshold: 0.70
+    features:
+      - "Total_Trans_Ct"
+      - "Total_Trans_Amt"
+      - "Total_Revolving_Bal"
+      - "Avg_Utilization_Ratio"
+      - "Months_Inactive_12_mon"
+      - "Credit_Limit"
+
+  segmentation:
+    model_path: "models/segmentation/kmeans_model.pkl"
+    scaler_path: "models/segmentation/scaler.pkl"
+    n_clusters: 5
+    features:
+      - "Credit_Limit"
+      - "Total_Trans_Amt"
+      - "Total_Trans_Ct"
+      - "Avg_Utilization_Ratio"
+      - "Total_Revolving_Bal"
+      - "Months_Inactive_12_mon"
+
+  inactivity:
+    path: "models/inactivity/activity_scorer.pkl"
+    threshold: 0.30
+
+  campaign:
+    path: "models/campaign/xgboost_campaign.pkl"
+    type: "xgboost"
+
+  kyc:
+    xgboost_path: "models/kyc/xgboost_kyc.pkl"
+    random_forest_path: "models/kyc/random_forest_kyc.pkl"
+    risk_tiers:
+      critical: 0.75
+      high: 0.50
+      medium: 0.25
+
+  escalation:
+    path: "models/escalation/xgboost_escalation.pkl"
+    type: "xgboost"

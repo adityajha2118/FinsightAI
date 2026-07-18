@@ -1,0 +1,11 @@
+CLIENTNUM,Customer_Age,Gender,Income_Category,Card_Category,Months_on_book,Credit_Limit,Total_Revolving_Bal,Avg_Utilization_Ratio,Total_Trans_Amt,Total_Trans_Ct,Months_Inactive_12_mon,Attrition_Flag
+768805383,45,M,"$60K - $80K",Blue,39,12691,777,0.061,1144,42,1,Existing Customer
+818770008,49,F,"Less than $40K",Blue,44,8256,864,0.105,1291,33,1,Existing Customer
+713982108,51,M,"$80K - $120K",Gold,36,3418,0,0.0,1887,20,2,Attrited Customer
+769911858,40,F,"Less than $40K",Blue,34,3313,2517,0.76,1171,20,2,Attrited Customer
+709106358,44,M,"$60K - $80K",Blue,36,4716,0,0.0,816,28,2,Attrited Customer
+768805383,45,M,"$80K - $120K",Silver,46,34516,2264,0.066,11058,70,1,Existing Customer
+818770008,44,F,"$40K - $60K",Blue,13,6748,1467,0.217,2956,35,3,Existing Customer
+713982108,52,M,"$120K +",Platinum,36,16000,1677,0.105,4743,68,1,Existing Customer
+769911858,28,M,"$40K - $60K",Blue,36,5765,456,0.079,8240,91,1,Existing Customer
+709106358,60,F,"$60K - $80K",Gold,44,11116,0,0.0,2338,24,3,Attrited Customer

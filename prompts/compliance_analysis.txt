@@ -1,0 +1,14 @@
+Analyze the following entity's compliance risk profile and recommend appropriate regulatory actions.
+
+Entity Risk Profile:
+- Risk Score: {risk_score}
+- Risk Tier: {risk_tier}
+- PEP Flag: {pep_flag}
+- Sanctions Match: {sanctions_flag}
+- Structuring Detected: {structuring_flag}
+- Country Risk: {country_risk}
+
+Provide:
+1. Risk assessment summary (1-2 sentences)
+2. Regulatory action recommendation (1 sentence)
+3. Monitoring frequency recommendation (1 sentence)

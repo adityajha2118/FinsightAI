@@ -1,0 +1,42 @@
+# ──────────────────────────────────────────────────────────
+# FinSight AI — Dashboard Configuration
+# ──────────────────────────────────────────────────────────
+
+app:
+  title: "FinSight AI — Enterprise Fintech Platform"
+  icon: "📊"
+  layout: "wide"
+  sidebar_state: "expanded"
+
+backend:
+  url: "http://localhost:8000"
+  timeout: 5
+  health_endpoint: "/api/health"
+
+pages:
+  customer_intelligence:
+    title: "Customer Intelligence"
+    icon: "👥"
+    default_churn_threshold: 0.70
+    watchlist_size: 100
+
+  campaign_analytics:
+    title: "Campaign Analytics"
+    icon: "📣"
+
+  compliance:
+    title: "Compliance & KYC"
+    icon: "🛡️"
+    high_risk_limit: 50
+
+  complaints:
+    title: "Complaint Intelligence"
+    icon: "📋"
+    min_narrative_length: 20
+
+  executive:
+    title: "Executive Dashboard"
+    icon: "📈"
+
+cache:
+  ttl_seconds: 300

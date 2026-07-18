@@ -1,0 +1,2001 @@
+client_id,risk_score,risk_level,recommended_action
+1,0.0039423984,Low Risk,No action required
+2,0.0023524046,Low Risk,No action required
+3,0.9977684,Critical,Compliance team intervention
+4,0.9979023,Critical,Compliance team intervention
+5,0.0025014707,Low Risk,No action required
+6,0.99587834,Critical,Compliance team intervention
+7,0.9984686,Critical,Compliance team intervention
+8,0.9985796,Critical,Compliance team intervention
+9,0.99404067,Critical,Compliance team intervention
+10,0.997919,Critical,Compliance team intervention
+11,0.99790263,Critical,Compliance team intervention
+12,0.996007,Critical,Compliance team intervention
+13,0.9978052,Critical,Compliance team intervention
+14,0.0045560985,Low Risk,No action required
+15,0.9982653,Critical,Compliance team intervention
+16,0.991901,Critical,Compliance team intervention
+17,0.0030869467,Low Risk,No action required
+18,0.9863733,Critical,Compliance team intervention
+19,0.0038379543,Low Risk,No action required
+20,0.99790394,Critical,Compliance team intervention
+21,0.9932238,Critical,Compliance team intervention
+22,0.99816173,Critical,Compliance team intervention
+23,0.99894947,Critical,Compliance team intervention
+24,0.008647264,Low Risk,No action required
+25,0.0031591994,Low Risk,No action required
+26,0.99141484,Critical,Compliance team intervention
+27,0.9980111,Critical,Compliance team intervention
+28,0.99559844,Critical,Compliance team intervention
+29,0.0052734036,Low Risk,No action required
+30,0.99843985,Critical,Compliance team intervention
+31,0.9974975,Critical,Compliance team intervention
+32,0.99766904,Critical,Compliance team intervention
+33,0.0045931395,Low Risk,No action required
+34,0.0017627237,Low Risk,No action required
+35,0.98920375,Critical,Compliance team intervention
+36,0.9979825,Critical,Compliance team intervention
+37,0.004238881,Low Risk,No action required
+38,0.9969176,Critical,Compliance team intervention
+39,0.004505496,Low Risk,No action required
+40,0.0061835446,Low Risk,No action required
+41,0.0033736338,Low Risk,No action required
+42,0.0024720586,Low Risk,No action required
+43,0.9987877,Critical,Compliance team intervention
+44,0.9968086,Critical,Compliance team intervention
+45,0.99112785,Critical,Compliance team intervention
+46,0.0033292577,Low Risk,No action required
+47,0.00321337,Low Risk,No action required
+48,0.9910817,Critical,Compliance team intervention
+49,0.0030603122,Low Risk,No action required
+50,0.004204669,Low Risk,No action required
+51,0.99816614,Critical,Compliance team intervention
+52,0.0031811194,Low Risk,No action required
+53,0.9983542,Critical,Compliance team intervention
+54,0.9943634,Critical,Compliance team intervention
+55,0.99833703,Critical,Compliance team intervention
+56,0.004426501,Low Risk,No action required
+57,0.004484679,Low Risk,No action required
+58,0.0020397836,Low Risk,No action required
+59,0.0022777652,Low Risk,No action required
+60,0.0069968877,Low Risk,No action required
+61,0.0015991689,Low Risk,No action required
+62,0.9987099,Critical,Compliance team intervention
+63,0.0024336828,Low Risk,No action required
+64,0.99346125,Critical,Compliance team intervention
+65,0.99867815,Critical,Compliance team intervention
+66,0.997013,Critical,Compliance team intervention
+67,0.9987165,Critical,Compliance team intervention
+68,0.99682045,Critical,Compliance team intervention
+69,0.0024190787,Low Risk,No action required
+70,0.0031811194,Low Risk,No action required
+71,0.9959985,Critical,Compliance team intervention
+72,0.0019948427,Low Risk,No action required
+73,0.0026041847,Low Risk,No action required
+74,0.004156895,Low Risk,No action required
+75,0.99853337,Critical,Compliance team intervention
+76,0.99786997,Critical,Compliance team intervention
+77,0.9984794,Critical,Compliance team intervention
+78,0.9973794,Critical,Compliance team intervention
+79,0.99498415,Critical,Compliance team intervention
+80,0.0031238045,Low Risk,No action required
+81,0.99704784,Critical,Compliance team intervention
+82,0.9988158,Critical,Compliance team intervention
+83,0.9931925,Critical,Compliance team intervention
+84,0.0018432585,Low Risk,No action required
+85,0.002461905,Low Risk,No action required
+86,0.002939236,Low Risk,No action required
+87,0.9953159,Critical,Compliance team intervention
+88,0.99788195,Critical,Compliance team intervention
+89,0.002204321,Low Risk,No action required
+90,0.99045146,Critical,Compliance team intervention
+91,0.0018410762,Low Risk,No action required
+92,0.99344677,Critical,Compliance team intervention
+93,0.007984085,Low Risk,No action required
+94,0.9995902,Critical,Compliance team intervention
+95,0.9985846,Critical,Compliance team intervention
+96,0.0070560165,Low Risk,No action required
+97,0.99821943,Critical,Compliance team intervention
+98,0.003485388,Low Risk,No action required
+99,0.9981756,Critical,Compliance team intervention
+100,0.0018595761,Low Risk,No action required
+101,0.007361859,Low Risk,No action required
+102,0.002654655,Low Risk,No action required
+103,0.9977992,Critical,Compliance team intervention
+104,0.0033057167,Low Risk,No action required
+105,0.999275,Critical,Compliance team intervention
+106,0.9983359,Critical,Compliance team intervention
+107,0.0070808018,Low Risk,No action required
+108,0.9984692,Critical,Compliance team intervention
+109,0.99757844,Critical,Compliance team intervention
+110,0.99822956,Critical,Compliance team intervention
+111,0.0025040647,Low Risk,No action required
+112,0.9970522,Critical,Compliance team intervention
+113,0.9989197,Critical,Compliance team intervention
+114,0.001944222,Low Risk,No action required
+115,0.99756396,Critical,Compliance team intervention
+116,0.99879396,Critical,Compliance team intervention
+117,0.9996835,Critical,Compliance team intervention
+118,0.996549,Critical,Compliance team intervention
+119,0.0035791986,Low Risk,No action required
+120,0.0051294537,Low Risk,No action required
+121,0.9939605,Critical,Compliance team intervention
+122,0.998321,Critical,Compliance team intervention
+123,0.99550605,Critical,Compliance team intervention
+124,0.005351638,Low Risk,No action required
+125,0.9970843,Critical,Compliance team intervention
+126,0.0025949194,Low Risk,No action required
+127,0.9926658,Critical,Compliance team intervention
+128,0.9933462,Critical,Compliance team intervention
+129,0.0027198028,Low Risk,No action required
+130,0.9988336,Critical,Compliance team intervention
+131,0.9985201,Critical,Compliance team intervention
+132,0.0034318522,Low Risk,No action required
+133,0.001604656,Low Risk,No action required
+134,0.006110638,Low Risk,No action required
+135,0.0035428957,Low Risk,No action required
+136,0.99803704,Critical,Compliance team intervention
+137,0.99654704,Critical,Compliance team intervention
+138,0.99859625,Critical,Compliance team intervention
+139,0.0017699829,Low Risk,No action required
+140,0.9915964,Critical,Compliance team intervention
+141,0.0021697145,Low Risk,No action required
+142,0.0018918837,Low Risk,No action required
+143,0.0031058963,Low Risk,No action required
+144,0.9984641,Critical,Compliance team intervention
+145,0.9984824,Critical,Compliance team intervention
+146,0.9938257,Critical,Compliance team intervention
+147,0.9987733,Critical,Compliance team intervention
+148,0.99748945,Critical,Compliance team intervention
+149,0.004969516,Low Risk,No action required
+150,0.9904407,Critical,Compliance team intervention
+151,0.99600667,Critical,Compliance team intervention
+152,0.003881317,Low Risk,No action required
+153,0.9988727,Critical,Compliance team intervention
+154,0.99933964,Critical,Compliance team intervention
+155,0.004574496,Low Risk,No action required
+156,0.0017119967,Low Risk,No action required
+157,0.9977003,Critical,Compliance team intervention
+158,0.0059539215,Low Risk,No action required
+159,0.0028354295,Low Risk,No action required
+160,0.9942331,Critical,Compliance team intervention
+161,0.003986937,Low Risk,No action required
+162,0.9969428,Critical,Compliance team intervention
+163,0.0018356574,Low Risk,No action required
+164,0.99970883,Critical,Compliance team intervention
+165,0.9954007,Critical,Compliance team intervention
+166,0.0060326303,Low Risk,No action required
+167,0.003668326,Low Risk,No action required
+168,0.9984971,Critical,Compliance team intervention
+169,0.9977475,Critical,Compliance team intervention
+170,0.005649765,Low Risk,No action required
+171,0.005017916,Low Risk,No action required
+172,0.003188904,Low Risk,No action required
+173,0.99734807,Critical,Compliance team intervention
+174,0.0033144257,Low Risk,No action required
+175,0.004381473,Low Risk,No action required
+176,0.006795916,Low Risk,No action required
+177,0.99782264,Critical,Compliance team intervention
+178,0.0030911362,Low Risk,No action required
+179,0.9937475,Critical,Compliance team intervention
+180,0.008111397,Low Risk,No action required
+181,0.9938366,Critical,Compliance team intervention
+182,0.0034574314,Low Risk,No action required
+183,0.0023556366,Low Risk,No action required
+184,0.006596833,Low Risk,No action required
+185,0.9890491,Critical,Compliance team intervention
+186,0.003761109,Low Risk,No action required
+187,0.0030492626,Low Risk,No action required
+188,0.0013656957,Low Risk,No action required
+189,0.9985293,Critical,Compliance team intervention
+190,0.0024022507,Low Risk,No action required
+191,0.004080924,Low Risk,No action required
+192,0.0043851878,Low Risk,No action required
+193,0.0028766557,Low Risk,No action required
+194,0.9933962,Critical,Compliance team intervention
+195,0.9986338,Critical,Compliance team intervention
+196,0.9985411,Critical,Compliance team intervention
+197,0.006578531,Low Risk,No action required
+198,0.9915018,Critical,Compliance team intervention
+199,0.9981772,Critical,Compliance team intervention
+200,0.0023607374,Low Risk,No action required
+201,0.0037903558,Low Risk,No action required
+202,0.005514279,Low Risk,No action required
+203,0.99855644,Critical,Compliance team intervention
+204,0.99937624,Critical,Compliance team intervention
+205,0.9985013,Critical,Compliance team intervention
+206,0.0019437965,Low Risk,No action required
+207,0.0019292231,Low Risk,No action required
+208,0.99667066,Critical,Compliance team intervention
+209,0.9992207,Critical,Compliance team intervention
+210,0.003741103,Low Risk,No action required
+211,0.001964941,Low Risk,No action required
+212,0.9951096,Critical,Compliance team intervention
+213,0.9973042,Critical,Compliance team intervention
+214,0.0045079286,Low Risk,No action required
+215,0.9970522,Critical,Compliance team intervention
+216,0.0017108097,Low Risk,No action required
+217,0.99737227,Critical,Compliance team intervention
+218,0.0016585158,Low Risk,No action required
+219,0.99810493,Critical,Compliance team intervention
+220,0.0032490985,Low Risk,No action required
+221,0.003407347,Low Risk,No action required
+222,0.004908507,Low Risk,No action required
+223,0.007787622,Low Risk,No action required
+224,0.0044247448,Low Risk,No action required
+225,0.005908486,Low Risk,No action required
+226,0.9978987,Critical,Compliance team intervention
+227,0.0026346194,Low Risk,No action required
+228,0.0026588165,Low Risk,No action required
+229,0.0041111005,Low Risk,No action required
+230,0.0025201677,Low Risk,No action required
+231,0.9929507,Critical,Compliance team intervention
+232,0.0071368064,Low Risk,No action required
+233,0.99381083,Critical,Compliance team intervention
+234,0.99651295,Critical,Compliance team intervention
+235,0.99496126,Critical,Compliance team intervention
+236,0.97948235,Critical,Compliance team intervention
+237,0.99842775,Critical,Compliance team intervention
+238,0.9984573,Critical,Compliance team intervention
+239,0.004856302,Low Risk,No action required
+240,0.0020817698,Low Risk,No action required
+241,0.0009796167,Low Risk,No action required
+242,0.99543947,Critical,Compliance team intervention
+243,0.006584919,Low Risk,No action required
+244,0.0022463985,Low Risk,No action required
+245,0.0036004626,Low Risk,No action required
+246,0.003188904,Low Risk,No action required
+247,0.99850154,Critical,Compliance team intervention
+248,0.99905854,Critical,Compliance team intervention
+249,0.0016150146,Low Risk,No action required
+250,0.0071534324,Low Risk,No action required
+251,0.0022493342,Low Risk,No action required
+252,0.9975694,Critical,Compliance team intervention
+253,0.989131,Critical,Compliance team intervention
+254,0.9982249,Critical,Compliance team intervention
+255,0.9959699,Critical,Compliance team intervention
+256,0.0038882592,Low Risk,No action required
+257,0.99805295,Critical,Compliance team intervention
+258,0.99268484,Critical,Compliance team intervention
+259,0.0019916669,Low Risk,No action required
+260,0.007920919,Low Risk,No action required
+261,0.004255868,Low Risk,No action required
+262,0.9987249,Critical,Compliance team intervention
+263,0.9977963,Critical,Compliance team intervention
+264,0.0018190407,Low Risk,No action required
+265,0.0023307998,Low Risk,No action required
+266,0.9979693,Critical,Compliance team intervention
+267,0.99133587,Critical,Compliance team intervention
+268,0.0028527009,Low Risk,No action required
+269,0.0018059856,Low Risk,No action required
+270,0.0032183973,Low Risk,No action required
+271,0.9977513,Critical,Compliance team intervention
+272,0.0054174573,Low Risk,No action required
+273,0.0024668342,Low Risk,No action required
+274,0.009327538,Low Risk,No action required
+275,0.0033592721,Low Risk,No action required
+276,0.007883208,Low Risk,No action required
+277,0.0040133283,Low Risk,No action required
+278,0.005592656,Low Risk,No action required
+279,0.99544454,Critical,Compliance team intervention
+280,0.004295599,Low Risk,No action required
+281,0.99810326,Critical,Compliance team intervention
+282,0.003187963,Low Risk,No action required
+283,0.0020581482,Low Risk,No action required
+284,0.0020851693,Low Risk,No action required
+285,0.99802905,Critical,Compliance team intervention
+286,0.9983954,Critical,Compliance team intervention
+287,0.001991265,Low Risk,No action required
+288,0.99699557,Critical,Compliance team intervention
+289,0.0019076974,Low Risk,No action required
+290,0.0046684383,Low Risk,No action required
+291,0.0015991689,Low Risk,No action required
+292,0.0042165006,Low Risk,No action required
+293,0.9981772,Critical,Compliance team intervention
+294,0.0038481385,Low Risk,No action required
+295,0.9985045,Critical,Compliance team intervention
+296,0.0024526266,Low Risk,No action required
+297,0.9963052,Critical,Compliance team intervention
+298,0.997224,Critical,Compliance team intervention
+299,0.99654394,Critical,Compliance team intervention
+300,0.99796,Critical,Compliance team intervention
+301,0.99518126,Critical,Compliance team intervention
+302,0.9916978,Critical,Compliance team intervention
+303,0.004336885,Low Risk,No action required
+304,0.0038598545,Low Risk,No action required
+305,0.0028413907,Low Risk,No action required
+306,0.9933774,Critical,Compliance team intervention
+307,0.003691692,Low Risk,No action required
+308,0.99811053,Critical,Compliance team intervention
+309,0.9956149,Critical,Compliance team intervention
+310,0.9994505,Critical,Compliance team intervention
+311,0.0028047466,Low Risk,No action required
+312,0.0038757774,Low Risk,No action required
+313,0.99388134,Critical,Compliance team intervention
+314,0.9978192,Critical,Compliance team intervention
+315,0.9988876,Critical,Compliance team intervention
+316,0.99807715,Critical,Compliance team intervention
+317,0.0026618834,Low Risk,No action required
+318,0.0018771404,Low Risk,No action required
+319,0.9984553,Critical,Compliance team intervention
+320,0.0053921654,Low Risk,No action required
+321,0.998116,Critical,Compliance team intervention
+322,0.003849217,Low Risk,No action required
+323,0.9988201,Critical,Compliance team intervention
+324,0.002333053,Low Risk,No action required
+325,0.9985038,Critical,Compliance team intervention
+326,0.99858034,Critical,Compliance team intervention
+327,0.0026449503,Low Risk,No action required
+328,0.0015526371,Low Risk,No action required
+329,0.9982199,Critical,Compliance team intervention
+330,0.9978951,Critical,Compliance team intervention
+331,0.99455786,Critical,Compliance team intervention
+332,0.002019235,Low Risk,No action required
+333,0.9982551,Critical,Compliance team intervention
+334,0.9978942,Critical,Compliance team intervention
+335,0.003047512,Low Risk,No action required
+336,0.97877824,Critical,Compliance team intervention
+337,0.0015991689,Low Risk,No action required
+338,0.001369225,Low Risk,No action required
+339,0.99878615,Critical,Compliance team intervention
+340,0.0020440212,Low Risk,No action required
+341,0.9960163,Critical,Compliance team intervention
+342,0.0018244105,Low Risk,No action required
+343,0.99667966,Critical,Compliance team intervention
+344,0.9967519,Critical,Compliance team intervention
+345,0.0038357635,Low Risk,No action required
+346,0.0012675064,Low Risk,No action required
+347,0.99819595,Critical,Compliance team intervention
+348,0.0029380803,Low Risk,No action required
+349,0.0024306388,Low Risk,No action required
+350,0.99680746,Critical,Compliance team intervention
+351,0.99960953,Critical,Compliance team intervention
+352,0.0040133283,Low Risk,No action required
+353,0.0028235053,Low Risk,No action required
+354,0.998061,Critical,Compliance team intervention
+355,0.006810579,Low Risk,No action required
+356,0.9929507,Critical,Compliance team intervention
+357,0.0068480833,Low Risk,No action required
+358,0.99844956,Critical,Compliance team intervention
+359,0.002643856,Low Risk,No action required
+360,0.0023802335,Low Risk,No action required
+361,0.9960691,Critical,Compliance team intervention
+362,0.003988175,Low Risk,No action required
+363,0.9953874,Critical,Compliance team intervention
+364,0.9977822,Critical,Compliance team intervention
+365,0.9971591,Critical,Compliance team intervention
+366,0.9989343,Critical,Compliance team intervention
+367,0.9967217,Critical,Compliance team intervention
+368,0.0022596053,Low Risk,No action required
+369,0.9966785,Critical,Compliance team intervention
+370,0.99639386,Critical,Compliance team intervention
+371,0.0034177254,Low Risk,No action required
+372,0.0018538418,Low Risk,No action required
+373,0.0026588165,Low Risk,No action required
+374,0.998847,Critical,Compliance team intervention
+375,0.0055600214,Low Risk,No action required
+376,0.0047552944,Low Risk,No action required
+377,0.99593335,Critical,Compliance team intervention
+378,0.002281101,Low Risk,No action required
+379,0.9946367,Critical,Compliance team intervention
+380,0.99814045,Critical,Compliance team intervention
+381,0.002126098,Low Risk,No action required
+382,0.9979705,Critical,Compliance team intervention
+383,0.9987502,Critical,Compliance team intervention
+384,0.006687635,Low Risk,No action required
+385,0.99882334,Critical,Compliance team intervention
+386,0.0017539598,Low Risk,No action required
+387,0.99819595,Critical,Compliance team intervention
+388,0.9985025,Critical,Compliance team intervention
+389,0.0034177254,Low Risk,No action required
+390,0.00421572,Low Risk,No action required
+391,0.9972807,Critical,Compliance team intervention
+392,0.9969561,Critical,Compliance team intervention
+393,0.0039569293,Low Risk,No action required
+394,0.9982237,Critical,Compliance team intervention
+395,0.0028353147,Low Risk,No action required
+396,0.9979746,Critical,Compliance team intervention
+397,0.0024306388,Low Risk,No action required
+398,0.9961577,Critical,Compliance team intervention
+399,0.9968454,Critical,Compliance team intervention
+400,0.0023089116,Low Risk,No action required
+401,0.99874264,Critical,Compliance team intervention
+402,0.99854124,Critical,Compliance team intervention
+403,0.99852824,Critical,Compliance team intervention
+404,0.0028118491,Low Risk,No action required
+405,0.9826942,Critical,Compliance team intervention
+406,0.9972621,Critical,Compliance team intervention
+407,0.0020628201,Low Risk,No action required
+408,0.0024185153,Low Risk,No action required
+409,0.0027768868,Low Risk,No action required
+410,0.99811745,Critical,Compliance team intervention
+411,0.996926,Critical,Compliance team intervention
+412,0.0018244105,Low Risk,No action required
+413,0.9981772,Critical,Compliance team intervention
+414,0.00425815,Low Risk,No action required
+415,0.008531289,Low Risk,No action required
+416,0.0014212291,Low Risk,No action required
+417,0.9943487,Critical,Compliance team intervention
+418,0.99963355,Critical,Compliance team intervention
+419,0.99883944,Critical,Compliance team intervention
+420,0.99790263,Critical,Compliance team intervention
+421,0.002162994,Low Risk,No action required
+422,0.9983919,Critical,Compliance team intervention
+423,0.9978399,Critical,Compliance team intervention
+424,0.004297741,Low Risk,No action required
+425,0.009596918,Low Risk,No action required
+426,0.004079304,Low Risk,No action required
+427,0.0028715406,Low Risk,No action required
+428,0.9984414,Critical,Compliance team intervention
+429,0.002783951,Low Risk,No action required
+430,0.9946662,Critical,Compliance team intervention
+431,0.007047813,Low Risk,No action required
+432,0.0022382385,Low Risk,No action required
+433,0.0016634125,Low Risk,No action required
+434,0.006511281,Low Risk,No action required
+435,0.99498415,Critical,Compliance team intervention
+436,0.997601,Critical,Compliance team intervention
+437,0.9980388,Critical,Compliance team intervention
+438,0.008946246,Low Risk,No action required
+439,0.99850225,Critical,Compliance team intervention
+440,0.0032457598,Low Risk,No action required
+441,0.997584,Critical,Compliance team intervention
+442,0.00409895,Low Risk,No action required
+443,0.99586225,Critical,Compliance team intervention
+444,0.0053290525,Low Risk,No action required
+445,0.0017184893,Low Risk,No action required
+446,0.002152834,Low Risk,No action required
+447,0.9929173,Critical,Compliance team intervention
+448,0.00253569,Low Risk,No action required
+449,0.0018323673,Low Risk,No action required
+450,0.0013821331,Low Risk,No action required
+451,0.99555063,Critical,Compliance team intervention
+452,0.0025247002,Low Risk,No action required
+453,0.99145484,Critical,Compliance team intervention
+454,0.9960943,Critical,Compliance team intervention
+455,0.9983859,Critical,Compliance team intervention
+456,0.0023112833,Low Risk,No action required
+457,0.0029671534,Low Risk,No action required
+458,0.0036552,Low Risk,No action required
+459,0.003391098,Low Risk,No action required
+460,0.9978077,Critical,Compliance team intervention
+461,0.0048403973,Low Risk,No action required
+462,0.007316431,Low Risk,No action required
+463,0.0069449595,Low Risk,No action required
+464,0.99823356,Critical,Compliance team intervention
+465,0.0019559565,Low Risk,No action required
+466,0.99804175,Critical,Compliance team intervention
+467,0.9879942,Critical,Compliance team intervention
+468,0.002260202,Low Risk,No action required
+469,0.9963223,Critical,Compliance team intervention
+470,0.99688053,Critical,Compliance team intervention
+471,0.9982691,Critical,Compliance team intervention
+472,0.9946202,Critical,Compliance team intervention
+473,0.9872887,Critical,Compliance team intervention
+474,0.99897563,Critical,Compliance team intervention
+475,0.0029671534,Low Risk,No action required
+476,0.999138,Critical,Compliance team intervention
+477,0.0033205668,Low Risk,No action required
+478,0.9983456,Critical,Compliance team intervention
+479,0.0015991689,Low Risk,No action required
+480,0.004079304,Low Risk,No action required
+481,0.99406886,Critical,Compliance team intervention
+482,0.0017114409,Low Risk,No action required
+483,0.993985,Critical,Compliance team intervention
+484,0.9985545,Critical,Compliance team intervention
+485,0.9936673,Critical,Compliance team intervention
+486,0.0020423108,Low Risk,No action required
+487,0.99507624,Critical,Compliance team intervention
+488,0.0020202615,Low Risk,No action required
+489,0.0016634125,Low Risk,No action required
+490,0.0019495339,Low Risk,No action required
+491,0.99822897,Critical,Compliance team intervention
+492,0.9993781,Critical,Compliance team intervention
+493,0.0021518131,Low Risk,No action required
+494,0.9967229,Critical,Compliance team intervention
+495,0.9981201,Critical,Compliance team intervention
+496,0.002907371,Low Risk,No action required
+497,0.003173366,Low Risk,No action required
+498,0.0024676237,Low Risk,No action required
+499,0.008214641,Low Risk,No action required
+500,0.957148,Critical,Compliance team intervention
+501,0.002019235,Low Risk,No action required
+502,0.005239992,Low Risk,No action required
+503,0.004381473,Low Risk,No action required
+504,0.0052652485,Low Risk,No action required
+505,0.0044390196,Low Risk,No action required
+506,0.9971591,Critical,Compliance team intervention
+507,0.002725654,Low Risk,No action required
+508,0.9988619,Critical,Compliance team intervention
+509,0.9969278,Critical,Compliance team intervention
+510,0.007602731,Low Risk,No action required
+511,0.0050199707,Low Risk,No action required
+512,0.006287488,Low Risk,No action required
+513,0.0019725647,Low Risk,No action required
+514,0.002762238,Low Risk,No action required
+515,0.0021265512,Low Risk,No action required
+516,0.0018244105,Low Risk,No action required
+517,0.9925092,Critical,Compliance team intervention
+518,0.9975623,Critical,Compliance team intervention
+519,0.0026795862,Low Risk,No action required
+520,0.99684167,Critical,Compliance team intervention
+521,0.0017875179,Low Risk,No action required
+522,0.0021915045,Low Risk,No action required
+523,0.9983742,Critical,Compliance team intervention
+524,0.0031324003,Low Risk,No action required
+525,0.998061,Critical,Compliance team intervention
+526,0.0018823041,Low Risk,No action required
+527,0.9980446,Critical,Compliance team intervention
+528,0.0031009836,Low Risk,No action required
+529,0.9732607,Critical,Compliance team intervention
+530,0.002041895,Low Risk,No action required
+531,0.0021884139,Low Risk,No action required
+532,0.99803704,Critical,Compliance team intervention
+533,0.99857605,Critical,Compliance team intervention
+534,0.99763286,Critical,Compliance team intervention
+535,0.006772724,Low Risk,No action required
+536,0.0023544647,Low Risk,No action required
+537,0.0023069803,Low Risk,No action required
+538,0.9961682,Critical,Compliance team intervention
+539,0.9980111,Critical,Compliance team intervention
+540,0.0025631934,Low Risk,No action required
+541,0.9888713,Critical,Compliance team intervention
+542,0.9928046,Critical,Compliance team intervention
+543,0.002716556,Low Risk,No action required
+544,0.0033795212,Low Risk,No action required
+545,0.9981041,Critical,Compliance team intervention
+546,0.0026419857,Low Risk,No action required
+547,0.9987198,Critical,Compliance team intervention
+548,0.9982829,Critical,Compliance team intervention
+549,0.9925041,Critical,Compliance team intervention
+550,0.004232584,Low Risk,No action required
+551,0.99811304,Critical,Compliance team intervention
+552,0.98966205,Critical,Compliance team intervention
+553,0.9975405,Critical,Compliance team intervention
+554,0.0044247448,Low Risk,No action required
+555,0.998064,Critical,Compliance team intervention
+556,0.9988814,Critical,Compliance team intervention
+557,0.0019899749,Low Risk,No action required
+558,0.9981812,Critical,Compliance team intervention
+559,0.008717073,Low Risk,No action required
+560,0.99708825,Critical,Compliance team intervention
+561,0.9874479,Critical,Compliance team intervention
+562,0.997456,Critical,Compliance team intervention
+563,0.9972639,Critical,Compliance team intervention
+564,0.0058111567,Low Risk,No action required
+565,0.003850413,Low Risk,No action required
+566,0.0029671534,Low Risk,No action required
+567,0.0014763493,Low Risk,No action required
+568,0.0069748377,Low Risk,No action required
+569,0.99750227,Critical,Compliance team intervention
+570,0.002216262,Low Risk,No action required
+571,0.0040332284,Low Risk,No action required
+572,0.005655158,Low Risk,No action required
+573,0.0021464997,Low Risk,No action required
+574,0.0018850232,Low Risk,No action required
+575,0.9986436,Critical,Compliance team intervention
+576,0.0031461378,Low Risk,No action required
+577,0.0025340563,Low Risk,No action required
+578,0.0035280436,Low Risk,No action required
+579,0.0026654722,Low Risk,No action required
+580,0.004253761,Low Risk,No action required
+581,0.99784315,Critical,Compliance team intervention
+582,0.9982768,Critical,Compliance team intervention
+583,0.99649954,Critical,Compliance team intervention
+584,0.0024392598,Low Risk,No action required
+585,0.9996094,Critical,Compliance team intervention
+586,0.002471077,Low Risk,No action required
+587,0.9951899,Critical,Compliance team intervention
+588,0.0018984211,Low Risk,No action required
+589,0.004025838,Low Risk,No action required
+590,0.004484679,Low Risk,No action required
+591,0.0032041827,Low Risk,No action required
+592,0.9973616,Critical,Compliance team intervention
+593,0.0020682684,Low Risk,No action required
+594,0.0039959583,Low Risk,No action required
+595,0.9973507,Critical,Compliance team intervention
+596,0.9942846,Critical,Compliance team intervention
+597,0.9929234,Critical,Compliance team intervention
+598,0.9991059,Critical,Compliance team intervention
+599,0.0032556774,Low Risk,No action required
+600,0.0026793722,Low Risk,No action required
+601,0.99534947,Critical,Compliance team intervention
+602,0.0063847867,Low Risk,No action required
+603,0.0027686052,Low Risk,No action required
+604,0.0029380803,Low Risk,No action required
+605,0.9982014,Critical,Compliance team intervention
+606,0.98042864,Critical,Compliance team intervention
+607,0.0069301073,Low Risk,No action required
+608,0.998237,Critical,Compliance team intervention
+609,0.002787367,Low Risk,No action required
+610,0.9972295,Critical,Compliance team intervention
+611,0.9982881,Critical,Compliance team intervention
+612,0.9979361,Critical,Compliance team intervention
+613,0.0020698858,Low Risk,No action required
+614,0.0018244105,Low Risk,No action required
+615,0.0029860993,Low Risk,No action required
+616,0.0025859172,Low Risk,No action required
+617,0.9985669,Critical,Compliance team intervention
+618,0.0020231004,Low Risk,No action required
+619,0.9909992,Critical,Compliance team intervention
+620,0.99880505,Critical,Compliance team intervention
+621,0.9971054,Critical,Compliance team intervention
+622,0.9980952,Critical,Compliance team intervention
+623,0.990017,Critical,Compliance team intervention
+624,0.9980153,Critical,Compliance team intervention
+625,0.004766103,Low Risk,No action required
+626,0.99826765,Critical,Compliance team intervention
+627,0.9979831,Critical,Compliance team intervention
+628,0.0023077752,Low Risk,No action required
+629,0.003714135,Low Risk,No action required
+630,0.0028799868,Low Risk,No action required
+631,0.0023795995,Low Risk,No action required
+632,0.0052652485,Low Risk,No action required
+633,0.9982791,Critical,Compliance team intervention
+634,0.9811621,Critical,Compliance team intervention
+635,0.0068785343,Low Risk,No action required
+636,0.9985071,Critical,Compliance team intervention
+637,0.9984315,Critical,Compliance team intervention
+638,0.003971734,Low Risk,No action required
+639,0.0031058963,Low Risk,No action required
+640,0.0016150146,Low Risk,No action required
+641,0.0017336675,Low Risk,No action required
+642,0.9981324,Critical,Compliance team intervention
+643,0.0010109715,Low Risk,No action required
+644,0.0030269355,Low Risk,No action required
+645,0.9975775,Critical,Compliance team intervention
+646,0.9984856,Critical,Compliance team intervention
+647,0.00524174,Low Risk,No action required
+648,0.9975737,Critical,Compliance team intervention
+649,0.99855405,Critical,Compliance team intervention
+650,0.99855787,Critical,Compliance team intervention
+651,0.0044733207,Low Risk,No action required
+652,0.9899233,Critical,Compliance team intervention
+653,0.0033807084,Low Risk,No action required
+654,0.99388134,Critical,Compliance team intervention
+655,0.9940116,Critical,Compliance team intervention
+656,0.9986369,Critical,Compliance team intervention
+657,0.99810237,Critical,Compliance team intervention
+658,0.99211746,Critical,Compliance team intervention
+659,0.9976701,Critical,Compliance team intervention
+660,0.0017539598,Low Risk,No action required
+661,0.9995603,Critical,Compliance team intervention
+662,0.0021066163,Low Risk,No action required
+663,0.99842334,Critical,Compliance team intervention
+664,0.9936673,Critical,Compliance team intervention
+665,0.9970788,Critical,Compliance team intervention
+666,0.0070040934,Low Risk,No action required
+667,0.0038621638,Low Risk,No action required
+668,0.99378765,Critical,Compliance team intervention
+669,0.9982408,Critical,Compliance team intervention
+670,0.0038481385,Low Risk,No action required
+671,0.99837744,Critical,Compliance team intervention
+672,0.0025206232,Low Risk,No action required
+673,0.99393433,Critical,Compliance team intervention
+674,0.9972658,Critical,Compliance team intervention
+675,0.9984189,Critical,Compliance team intervention
+676,0.99133587,Critical,Compliance team intervention
+677,0.0031811194,Low Risk,No action required
+678,0.0020374418,Low Risk,No action required
+679,0.009443053,Low Risk,No action required
+680,0.004122404,Low Risk,No action required
+681,0.004422823,Low Risk,No action required
+682,0.0020127574,Low Risk,No action required
+683,0.9973864,Critical,Compliance team intervention
+684,0.009294544,Low Risk,No action required
+685,0.0053796107,Low Risk,No action required
+686,0.0018368504,Low Risk,No action required
+687,0.0018984211,Low Risk,No action required
+688,0.002131582,Low Risk,No action required
+689,0.0069301073,Low Risk,No action required
+690,0.9975516,Critical,Compliance team intervention
+691,0.98774683,Critical,Compliance team intervention
+692,0.0037151957,Low Risk,No action required
+693,0.99267817,Critical,Compliance team intervention
+694,0.9976279,Critical,Compliance team intervention
+695,0.9985796,Critical,Compliance team intervention
+696,0.004706786,Low Risk,No action required
+697,0.0016495608,Low Risk,No action required
+698,0.009089241,Low Risk,No action required
+699,0.0022635316,Low Risk,No action required
+700,0.0050078724,Low Risk,No action required
+701,0.9987431,Critical,Compliance team intervention
+702,0.99440694,Critical,Compliance team intervention
+703,0.99697125,Critical,Compliance team intervention
+704,0.002086307,Low Risk,No action required
+705,0.99814403,Critical,Compliance team intervention
+706,0.9973309,Critical,Compliance team intervention
+707,0.9988605,Critical,Compliance team intervention
+708,0.9988714,Critical,Compliance team intervention
+709,0.99855167,Critical,Compliance team intervention
+710,0.0059279944,Low Risk,No action required
+711,0.9991026,Critical,Compliance team intervention
+712,0.0024513786,Low Risk,No action required
+713,0.99264103,Critical,Compliance team intervention
+714,0.9978058,Critical,Compliance team intervention
+715,0.9943316,Critical,Compliance team intervention
+716,0.9917386,Critical,Compliance team intervention
+717,0.9955836,Critical,Compliance team intervention
+718,0.0032220525,Low Risk,No action required
+719,0.9926152,Critical,Compliance team intervention
+720,0.002103487,Low Risk,No action required
+721,0.004692246,Low Risk,No action required
+722,0.002563375,Low Risk,No action required
+723,0.99723744,Critical,Compliance team intervention
+724,0.99516284,Critical,Compliance team intervention
+725,0.99760026,Critical,Compliance team intervention
+726,0.0020749487,Low Risk,No action required
+727,0.0068896185,Low Risk,No action required
+728,0.0017184893,Low Risk,No action required
+729,0.0016493009,Low Risk,No action required
+730,0.9952667,Critical,Compliance team intervention
+731,0.99888414,Critical,Compliance team intervention
+732,0.0018396615,Low Risk,No action required
+733,0.992789,Critical,Compliance team intervention
+734,0.99638087,Critical,Compliance team intervention
+735,0.9982835,Critical,Compliance team intervention
+736,0.99491346,Critical,Compliance team intervention
+737,0.006458712,Low Risk,No action required
+738,0.9982352,Critical,Compliance team intervention
+739,0.0028484666,Low Risk,No action required
+740,0.001766838,Low Risk,No action required
+741,0.99680746,Critical,Compliance team intervention
+742,0.9969428,Critical,Compliance team intervention
+743,0.0065145013,Low Risk,No action required
+744,0.99840015,Critical,Compliance team intervention
+745,0.99804175,Critical,Compliance team intervention
+746,0.0033931502,Low Risk,No action required
+747,0.0030559478,Low Risk,No action required
+748,0.99634874,Critical,Compliance team intervention
+749,0.0020335403,Low Risk,No action required
+750,0.9985752,Critical,Compliance team intervention
+751,0.99932957,Critical,Compliance team intervention
+752,0.006865478,Low Risk,No action required
+753,0.0016634125,Low Risk,No action required
+754,0.99148786,Critical,Compliance team intervention
+755,0.00167732,Low Risk,No action required
+756,0.0033592721,Low Risk,No action required
+757,0.99799335,Critical,Compliance team intervention
+758,0.9955245,Critical,Compliance team intervention
+759,0.0046665864,Low Risk,No action required
+760,0.0027472551,Low Risk,No action required
+761,0.99834776,Critical,Compliance team intervention
+762,0.0017659198,Low Risk,No action required
+763,0.9972785,Critical,Compliance team intervention
+764,0.009417041,Low Risk,No action required
+765,0.0031524028,Low Risk,No action required
+766,0.0031619999,Low Risk,No action required
+767,0.0032565673,Low Risk,No action required
+768,0.99891543,Critical,Compliance team intervention
+769,0.0029276963,Low Risk,No action required
+770,0.0025043027,Low Risk,No action required
+771,0.99849534,Critical,Compliance team intervention
+772,0.009375883,Low Risk,No action required
+773,0.0027260752,Low Risk,No action required
+774,0.0021066163,Low Risk,No action required
+775,0.996935,Critical,Compliance team intervention
+776,0.0017479272,Low Risk,No action required
+777,0.0016386104,Low Risk,No action required
+778,0.99772507,Critical,Compliance team intervention
+779,0.99810565,Critical,Compliance team intervention
+780,0.9982835,Critical,Compliance team intervention
+781,0.0062575527,Low Risk,No action required
+782,0.0039987564,Low Risk,No action required
+783,0.9984573,Critical,Compliance team intervention
+784,0.99800843,Critical,Compliance team intervention
+785,0.002423375,Low Risk,No action required
+786,0.0046643014,Low Risk,No action required
+787,0.99648005,Critical,Compliance team intervention
+788,0.0027472654,Low Risk,No action required
+789,0.0018780152,Low Risk,No action required
+790,0.99724776,Critical,Compliance team intervention
+791,0.0022493342,Low Risk,No action required
+792,0.0029671534,Low Risk,No action required
+793,0.9987074,Critical,Compliance team intervention
+794,0.0020722363,Low Risk,No action required
+795,0.007170704,Low Risk,No action required
+796,0.9982114,Critical,Compliance team intervention
+797,0.005711813,Low Risk,No action required
+798,0.9977373,Critical,Compliance team intervention
+799,0.9947068,Critical,Compliance team intervention
+800,0.9971591,Critical,Compliance team intervention
+801,0.0047213105,Low Risk,No action required
+802,0.0033939113,Low Risk,No action required
+803,0.0032054973,Low Risk,No action required
+804,0.99710876,Critical,Compliance team intervention
+805,0.005372438,Low Risk,No action required
+806,0.004381473,Low Risk,No action required
+807,0.004426501,Low Risk,No action required
+808,0.005197658,Low Risk,No action required
+809,0.9947172,Critical,Compliance team intervention
+810,0.9821884,Critical,Compliance team intervention
+811,0.0059813503,Low Risk,No action required
+812,0.9987533,Critical,Compliance team intervention
+813,0.0031820661,Low Risk,No action required
+814,0.9984573,Critical,Compliance team intervention
+815,0.9985739,Critical,Compliance team intervention
+816,0.0023629093,Low Risk,No action required
+817,0.0072123483,Low Risk,No action required
+818,0.99436694,Critical,Compliance team intervention
+819,0.0036588763,Low Risk,No action required
+820,0.99740463,Critical,Compliance team intervention
+821,0.0066831578,Low Risk,No action required
+822,0.9990965,Critical,Compliance team intervention
+823,0.0075414823,Low Risk,No action required
+824,0.9826942,Critical,Compliance team intervention
+825,0.9978472,Critical,Compliance team intervention
+826,0.9987264,Critical,Compliance team intervention
+827,0.0024101762,Low Risk,No action required
+828,0.9995974,Critical,Compliance team intervention
+829,0.9985744,Critical,Compliance team intervention
+830,0.99858046,Critical,Compliance team intervention
+831,0.003230669,Low Risk,No action required
+832,0.99785537,Critical,Compliance team intervention
+833,0.997638,Critical,Compliance team intervention
+834,0.9874893,Critical,Compliance team intervention
+835,0.0032072451,Low Risk,No action required
+836,0.990849,Critical,Compliance team intervention
+837,0.9981067,Critical,Compliance team intervention
+838,0.9821977,Critical,Compliance team intervention
+839,0.003993141,Low Risk,No action required
+840,0.98951626,Critical,Compliance team intervention
+841,0.99735034,Critical,Compliance team intervention
+842,0.99880683,Critical,Compliance team intervention
+843,0.9986582,Critical,Compliance team intervention
+844,0.9980952,Critical,Compliance team intervention
+845,0.9821144,Critical,Compliance team intervention
+846,0.006190024,Low Risk,No action required
+847,0.9982034,Critical,Compliance team intervention
+848,0.0072109145,Low Risk,No action required
+849,0.99323297,Critical,Compliance team intervention
+850,0.99839574,Critical,Compliance team intervention
+851,0.0023408094,Low Risk,No action required
+852,0.0038621638,Low Risk,No action required
+853,0.0062610907,Low Risk,No action required
+854,0.0020116083,Low Risk,No action required
+855,0.9989104,Critical,Compliance team intervention
+856,0.99802244,Critical,Compliance team intervention
+857,0.99800926,Critical,Compliance team intervention
+858,0.0057885307,Low Risk,No action required
+859,0.0023555458,Low Risk,No action required
+860,0.99816614,Critical,Compliance team intervention
+861,0.0040939795,Low Risk,No action required
+862,0.006610221,Low Risk,No action required
+863,0.99741876,Critical,Compliance team intervention
+864,0.99857414,Critical,Compliance team intervention
+865,0.007989662,Low Risk,No action required
+866,0.9985744,Critical,Compliance team intervention
+867,0.99742895,Critical,Compliance team intervention
+868,0.9991505,Critical,Compliance team intervention
+869,0.99565023,Critical,Compliance team intervention
+870,0.0024480054,Low Risk,No action required
+871,0.99595535,Critical,Compliance team intervention
+872,0.9711719,Critical,Compliance team intervention
+873,0.99509203,Critical,Compliance team intervention
+874,0.9943539,Critical,Compliance team intervention
+875,0.99810815,Critical,Compliance team intervention
+876,0.9985434,Critical,Compliance team intervention
+877,0.99462706,Critical,Compliance team intervention
+878,0.9971897,Critical,Compliance team intervention
+879,0.00774021,Low Risk,No action required
+880,0.0029846488,Low Risk,No action required
+881,0.00331521,Low Risk,No action required
+882,0.9987656,Critical,Compliance team intervention
+883,0.9967637,Critical,Compliance team intervention
+884,0.9972905,Critical,Compliance team intervention
+885,0.99550664,Critical,Compliance team intervention
+886,0.9965467,Critical,Compliance team intervention
+887,0.9982352,Critical,Compliance team intervention
+888,0.001700669,Low Risk,No action required
+889,0.99810493,Critical,Compliance team intervention
+890,0.002222086,Low Risk,No action required
+891,0.97560865,Critical,Compliance team intervention
+892,0.004156895,Low Risk,No action required
+893,0.9987464,Critical,Compliance team intervention
+894,0.99701786,Critical,Compliance team intervention
+895,0.0035579854,Low Risk,No action required
+896,0.002145935,Low Risk,No action required
+897,0.0031996153,Low Risk,No action required
+898,0.99761224,Critical,Compliance team intervention
+899,0.0029799049,Low Risk,No action required
+900,0.0023795995,Low Risk,No action required
+901,0.98803586,Critical,Compliance team intervention
+902,0.0026256882,Low Risk,No action required
+903,0.0017659198,Low Risk,No action required
+904,0.0026743526,Low Risk,No action required
+905,0.002133699,Low Risk,No action required
+906,0.99796426,Critical,Compliance team intervention
+907,0.002481618,Low Risk,No action required
+908,0.9763381,Critical,Compliance team intervention
+909,0.99608034,Critical,Compliance team intervention
+910,0.9984433,Critical,Compliance team intervention
+911,0.996463,Critical,Compliance team intervention
+912,0.0020712279,Low Risk,No action required
+913,0.0023795995,Low Risk,No action required
+914,0.9986743,Critical,Compliance team intervention
+915,0.9973654,Critical,Compliance team intervention
+916,0.007975973,Low Risk,No action required
+917,0.99518317,Critical,Compliance team intervention
+918,0.0027385799,Low Risk,No action required
+919,0.004816342,Low Risk,No action required
+920,0.0033571445,Low Risk,No action required
+921,0.0032583755,Low Risk,No action required
+922,0.99470216,Critical,Compliance team intervention
+923,0.99663,Critical,Compliance team intervention
+924,0.0024285747,Low Risk,No action required
+925,0.9984515,Critical,Compliance team intervention
+926,0.9985511,Critical,Compliance team intervention
+927,0.99716115,Critical,Compliance team intervention
+928,0.9924589,Critical,Compliance team intervention
+929,0.002318553,Low Risk,No action required
+930,0.9979825,Critical,Compliance team intervention
+931,0.9991309,Critical,Compliance team intervention
+932,0.004156895,Low Risk,No action required
+933,0.99696714,Critical,Compliance team intervention
+934,0.99377185,Critical,Compliance team intervention
+935,0.0023544377,Low Risk,No action required
+936,0.0030559478,Low Risk,No action required
+937,0.0023342662,Low Risk,No action required
+938,0.0031013624,Low Risk,No action required
+939,0.9980952,Critical,Compliance team intervention
+940,0.004440862,Low Risk,No action required
+941,0.0022766753,Low Risk,No action required
+942,0.0026118264,Low Risk,No action required
+943,0.99466777,Critical,Compliance team intervention
+944,0.9978138,Critical,Compliance team intervention
+945,0.004381473,Low Risk,No action required
+946,0.9956648,Critical,Compliance team intervention
+947,0.9979693,Critical,Compliance team intervention
+948,0.99771935,Critical,Compliance team intervention
+949,0.99154776,Critical,Compliance team intervention
+950,0.003054841,Low Risk,No action required
+951,0.0022043642,Low Risk,No action required
+952,0.0019157742,Low Risk,No action required
+953,0.99065304,Critical,Compliance team intervention
+954,0.9970682,Critical,Compliance team intervention
+955,0.006269632,Low Risk,No action required
+956,0.99647105,Critical,Compliance team intervention
+957,0.0012968471,Low Risk,No action required
+958,0.9980862,Critical,Compliance team intervention
+959,0.0033578211,Low Risk,No action required
+960,0.0016150146,Low Risk,No action required
+961,0.99887174,Critical,Compliance team intervention
+962,0.9969278,Critical,Compliance team intervention
+963,0.0029024484,Low Risk,No action required
+964,0.99051976,Critical,Compliance team intervention
+965,0.99586225,Critical,Compliance team intervention
+966,0.004706786,Low Risk,No action required
+967,0.9981261,Critical,Compliance team intervention
+968,0.9908688,Critical,Compliance team intervention
+969,0.0033881564,Low Risk,No action required
+970,0.99765563,Critical,Compliance team intervention
+971,0.99860233,Critical,Compliance team intervention
+972,0.0033807084,Low Risk,No action required
+973,0.0030246542,Low Risk,No action required
+974,0.0018368504,Low Risk,No action required
+975,0.0018323673,Low Risk,No action required
+976,0.99934274,Critical,Compliance team intervention
+977,0.99761224,Critical,Compliance team intervention
+978,0.0030193126,Low Risk,No action required
+979,0.0031591994,Low Risk,No action required
+980,0.0020834673,Low Risk,No action required
+981,0.9970931,Critical,Compliance team intervention
+982,0.9985506,Critical,Compliance team intervention
+983,0.99831784,Critical,Compliance team intervention
+984,0.00840941,Low Risk,No action required
+985,0.0058819214,Low Risk,No action required
+986,0.9987023,Critical,Compliance team intervention
+987,0.9986284,Critical,Compliance team intervention
+988,0.0022975195,Low Risk,No action required
+989,0.0018600959,Low Risk,No action required
+990,0.0017391208,Low Risk,No action required
+991,0.99832326,Critical,Compliance team intervention
+992,0.993874,Critical,Compliance team intervention
+993,0.998604,Critical,Compliance team intervention
+994,0.0028264269,Low Risk,No action required
+995,0.0032386545,Low Risk,No action required
+996,0.9976102,Critical,Compliance team intervention
+997,0.0042165006,Low Risk,No action required
+998,0.9982346,Critical,Compliance team intervention
+999,0.0035407734,Low Risk,No action required
+1000,0.003416857,Low Risk,No action required
+1001,0.99712664,Critical,Compliance team intervention
+1002,0.9977507,Critical,Compliance team intervention
+1003,0.99881136,Critical,Compliance team intervention
+1004,0.99625707,Critical,Compliance team intervention
+1005,0.9986292,Critical,Compliance team intervention
+1006,0.99770385,Critical,Compliance team intervention
+1007,0.0031940527,Low Risk,No action required
+1008,0.0018586667,Low Risk,No action required
+1009,0.997684,Critical,Compliance team intervention
+1010,0.9973242,Critical,Compliance team intervention
+1011,0.9984327,Critical,Compliance team intervention
+1012,0.9987293,Critical,Compliance team intervention
+1013,0.0025456282,Low Risk,No action required
+1014,0.004363387,Low Risk,No action required
+1015,0.0030325456,Low Risk,No action required
+1016,0.0019079754,Low Risk,No action required
+1017,0.0035403764,Low Risk,No action required
+1018,0.0015991689,Low Risk,No action required
+1019,0.0032220525,Low Risk,No action required
+1020,0.9983941,Critical,Compliance team intervention
+1021,0.009085651,Low Risk,No action required
+1022,0.99587834,Critical,Compliance team intervention
+1023,0.003674881,Low Risk,No action required
+1024,0.008243954,Low Risk,No action required
+1025,0.0031902199,Low Risk,No action required
+1026,0.9995716,Critical,Compliance team intervention
+1027,0.99894065,Critical,Compliance team intervention
+1028,0.0024457288,Low Risk,No action required
+1029,0.002316186,Low Risk,No action required
+1030,0.0052159177,Low Risk,No action required
+1031,0.9897621,Critical,Compliance team intervention
+1032,0.005009267,Low Risk,No action required
+1033,0.0031324003,Low Risk,No action required
+1034,0.9918509,Critical,Compliance team intervention
+1035,0.0054490143,Low Risk,No action required
+1036,0.99820125,Critical,Compliance team intervention
+1037,0.0025261333,Low Risk,No action required
+1038,0.9980386,Critical,Compliance team intervention
+1039,0.0022417735,Low Risk,No action required
+1040,0.99619776,Critical,Compliance team intervention
+1041,0.0015526371,Low Risk,No action required
+1042,0.99657875,Critical,Compliance team intervention
+1043,0.9973781,Critical,Compliance team intervention
+1044,0.008913818,Low Risk,No action required
+1045,0.0017013208,Low Risk,No action required
+1046,0.99828655,Critical,Compliance team intervention
+1047,0.0016700355,Low Risk,No action required
+1048,0.99276924,Critical,Compliance team intervention
+1049,0.004758225,Low Risk,No action required
+1050,0.0018356574,Low Risk,No action required
+1051,0.002359131,Low Risk,No action required
+1052,0.9982146,Critical,Compliance team intervention
+1053,0.9983038,Critical,Compliance team intervention
+1054,0.0029462886,Low Risk,No action required
+1055,0.9953644,Critical,Compliance team intervention
+1056,0.99712664,Critical,Compliance team intervention
+1057,0.0052652485,Low Risk,No action required
+1058,0.99867815,Critical,Compliance team intervention
+1059,0.0023014818,Low Risk,No action required
+1060,0.9980459,Critical,Compliance team intervention
+1061,0.9953334,Critical,Compliance team intervention
+1062,0.0026167152,Low Risk,No action required
+1063,0.0021055841,Low Risk,No action required
+1064,0.99818987,Critical,Compliance team intervention
+1065,0.002663417,Low Risk,No action required
+1066,0.0020851693,Low Risk,No action required
+1067,0.9985045,Critical,Compliance team intervention
+1068,0.0025911434,Low Risk,No action required
+1069,0.0024903126,Low Risk,No action required
+1070,0.99651885,Critical,Compliance team intervention
+1071,0.0068832426,Low Risk,No action required
+1072,0.0065597044,Low Risk,No action required
+1073,0.9957552,Critical,Compliance team intervention
+1074,0.9793042,Critical,Compliance team intervention
+1075,0.0021091618,Low Risk,No action required
+1076,0.9987563,Critical,Compliance team intervention
+1077,0.004615203,Low Risk,No action required
+1078,0.0029429386,Low Risk,No action required
+1079,0.99535096,Critical,Compliance team intervention
+1080,0.0028970398,Low Risk,No action required
+1081,0.9967098,Critical,Compliance team intervention
+1082,0.0018188321,Low Risk,No action required
+1083,0.003640552,Low Risk,No action required
+1084,0.99220806,Critical,Compliance team intervention
+1085,0.003071149,Low Risk,No action required
+1086,0.008091862,Low Risk,No action required
+1087,0.98699737,Critical,Compliance team intervention
+1088,0.9977081,Critical,Compliance team intervention
+1089,0.008965825,Low Risk,No action required
+1090,0.9984843,Critical,Compliance team intervention
+1091,0.99720395,Critical,Compliance team intervention
+1092,0.006308973,Low Risk,No action required
+1093,0.0020859574,Low Risk,No action required
+1094,0.007841048,Low Risk,No action required
+1095,0.0018538418,Low Risk,No action required
+1096,0.0018188321,Low Risk,No action required
+1097,0.9927907,Critical,Compliance team intervention
+1098,0.9983181,Critical,Compliance team intervention
+1099,0.0033030533,Low Risk,No action required
+1100,0.998302,Critical,Compliance team intervention
+1101,0.9984403,Critical,Compliance team intervention
+1102,0.9978296,Critical,Compliance team intervention
+1103,0.9953081,Critical,Compliance team intervention
+1104,0.0014680093,Low Risk,No action required
+1105,0.0044833464,Low Risk,No action required
+1106,0.0027142856,Low Risk,No action required
+1107,0.99484986,Critical,Compliance team intervention
+1108,0.9942006,Critical,Compliance team intervention
+1109,0.0040898835,Low Risk,No action required
+1110,0.008284681,Low Risk,No action required
+1111,0.0032889207,Low Risk,No action required
+1112,0.003173366,Low Risk,No action required
+1113,0.0063152597,Low Risk,No action required
+1114,0.99418664,Critical,Compliance team intervention
+1115,0.998317,Critical,Compliance team intervention
+1116,0.9978351,Critical,Compliance team intervention
+1117,0.9983222,Critical,Compliance team intervention
+1118,0.0048134313,Low Risk,No action required
+1119,0.99041045,Critical,Compliance team intervention
+1120,0.006397968,Low Risk,No action required
+1121,0.9983758,Critical,Compliance team intervention
+1122,0.0018033047,Low Risk,No action required
+1123,0.0016248364,Low Risk,No action required
+1124,0.997104,Critical,Compliance team intervention
+1125,0.9921868,Critical,Compliance team intervention
+1126,0.99299663,Critical,Compliance team intervention
+1127,0.0055948757,Low Risk,No action required
+1128,0.0015949515,Low Risk,No action required
+1129,0.002204321,Low Risk,No action required
+1130,0.005014496,Low Risk,No action required
+1131,0.9989655,Critical,Compliance team intervention
+1132,0.99746084,Critical,Compliance team intervention
+1133,0.9978466,Critical,Compliance team intervention
+1134,0.99862766,Critical,Compliance team intervention
+1135,0.0031238045,Low Risk,No action required
+1136,0.0034752537,Low Risk,No action required
+1137,0.0034177254,Low Risk,No action required
+1138,0.9974148,Critical,Compliance team intervention
+1139,0.0021052484,Low Risk,No action required
+1140,0.0034177254,Low Risk,No action required
+1141,0.99886835,Critical,Compliance team intervention
+1142,0.9990546,Critical,Compliance team intervention
+1143,0.0018914128,Low Risk,No action required
+1144,0.9983266,Critical,Compliance team intervention
+1145,0.0022582726,Low Risk,No action required
+1146,0.0069449595,Low Risk,No action required
+1147,0.0046665864,Low Risk,No action required
+1148,0.99552166,Critical,Compliance team intervention
+1149,0.002737938,Low Risk,No action required
+1150,0.001369225,Low Risk,No action required
+1151,0.0033167026,Low Risk,No action required
+1152,0.998517,Critical,Compliance team intervention
+1153,0.0022599364,Low Risk,No action required
+1154,0.9983713,Critical,Compliance team intervention
+1155,0.0071688,Low Risk,No action required
+1156,0.99891627,Critical,Compliance team intervention
+1157,0.0075996527,Low Risk,No action required
+1158,0.94664913,Critical,Compliance team intervention
+1159,0.0023986697,Low Risk,No action required
+1160,0.99653745,Critical,Compliance team intervention
+1161,0.9996551,Critical,Compliance team intervention
+1162,0.0049814,Low Risk,No action required
+1163,0.99398994,Critical,Compliance team intervention
+1164,0.99767417,Critical,Compliance team intervention
+1165,0.99667645,Critical,Compliance team intervention
+1166,0.99855214,Critical,Compliance team intervention
+1167,0.99769294,Critical,Compliance team intervention
+1168,0.0014444737,Low Risk,No action required
+1169,0.002899206,Low Risk,No action required
+1170,0.0020479846,Low Risk,No action required
+1171,0.9983021,Critical,Compliance team intervention
+1172,0.99840444,Critical,Compliance team intervention
+1173,0.002857042,Low Risk,No action required
+1174,0.0035849921,Low Risk,No action required
+1175,0.9985964,Critical,Compliance team intervention
+1176,0.99876535,Critical,Compliance team intervention
+1177,0.00209315,Low Risk,No action required
+1178,0.0025820534,Low Risk,No action required
+1179,0.9985045,Critical,Compliance team intervention
+1180,0.0038762765,Low Risk,No action required
+1181,0.99709594,Critical,Compliance team intervention
+1182,0.99534756,Critical,Compliance team intervention
+1183,0.0021897785,Low Risk,No action required
+1184,0.0019899749,Low Risk,No action required
+1185,0.0027728043,Low Risk,No action required
+1186,0.9990288,Critical,Compliance team intervention
+1187,0.0034177254,Low Risk,No action required
+1188,0.9957321,Critical,Compliance team intervention
+1189,0.99702865,Critical,Compliance team intervention
+1190,0.0045996523,Low Risk,No action required
+1191,0.0024965983,Low Risk,No action required
+1192,0.99745756,Critical,Compliance team intervention
+1193,0.003485388,Low Risk,No action required
+1194,0.003301845,Low Risk,No action required
+1195,0.9985831,Critical,Compliance team intervention
+1196,0.99800867,Critical,Compliance team intervention
+1197,0.99812335,Critical,Compliance team intervention
+1198,0.0020968115,Low Risk,No action required
+1199,0.0022954883,Low Risk,No action required
+1200,0.9981041,Critical,Compliance team intervention
+1201,0.9988619,Critical,Compliance team intervention
+1202,0.9979259,Critical,Compliance team intervention
+1203,0.0035025494,Low Risk,No action required
+1204,0.004418699,Low Risk,No action required
+1205,0.0033585536,Low Risk,No action required
+1206,0.9973667,Critical,Compliance team intervention
+1207,0.003171763,Low Risk,No action required
+1208,0.9951331,Critical,Compliance team intervention
+1209,0.99522156,Critical,Compliance team intervention
+1210,0.99548364,Critical,Compliance team intervention
+1211,0.9980387,Critical,Compliance team intervention
+1212,0.99903774,Critical,Compliance team intervention
+1213,0.0062610907,Low Risk,No action required
+1214,0.0028775446,Low Risk,No action required
+1215,0.9988226,Critical,Compliance team intervention
+1216,0.9975656,Critical,Compliance team intervention
+1217,0.99558616,Critical,Compliance team intervention
+1218,0.9873819,Critical,Compliance team intervention
+1219,0.999173,Critical,Compliance team intervention
+1220,0.0015806645,Low Risk,No action required
+1221,0.0019442479,Low Risk,No action required
+1222,0.99956876,Critical,Compliance team intervention
+1223,0.99872607,Critical,Compliance team intervention
+1224,0.006795916,Low Risk,No action required
+1225,0.0025094242,Low Risk,No action required
+1226,0.010176759,Low Risk,No action required
+1227,0.99887484,Critical,Compliance team intervention
+1228,0.9986242,Critical,Compliance team intervention
+1229,0.9972657,Critical,Compliance team intervention
+1230,0.9976508,Critical,Compliance team intervention
+1231,0.9980386,Critical,Compliance team intervention
+1232,0.00870926,Low Risk,No action required
+1233,0.0026590242,Low Risk,No action required
+1234,0.00202529,Low Risk,No action required
+1235,0.00863345,Low Risk,No action required
+1236,0.0023713796,Low Risk,No action required
+1237,0.99810153,Critical,Compliance team intervention
+1238,0.0054051797,Low Risk,No action required
+1239,0.99882704,Critical,Compliance team intervention
+1240,0.99209034,Critical,Compliance team intervention
+1241,0.99252933,Critical,Compliance team intervention
+1242,0.0020749487,Low Risk,No action required
+1243,0.9961106,Critical,Compliance team intervention
+1244,0.0021542637,Low Risk,No action required
+1245,0.003187963,Low Risk,No action required
+1246,0.9979693,Critical,Compliance team intervention
+1247,0.99786025,Critical,Compliance team intervention
+1248,0.003177997,Low Risk,No action required
+1249,0.99820805,Critical,Compliance team intervention
+1250,0.0044247448,Low Risk,No action required
+1251,0.0051456834,Low Risk,No action required
+1252,0.99388784,Critical,Compliance team intervention
+1253,0.002970555,Low Risk,No action required
+1254,0.99899846,Critical,Compliance team intervention
+1255,0.9948026,Critical,Compliance team intervention
+1256,0.9980446,Critical,Compliance team intervention
+1257,0.99028134,Critical,Compliance team intervention
+1258,0.004484679,Low Risk,No action required
+1259,0.9981522,Critical,Compliance team intervention
+1260,0.9964581,Critical,Compliance team intervention
+1261,0.9873102,Critical,Compliance team intervention
+1262,0.9861952,Critical,Compliance team intervention
+1263,0.0074369423,Low Risk,No action required
+1264,0.9981383,Critical,Compliance team intervention
+1265,0.99847084,Critical,Compliance team intervention
+1266,0.006321199,Low Risk,No action required
+1267,0.998086,Critical,Compliance team intervention
+1268,0.0025978335,Low Risk,No action required
+1269,0.9976301,Critical,Compliance team intervention
+1270,0.9954007,Critical,Compliance team intervention
+1271,0.99755776,Critical,Compliance team intervention
+1272,0.0023063505,Low Risk,No action required
+1273,0.0023014818,Low Risk,No action required
+1274,0.9941624,Critical,Compliance team intervention
+1275,0.9975199,Critical,Compliance team intervention
+1276,0.0045436006,Low Risk,No action required
+1277,0.003727555,Low Risk,No action required
+1278,0.0047365623,Low Risk,No action required
+1279,0.9885118,Critical,Compliance team intervention
+1280,0.99597174,Critical,Compliance team intervention
+1281,0.0031752083,Low Risk,No action required
+1282,0.0018188321,Low Risk,No action required
+1283,0.9978574,Critical,Compliance team intervention
+1284,0.99803704,Critical,Compliance team intervention
+1285,0.0022088396,Low Risk,No action required
+1286,0.99773693,Critical,Compliance team intervention
+1287,0.002217936,Low Risk,No action required
+1288,0.9980306,Critical,Compliance team intervention
+1289,0.9926152,Critical,Compliance team intervention
+1290,0.0018315964,Low Risk,No action required
+1291,0.002593925,Low Risk,No action required
+1292,0.992025,Critical,Compliance team intervention
+1293,0.0036145928,Low Risk,No action required
+1294,0.9989022,Critical,Compliance team intervention
+1295,0.9959544,Critical,Compliance team intervention
+1296,0.9996307,Critical,Compliance team intervention
+1297,0.99846053,Critical,Compliance team intervention
+1298,0.0034202847,Low Risk,No action required
+1299,0.99855167,Critical,Compliance team intervention
+1300,0.9899332,Critical,Compliance team intervention
+1301,0.9979716,Critical,Compliance team intervention
+1302,0.0057876306,Low Risk,No action required
+1303,0.9995974,Critical,Compliance team intervention
+1304,0.9843025,Critical,Compliance team intervention
+1305,0.0029154893,Low Risk,No action required
+1306,0.0025192138,Low Risk,No action required
+1307,0.9907742,Critical,Compliance team intervention
+1308,0.992019,Critical,Compliance team intervention
+1309,0.99719644,Critical,Compliance team intervention
+1310,0.99768484,Critical,Compliance team intervention
+1311,0.007550092,Low Risk,No action required
+1312,0.9980934,Critical,Compliance team intervention
+1313,0.0032508485,Low Risk,No action required
+1314,0.0018305654,Low Risk,No action required
+1315,0.993982,Critical,Compliance team intervention
+1316,0.004302527,Low Risk,No action required
+1317,0.0022417735,Low Risk,No action required
+1318,0.0030385242,Low Risk,No action required
+1319,0.99851686,Critical,Compliance team intervention
+1320,0.0032042009,Low Risk,No action required
+1321,0.9975641,Critical,Compliance team intervention
+1322,0.99435693,Critical,Compliance team intervention
+1323,0.9990393,Critical,Compliance team intervention
+1324,0.00236149,Low Risk,No action required
+1325,0.9980761,Critical,Compliance team intervention
+1326,0.0030269355,Low Risk,No action required
+1327,0.002481618,Low Risk,No action required
+1328,0.0017495055,Low Risk,No action required
+1329,0.0015346702,Low Risk,No action required
+1330,0.0018632156,Low Risk,No action required
+1331,0.0020423108,Low Risk,No action required
+1332,0.0060870927,Low Risk,No action required
+1333,0.0075314073,Low Risk,No action required
+1334,0.99568766,Critical,Compliance team intervention
+1335,0.0024712346,Low Risk,No action required
+1336,0.99727625,Critical,Compliance team intervention
+1337,0.0026055214,Low Risk,No action required
+1338,0.0029813843,Low Risk,No action required
+1339,0.9988765,Critical,Compliance team intervention
+1340,0.0047866753,Low Risk,No action required
+1341,0.99521196,Critical,Compliance team intervention
+1342,0.9959836,Critical,Compliance team intervention
+1343,0.9952803,Critical,Compliance team intervention
+1344,0.001992577,Low Risk,No action required
+1345,0.9878566,Critical,Compliance team intervention
+1346,0.0024011757,Low Risk,No action required
+1347,0.98702335,Critical,Compliance team intervention
+1348,0.99233514,Critical,Compliance team intervention
+1349,0.0024525123,Low Risk,No action required
+1350,0.99738675,Critical,Compliance team intervention
+1351,0.99381036,Critical,Compliance team intervention
+1352,0.0059069376,Low Risk,No action required
+1353,0.9945315,Critical,Compliance team intervention
+1354,0.99918455,Critical,Compliance team intervention
+1355,0.0014343044,Low Risk,No action required
+1356,0.99805343,Critical,Compliance team intervention
+1357,0.003988321,Low Risk,No action required
+1358,0.00296868,Low Risk,No action required
+1359,0.0018296447,Low Risk,No action required
+1360,0.9965364,Critical,Compliance team intervention
+1361,0.9996511,Critical,Compliance team intervention
+1362,0.0033226914,Low Risk,No action required
+1363,0.9988764,Critical,Compliance team intervention
+1364,0.002851707,Low Risk,No action required
+1365,0.00296275,Low Risk,No action required
+1366,0.0077338917,Low Risk,No action required
+1367,0.0017946169,Low Risk,No action required
+1368,0.008082334,Low Risk,No action required
+1369,0.0030682746,Low Risk,No action required
+1370,0.0017445334,Low Risk,No action required
+1371,0.9986082,Critical,Compliance team intervention
+1372,0.001959909,Low Risk,No action required
+1373,0.0015991689,Low Risk,No action required
+1374,0.99767727,Critical,Compliance team intervention
+1375,0.9963815,Critical,Compliance team intervention
+1376,0.9971307,Critical,Compliance team intervention
+1377,0.9915091,Critical,Compliance team intervention
+1378,0.99567103,Critical,Compliance team intervention
+1379,0.0018190407,Low Risk,No action required
+1380,0.0030325456,Low Risk,No action required
+1381,0.9913292,Critical,Compliance team intervention
+1382,0.0062302523,Low Risk,No action required
+1383,0.99654704,Critical,Compliance team intervention
+1384,0.9953236,Critical,Compliance team intervention
+1385,0.00236708,Low Risk,No action required
+1386,0.0020859574,Low Risk,No action required
+1387,0.0028781358,Low Risk,No action required
+1388,0.9973475,Critical,Compliance team intervention
+1389,0.99800926,Critical,Compliance team intervention
+1390,0.0044576344,Low Risk,No action required
+1391,0.99604213,Critical,Compliance team intervention
+1392,0.9915432,Critical,Compliance team intervention
+1393,0.9973418,Critical,Compliance team intervention
+1394,0.0066585215,Low Risk,No action required
+1395,0.9971898,Critical,Compliance team intervention
+1396,0.0068838946,Low Risk,No action required
+1397,0.9867339,Critical,Compliance team intervention
+1398,0.0018538418,Low Risk,No action required
+1399,0.0024508704,Low Risk,No action required
+1400,0.0065618055,Low Risk,No action required
+1401,0.997879,Critical,Compliance team intervention
+1402,0.99855787,Critical,Compliance team intervention
+1403,0.99724174,Critical,Compliance team intervention
+1404,0.9960395,Critical,Compliance team intervention
+1405,0.0026325027,Low Risk,No action required
+1406,0.003514027,Low Risk,No action required
+1407,0.9943573,Critical,Compliance team intervention
+1408,0.0069558662,Low Risk,No action required
+1409,0.99892235,Critical,Compliance team intervention
+1410,0.0030756402,Low Risk,No action required
+1411,0.0020836985,Low Risk,No action required
+1412,0.9972133,Critical,Compliance team intervention
+1413,0.9980862,Critical,Compliance team intervention
+1414,0.9983699,Critical,Compliance team intervention
+1415,0.99403054,Critical,Compliance team intervention
+1416,0.004156895,Low Risk,No action required
+1417,0.002529815,Low Risk,No action required
+1418,0.0023795995,Low Risk,No action required
+1419,0.99692106,Critical,Compliance team intervention
+1420,0.99831593,Critical,Compliance team intervention
+1421,0.9979679,Critical,Compliance team intervention
+1422,0.0044104503,Low Risk,No action required
+1423,0.0056400658,Low Risk,No action required
+1424,0.9975575,Critical,Compliance team intervention
+1425,0.9983777,Critical,Compliance team intervention
+1426,0.9915376,Critical,Compliance team intervention
+1427,0.0027859637,Low Risk,No action required
+1428,0.99232036,Critical,Compliance team intervention
+1429,0.99803704,Critical,Compliance team intervention
+1430,0.9982766,Critical,Compliance team intervention
+1431,0.0033792658,Low Risk,No action required
+1432,0.0024277882,Low Risk,No action required
+1433,0.9977192,Critical,Compliance team intervention
+1434,0.0044111875,Low Risk,No action required
+1435,0.99841154,Critical,Compliance team intervention
+1436,0.005220921,Low Risk,No action required
+1437,0.998312,Critical,Compliance team intervention
+1438,0.9984182,Critical,Compliance team intervention
+1439,0.0021745937,Low Risk,No action required
+1440,0.0038606303,Low Risk,No action required
+1441,0.0024963918,Low Risk,No action required
+1442,0.0063653225,Low Risk,No action required
+1443,0.0032734212,Low Risk,No action required
+1444,0.008867235,Low Risk,No action required
+1445,0.9976573,Critical,Compliance team intervention
+1446,0.99791616,Critical,Compliance team intervention
+1447,0.0044035213,Low Risk,No action required
+1448,0.0060018203,Low Risk,No action required
+1449,0.0018244105,Low Risk,No action required
+1450,0.998252,Critical,Compliance team intervention
+1451,0.99772364,Critical,Compliance team intervention
+1452,0.0021055841,Low Risk,No action required
+1453,0.9984322,Critical,Compliance team intervention
+1454,0.0015526371,Low Risk,No action required
+1455,0.0018693971,Low Risk,No action required
+1456,0.004381473,Low Risk,No action required
+1457,0.9925041,Critical,Compliance team intervention
+1458,0.0011428801,Low Risk,No action required
+1459,0.0016386104,Low Risk,No action required
+1460,0.9926658,Critical,Compliance team intervention
+1461,0.003299603,Low Risk,No action required
+1462,0.9989819,Critical,Compliance team intervention
+1463,0.9980416,Critical,Compliance team intervention
+1464,0.010143416,Low Risk,No action required
+1465,0.00261394,Low Risk,No action required
+1466,0.0023795995,Low Risk,No action required
+1467,0.003173366,Low Risk,No action required
+1468,0.99842095,Critical,Compliance team intervention
+1469,0.9984988,Critical,Compliance team intervention
+1470,0.0024515828,Low Risk,No action required
+1471,0.9967924,Critical,Compliance team intervention
+1472,0.99809366,Critical,Compliance team intervention
+1473,0.0023567742,Low Risk,No action required
+1474,0.9907334,Critical,Compliance team intervention
+1475,0.99790263,Critical,Compliance team intervention
+1476,0.9957539,Critical,Compliance team intervention
+1477,0.004156895,Low Risk,No action required
+1478,0.004908507,Low Risk,No action required
+1479,0.99851507,Critical,Compliance team intervention
+1480,0.0026449503,Low Risk,No action required
+1481,0.0026431899,Low Risk,No action required
+1482,0.0045583397,Low Risk,No action required
+1483,0.0052541764,Low Risk,No action required
+1484,0.9984403,Critical,Compliance team intervention
+1485,0.99810493,Critical,Compliance team intervention
+1486,0.001944222,Low Risk,No action required
+1487,0.0074144243,Low Risk,No action required
+1488,0.0016634125,Low Risk,No action required
+1489,0.99564266,Critical,Compliance team intervention
+1490,0.008377248,Low Risk,No action required
+1491,0.0040003443,Low Risk,No action required
+1492,0.00253569,Low Risk,No action required
+1493,0.9971993,Critical,Compliance team intervention
+1494,0.9975454,Critical,Compliance team intervention
+1495,0.9976367,Critical,Compliance team intervention
+1496,0.0031898378,Low Risk,No action required
+1497,0.98414654,Critical,Compliance team intervention
+1498,0.997086,Critical,Compliance team intervention
+1499,0.99650455,Critical,Compliance team intervention
+1500,0.99837506,Critical,Compliance team intervention
+1501,0.00830103,Low Risk,No action required
+1502,0.0036887783,Low Risk,No action required
+1503,0.9995906,Critical,Compliance team intervention
+1504,0.0019635062,Low Risk,No action required
+1505,0.99963355,Critical,Compliance team intervention
+1506,0.0018918837,Low Risk,No action required
+1507,0.0040913443,Low Risk,No action required
+1508,0.003171763,Low Risk,No action required
+1509,0.9981824,Critical,Compliance team intervention
+1510,0.99765575,Critical,Compliance team intervention
+1511,0.0036145824,Low Risk,No action required
+1512,0.009781497,Low Risk,No action required
+1513,0.00296275,Low Risk,No action required
+1514,0.0021321815,Low Risk,No action required
+1515,0.0034291658,Low Risk,No action required
+1516,0.004177046,Low Risk,No action required
+1517,0.0044022882,Low Risk,No action required
+1518,0.9986766,Critical,Compliance team intervention
+1519,0.9906911,Critical,Compliance team intervention
+1520,0.0032808958,Low Risk,No action required
+1521,0.0036697919,Low Risk,No action required
+1522,0.008978014,Low Risk,No action required
+1523,0.996953,Critical,Compliance team intervention
+1524,0.995811,Critical,Compliance team intervention
+1525,0.002126098,Low Risk,No action required
+1526,0.003014316,Low Risk,No action required
+1527,0.0025841517,Low Risk,No action required
+1528,0.007777706,Low Risk,No action required
+1529,0.008538076,Low Risk,No action required
+1530,0.9953752,Critical,Compliance team intervention
+1531,0.9985744,Critical,Compliance team intervention
+1532,0.001992706,Low Risk,No action required
+1533,0.9981975,Critical,Compliance team intervention
+1534,0.99867636,Critical,Compliance team intervention
+1535,0.9955325,Critical,Compliance team intervention
+1536,0.9980761,Critical,Compliance team intervention
+1537,0.004484679,Low Risk,No action required
+1538,0.99739325,Critical,Compliance team intervention
+1539,0.99867696,Critical,Compliance team intervention
+1540,0.99455786,Critical,Compliance team intervention
+1541,0.0042125685,Low Risk,No action required
+1542,0.9937318,Critical,Compliance team intervention
+1543,0.0039987564,Low Risk,No action required
+1544,0.0025456282,Low Risk,No action required
+1545,0.0017539598,Low Risk,No action required
+1546,0.99881953,Critical,Compliance team intervention
+1547,0.9978896,Critical,Compliance team intervention
+1548,0.0049975994,Low Risk,No action required
+1549,0.9981951,Critical,Compliance team intervention
+1550,0.0075242287,Low Risk,No action required
+1551,0.003258137,Low Risk,No action required
+1552,0.9948618,Critical,Compliance team intervention
+1553,0.9976344,Critical,Compliance team intervention
+1554,0.99840814,Critical,Compliance team intervention
+1555,0.9989059,Critical,Compliance team intervention
+1556,0.0053796107,Low Risk,No action required
+1557,0.9979074,Critical,Compliance team intervention
+1558,0.0043892805,Low Risk,No action required
+1559,0.99824727,Critical,Compliance team intervention
+1560,0.99855524,Critical,Compliance team intervention
+1561,0.99816614,Critical,Compliance team intervention
+1562,0.003062115,Low Risk,No action required
+1563,0.9959973,Critical,Compliance team intervention
+1564,0.99758816,Critical,Compliance team intervention
+1565,0.99587303,Critical,Compliance team intervention
+1566,0.99564207,Critical,Compliance team intervention
+1567,0.99826705,Critical,Compliance team intervention
+1568,0.0040426753,Low Risk,No action required
+1569,0.9980446,Critical,Compliance team intervention
+1570,0.998061,Critical,Compliance team intervention
+1571,0.997726,Critical,Compliance team intervention
+1572,0.9990163,Critical,Compliance team intervention
+1573,0.9904144,Critical,Compliance team intervention
+1574,0.995565,Critical,Compliance team intervention
+1575,0.009781497,Low Risk,No action required
+1576,0.0021590525,Low Risk,No action required
+1577,0.99783117,Critical,Compliance team intervention
+1578,0.99601054,Critical,Compliance team intervention
+1579,0.9981097,Critical,Compliance team intervention
+1580,0.0025493673,Low Risk,No action required
+1581,0.004082804,Low Risk,No action required
+1582,0.9986822,Critical,Compliance team intervention
+1583,0.95625466,Critical,Compliance team intervention
+1584,0.002783383,Low Risk,No action required
+1585,0.0024504531,Low Risk,No action required
+1586,0.0021947143,Low Risk,No action required
+1587,0.0022732022,Low Risk,No action required
+1588,0.0030659516,Low Risk,No action required
+1589,0.9976109,Critical,Compliance team intervention
+1590,0.9970631,Critical,Compliance team intervention
+1591,0.9981724,Critical,Compliance team intervention
+1592,0.0020836985,Low Risk,No action required
+1593,0.99596894,Critical,Compliance team intervention
+1594,0.9975923,Critical,Compliance team intervention
+1595,0.0025102799,Low Risk,No action required
+1596,0.0045763114,Low Risk,No action required
+1597,0.9978873,Critical,Compliance team intervention
+1598,0.0040003443,Low Risk,No action required
+1599,0.0027473164,Low Risk,No action required
+1600,0.0033807084,Low Risk,No action required
+1601,0.99831724,Critical,Compliance team intervention
+1602,0.9982338,Critical,Compliance team intervention
+1603,0.9978726,Critical,Compliance team intervention
+1604,0.9931821,Critical,Compliance team intervention
+1605,0.99385357,Critical,Compliance team intervention
+1606,0.9909931,Critical,Compliance team intervention
+1607,0.99339217,Critical,Compliance team intervention
+1608,0.0016441661,Low Risk,No action required
+1609,0.99855787,Critical,Compliance team intervention
+1610,0.0016585158,Low Risk,No action required
+1611,0.0040608454,Low Risk,No action required
+1612,0.003140841,Low Risk,No action required
+1613,0.9989421,Critical,Compliance team intervention
+1614,0.997271,Critical,Compliance team intervention
+1615,0.0042406144,Low Risk,No action required
+1616,0.9981749,Critical,Compliance team intervention
+1617,0.99167496,Critical,Compliance team intervention
+1618,0.9983542,Critical,Compliance team intervention
+1619,0.99804175,Critical,Compliance team intervention
+1620,0.9983359,Critical,Compliance team intervention
+1621,0.0037780113,Low Risk,No action required
+1622,0.0019310261,Low Risk,No action required
+1623,0.0031811194,Low Risk,No action required
+1624,0.0021578942,Low Risk,No action required
+1625,0.9978581,Critical,Compliance team intervention
+1626,0.0020851693,Low Risk,No action required
+1627,0.0061637233,Low Risk,No action required
+1628,0.9963176,Critical,Compliance team intervention
+1629,0.002481618,Low Risk,No action required
+1630,0.9984068,Critical,Compliance team intervention
+1631,0.99768853,Critical,Compliance team intervention
+1632,0.9983065,Critical,Compliance team intervention
+1633,0.003150247,Low Risk,No action required
+1634,0.9979069,Critical,Compliance team intervention
+1635,0.9982387,Critical,Compliance team intervention
+1636,0.99837035,Critical,Compliance team intervention
+1637,0.99706,Critical,Compliance team intervention
+1638,0.004381473,Low Risk,No action required
+1639,0.0022493342,Low Risk,No action required
+1640,0.9952264,Critical,Compliance team intervention
+1641,0.9974848,Critical,Compliance team intervention
+1642,0.0043596737,Low Risk,No action required
+1643,0.0036628195,Low Risk,No action required
+1644,0.9965404,Critical,Compliance team intervention
+1645,0.0017539598,Low Risk,No action required
+1646,0.0020509153,Low Risk,No action required
+1647,0.009256899,Low Risk,No action required
+1648,0.0021721697,Low Risk,No action required
+1649,0.9981913,Critical,Compliance team intervention
+1650,0.9956858,Critical,Compliance team intervention
+1651,0.9948301,Critical,Compliance team intervention
+1652,0.002557043,Low Risk,No action required
+1653,0.002124584,Low Risk,No action required
+1654,0.0020922897,Low Risk,No action required
+1655,0.0052427393,Low Risk,No action required
+1656,0.0024307962,Low Risk,No action required
+1657,0.99727136,Critical,Compliance team intervention
+1658,0.9978397,Critical,Compliance team intervention
+1659,0.0038186272,Low Risk,No action required
+1660,0.9989274,Critical,Compliance team intervention
+1661,0.9917636,Critical,Compliance team intervention
+1662,0.9929945,Critical,Compliance team intervention
+1663,0.9995616,Critical,Compliance team intervention
+1664,0.0017539598,Low Risk,No action required
+1665,0.99887234,Critical,Compliance team intervention
+1666,0.002188287,Low Risk,No action required
+1667,0.9970993,Critical,Compliance team intervention
+1668,0.9925311,Critical,Compliance team intervention
+1669,0.9980428,Critical,Compliance team intervention
+1670,0.0021912188,Low Risk,No action required
+1671,0.99806315,Critical,Compliance team intervention
+1672,0.99257725,Critical,Compliance team intervention
+1673,0.0022630277,Low Risk,No action required
+1674,0.98695564,Critical,Compliance team intervention
+1675,0.9874479,Critical,Compliance team intervention
+1676,0.9983211,Critical,Compliance team intervention
+1677,0.9980862,Critical,Compliance team intervention
+1678,0.9988733,Critical,Compliance team intervention
+1679,0.9954152,Critical,Compliance team intervention
+1680,0.9983359,Critical,Compliance team intervention
+1681,0.99826705,Critical,Compliance team intervention
+1682,0.998495,Critical,Compliance team intervention
+1683,0.99828917,Critical,Compliance team intervention
+1684,0.008214641,Low Risk,No action required
+1685,0.007634414,Low Risk,No action required
+1686,0.9984769,Critical,Compliance team intervention
+1687,0.004574496,Low Risk,No action required
+1688,0.9902344,Critical,Compliance team intervention
+1689,0.0068896185,Low Risk,No action required
+1690,0.9988152,Critical,Compliance team intervention
+1691,0.0038485809,Low Risk,No action required
+1692,0.003001191,Low Risk,No action required
+1693,0.9986344,Critical,Compliance team intervention
+1694,0.9988385,Critical,Compliance team intervention
+1695,0.99812216,Critical,Compliance team intervention
+1696,0.0030914699,Low Risk,No action required
+1697,0.9983993,Critical,Compliance team intervention
+1698,0.0019634622,Low Risk,No action required
+1699,0.993425,Critical,Compliance team intervention
+1700,0.0018864727,Low Risk,No action required
+1701,0.99855214,Critical,Compliance team intervention
+1702,0.99959785,Critical,Compliance team intervention
+1703,0.008379395,Low Risk,No action required
+1704,0.002258131,Low Risk,No action required
+1705,0.0039987564,Low Risk,No action required
+1706,0.99958736,Critical,Compliance team intervention
+1707,0.9990791,Critical,Compliance team intervention
+1708,0.9964832,Critical,Compliance team intervention
+1709,0.0016665561,Low Risk,No action required
+1710,0.9678014,Critical,Compliance team intervention
+1711,0.008214641,Low Risk,No action required
+1712,0.0030957845,Low Risk,No action required
+1713,0.99857235,Critical,Compliance team intervention
+1714,0.0049702637,Low Risk,No action required
+1715,0.0021578942,Low Risk,No action required
+1716,0.004344401,Low Risk,No action required
+1717,0.9835032,Critical,Compliance team intervention
+1718,0.0022843818,Low Risk,No action required
+1719,0.0020513292,Low Risk,No action required
+1720,0.006258736,Low Risk,No action required
+1721,0.0017445334,Low Risk,No action required
+1722,0.00191882,Low Risk,No action required
+1723,0.99890995,Critical,Compliance team intervention
+1724,0.0017251397,Low Risk,No action required
+1725,0.005799427,Low Risk,No action required
+1726,0.9980862,Critical,Compliance team intervention
+1727,0.0024540212,Low Risk,No action required
+1728,0.9980147,Critical,Compliance team intervention
+1729,0.002892989,Low Risk,No action required
+1730,0.9758103,Critical,Compliance team intervention
+1731,0.0016634125,Low Risk,No action required
+1732,0.9987392,Critical,Compliance team intervention
+1733,0.001780765,Low Risk,No action required
+1734,0.99600047,Critical,Compliance team intervention
+1735,0.9979011,Critical,Compliance team intervention
+1736,0.989256,Critical,Compliance team intervention
+1737,0.9980348,Critical,Compliance team intervention
+1738,0.0017119967,Low Risk,No action required
+1739,0.0028532993,Low Risk,No action required
+1740,0.0017627237,Low Risk,No action required
+1741,0.99250036,Critical,Compliance team intervention
+1742,0.99841607,Critical,Compliance team intervention
+1743,0.9982449,Critical,Compliance team intervention
+1744,0.9981799,Critical,Compliance team intervention
+1745,0.99855846,Critical,Compliance team intervention
+1746,0.9996835,Critical,Compliance team intervention
+1747,0.0032858506,Low Risk,No action required
+1748,0.998642,Critical,Compliance team intervention
+1749,0.9918956,Critical,Compliance team intervention
+1750,0.9974885,Critical,Compliance team intervention
+1751,0.0033902652,Low Risk,No action required
+1752,0.0040426753,Low Risk,No action required
+1753,0.0021639348,Low Risk,No action required
+1754,0.9971969,Critical,Compliance team intervention
+1755,0.0012973679,Low Risk,No action required
+1756,0.9929767,Critical,Compliance team intervention
+1757,0.004880897,Low Risk,No action required
+1758,0.9975454,Critical,Compliance team intervention
+1759,0.0023535946,Low Risk,No action required
+1760,0.99719894,Critical,Compliance team intervention
+1761,0.9978175,Critical,Compliance team intervention
+1762,0.010071624,Low Risk,No action required
+1763,0.00801047,Low Risk,No action required
+1764,0.0060741734,Low Risk,No action required
+1765,0.00425815,Low Risk,No action required
+1766,0.0021066163,Low Risk,No action required
+1767,0.998628,Critical,Compliance team intervention
+1768,0.99421614,Critical,Compliance team intervention
+1769,0.9930575,Critical,Compliance team intervention
+1770,0.99772066,Critical,Compliance team intervention
+1771,0.99738675,Critical,Compliance team intervention
+1772,0.99564505,Critical,Compliance team intervention
+1773,0.9978204,Critical,Compliance team intervention
+1774,0.9984016,Critical,Compliance team intervention
+1775,0.99391997,Critical,Compliance team intervention
+1776,0.0017357134,Low Risk,No action required
+1777,0.0027266224,Low Risk,No action required
+1778,0.9972144,Critical,Compliance team intervention
+1779,0.9996094,Critical,Compliance team intervention
+1780,0.9878825,Critical,Compliance team intervention
+1781,0.9981799,Critical,Compliance team intervention
+1782,0.9981223,Critical,Compliance team intervention
+1783,0.0019613283,Low Risk,No action required
+1784,0.9914097,Critical,Compliance team intervention
+1785,0.9979824,Critical,Compliance team intervention
+1786,0.99520594,Critical,Compliance team intervention
+1787,0.9979382,Critical,Compliance team intervention
+1788,0.99900997,Critical,Compliance team intervention
+1789,0.99805546,Critical,Compliance team intervention
+1790,0.0067856982,Low Risk,No action required
+1791,0.9976871,Critical,Compliance team intervention
+1792,0.001780765,Low Risk,No action required
+1793,0.99849224,Critical,Compliance team intervention
+1794,0.99775034,Critical,Compliance team intervention
+1795,0.004746017,Low Risk,No action required
+1796,0.0045996523,Low Risk,No action required
+1797,0.99334794,Critical,Compliance team intervention
+1798,0.0031353277,Low Risk,No action required
+1799,0.0019093833,Low Risk,No action required
+1800,0.9930842,Critical,Compliance team intervention
+1801,0.99810153,Critical,Compliance team intervention
+1802,0.9974076,Critical,Compliance team intervention
+1803,0.003269683,Low Risk,No action required
+1804,0.99801755,Critical,Compliance team intervention
+1805,0.0030325456,Low Risk,No action required
+1806,0.0020242976,Low Risk,No action required
+1807,0.011181974,Low Risk,No action required
+1808,0.003971734,Low Risk,No action required
+1809,0.9968719,Critical,Compliance team intervention
+1810,0.9978618,Critical,Compliance team intervention
+1811,0.0032220525,Low Risk,No action required
+1812,0.9989869,Critical,Compliance team intervention
+1813,0.99895513,Critical,Compliance team intervention
+1814,0.9957897,Critical,Compliance team intervention
+1815,0.9825445,Critical,Compliance team intervention
+1816,0.997695,Critical,Compliance team intervention
+1817,0.0028841512,Low Risk,No action required
+1818,0.0046929726,Low Risk,No action required
+1819,0.99727446,Critical,Compliance team intervention
+1820,0.9980969,Critical,Compliance team intervention
+1821,0.0018410762,Low Risk,No action required
+1822,0.99855787,Critical,Compliance team intervention
+1823,0.9983569,Critical,Compliance team intervention
+1824,0.0018486829,Low Risk,No action required
+1825,0.99810493,Critical,Compliance team intervention
+1826,0.008451619,Low Risk,No action required
+1827,0.9953082,Critical,Compliance team intervention
+1828,0.9985019,Critical,Compliance team intervention
+1829,0.98577243,Critical,Compliance team intervention
+1830,0.0024136053,Low Risk,No action required
+1831,0.0047552697,Low Risk,No action required
+1832,0.99282235,Critical,Compliance team intervention
+1833,0.0009957772,Low Risk,No action required
+1834,0.9976089,Critical,Compliance team intervention
+1835,0.9956858,Critical,Compliance team intervention
+1836,0.002354534,Low Risk,No action required
+1837,0.0065158103,Low Risk,No action required
+1838,0.006130749,Low Risk,No action required
+1839,0.004277321,Low Risk,No action required
+1840,0.99216616,Critical,Compliance team intervention
+1841,0.99790263,Critical,Compliance team intervention
+1842,0.002939236,Low Risk,No action required
+1843,0.9983728,Critical,Compliance team intervention
+1844,0.9985234,Critical,Compliance team intervention
+1845,0.0031811194,Low Risk,No action required
+1846,0.99963176,Critical,Compliance team intervention
+1847,0.0021697145,Low Risk,No action required
+1848,0.0015806645,Low Risk,No action required
+1849,0.99920005,Critical,Compliance team intervention
+1850,0.0027006408,Low Risk,No action required
+1851,0.995921,Critical,Compliance team intervention
+1852,0.0033119267,Low Risk,No action required
+1853,0.99842703,Critical,Compliance team intervention
+1854,0.9968706,Critical,Compliance team intervention
+1855,0.99826705,Critical,Compliance team intervention
+1856,0.0016150146,Low Risk,No action required
+1857,0.0030644846,Low Risk,No action required
+1858,0.9936952,Critical,Compliance team intervention
+1859,0.005851042,Low Risk,No action required
+1860,0.0021639348,Low Risk,No action required
+1861,0.9989641,Critical,Compliance team intervention
+1862,0.99868447,Critical,Compliance team intervention
+1863,0.9987583,Critical,Compliance team intervention
+1864,0.99818075,Critical,Compliance team intervention
+1865,0.99765956,Critical,Compliance team intervention
+1866,0.9978186,Critical,Compliance team intervention
+1867,0.9980856,Critical,Compliance team intervention
+1868,0.0018600959,Low Risk,No action required
+1869,0.9970118,Critical,Compliance team intervention
+1870,0.98919654,Critical,Compliance team intervention
+1871,0.99836224,Critical,Compliance team intervention
+1872,0.0014013428,Low Risk,No action required
+1873,0.005221379,Low Risk,No action required
+1874,0.0024836338,Low Risk,No action required
+1875,0.9962329,Critical,Compliance team intervention
+1876,0.9979929,Critical,Compliance team intervention
+1877,0.9809997,Critical,Compliance team intervention
+1878,0.9941094,Critical,Compliance team intervention
+1879,0.99726164,Critical,Compliance team intervention
+1880,0.0024389778,Low Risk,No action required
+1881,0.0060121017,Low Risk,No action required
+1882,0.0044247448,Low Risk,No action required
+1883,0.007843749,Low Risk,No action required
+1884,0.0016096744,Low Risk,No action required
+1885,0.0017539598,Low Risk,No action required
+1886,0.9946457,Critical,Compliance team intervention
+1887,0.9979747,Critical,Compliance team intervention
+1888,0.0015991689,Low Risk,No action required
+1889,0.0034855485,Low Risk,No action required
+1890,0.004469982,Low Risk,No action required
+1891,0.003124687,Low Risk,No action required
+1892,0.0070922966,Low Risk,No action required
+1893,0.9981756,Critical,Compliance team intervention
+1894,0.005125516,Low Risk,No action required
+1895,0.0022946629,Low Risk,No action required
+1896,0.003340834,Low Risk,No action required
+1897,0.99812454,Critical,Compliance team intervention
+1898,0.9981041,Critical,Compliance team intervention
+1899,0.99888664,Critical,Compliance team intervention
+1900,0.9984327,Critical,Compliance team intervention
+1901,0.9936434,Critical,Compliance team intervention
+1902,0.004749936,Low Risk,No action required
+1903,0.9938571,Critical,Compliance team intervention
+1904,0.99769294,Critical,Compliance team intervention
+1905,0.002216262,Low Risk,No action required
+1906,0.0024508704,Low Risk,No action required
+1907,0.9966378,Critical,Compliance team intervention
+1908,0.9986082,Critical,Compliance team intervention
+1909,0.0042654467,Low Risk,No action required
+1910,0.9983359,Critical,Compliance team intervention
+1911,0.0025624414,Low Risk,No action required
+1912,0.002672982,Low Risk,No action required
+1913,0.009064288,Low Risk,No action required
+1914,0.9981281,Critical,Compliance team intervention
+1915,0.9961738,Critical,Compliance team intervention
+1916,0.9957444,Critical,Compliance team intervention
+1917,0.0057014995,Low Risk,No action required
+1918,0.003140841,Low Risk,No action required
+1919,0.0020933452,Low Risk,No action required
+1920,0.0024037198,Low Risk,No action required
+1921,0.99848735,Critical,Compliance team intervention
+1922,0.0026502083,Low Risk,No action required
+1923,0.9984421,Critical,Compliance team intervention
+1924,0.002643612,Low Risk,No action required
+1925,0.9966092,Critical,Compliance team intervention
+1926,0.0044247448,Low Risk,No action required
+1927,0.99852437,Critical,Compliance team intervention
+1928,0.99852294,Critical,Compliance team intervention
+1929,0.99785054,Critical,Compliance team intervention
+1930,0.99651295,Critical,Compliance team intervention
+1931,0.0044247448,Low Risk,No action required
+1932,0.99567944,Critical,Compliance team intervention
+1933,0.99051976,Critical,Compliance team intervention
+1934,0.0033160737,Low Risk,No action required
+1935,0.99217814,Critical,Compliance team intervention
+1936,0.0022937823,Low Risk,No action required
+1937,0.0026763233,Low Risk,No action required
+1938,0.9915378,Critical,Compliance team intervention
+1939,0.9978999,Critical,Compliance team intervention
+1940,0.996902,Critical,Compliance team intervention
+1941,0.9984528,Critical,Compliance team intervention
+1942,0.99864763,Critical,Compliance team intervention
+1943,0.003171763,Low Risk,No action required
+1944,0.9985966,Critical,Compliance team intervention
+1945,0.0072443527,Low Risk,No action required
+1946,0.9985019,Critical,Compliance team intervention
+1947,0.99810815,Critical,Compliance team intervention
+1948,0.0019210842,Low Risk,No action required
+1949,0.99443144,Critical,Compliance team intervention
+1950,0.9959369,Critical,Compliance team intervention
+1951,0.0063360063,Low Risk,No action required
+1952,0.0044323257,Low Risk,No action required
+1953,0.998139,Critical,Compliance team intervention
+1954,0.002836031,Low Risk,No action required
+1955,0.0026294822,Low Risk,No action required
+1956,0.0022382385,Low Risk,No action required
+1957,0.0038481385,Low Risk,No action required
+1958,0.99803704,Critical,Compliance team intervention
+1959,0.99873537,Critical,Compliance team intervention
+1960,0.99810565,Critical,Compliance team intervention
+1961,0.0027854154,Low Risk,No action required
+1962,0.9983209,Critical,Compliance team intervention
+1963,0.0023018091,Low Risk,No action required
+1964,0.0045958306,Low Risk,No action required
+1965,0.0030884042,Low Risk,No action required
+1966,0.0050019044,Low Risk,No action required
+1967,0.003258137,Low Risk,No action required
+1968,0.9982691,Critical,Compliance team intervention
+1969,0.0024298886,Low Risk,No action required
+1970,0.9966275,Critical,Compliance team intervention
+1971,0.0077703535,Low Risk,No action required
+1972,0.002958644,Low Risk,No action required
+1973,0.0031781497,Low Risk,No action required
+1974,0.99815613,Critical,Compliance team intervention
+1975,0.9982614,Critical,Compliance team intervention
+1976,0.00425815,Low Risk,No action required
+1977,0.99810326,Critical,Compliance team intervention
+1978,0.9985796,Critical,Compliance team intervention
+1979,0.005247847,Low Risk,No action required
+1980,0.0033546982,Low Risk,No action required
+1981,0.003054841,Low Risk,No action required
+1982,0.998473,Critical,Compliance team intervention
+1983,0.9987489,Critical,Compliance team intervention
+1984,0.0038445482,Low Risk,No action required
+1985,0.9979037,Critical,Compliance team intervention
+1986,0.99852306,Critical,Compliance team intervention
+1987,0.99876463,Critical,Compliance team intervention
+1988,0.0020479846,Low Risk,No action required
+1989,0.0031238045,Low Risk,No action required
+1990,0.0029399558,Low Risk,No action required
+1991,0.9860999,Critical,Compliance team intervention
+1992,0.9986576,Critical,Compliance team intervention
+1993,0.9960217,Critical,Compliance team intervention
+1994,0.0013636657,Low Risk,No action required
+1995,0.0022397926,Low Risk,No action required
+1996,0.9981469,Critical,Compliance team intervention
+1997,0.9983334,Critical,Compliance team intervention
+1998,0.0058524264,Low Risk,No action required
+1999,0.99794406,Critical,Compliance team intervention
+2000,0.9952893,Critical,Compliance team intervention

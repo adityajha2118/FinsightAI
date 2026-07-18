@@ -1,0 +1,12 @@
+Analyze the following marketing campaign performance data and provide strategic recommendations.
+
+Campaign Data:
+- Success Rate: {success_rate}%
+- Total Contacts: {total_contacts}
+- Best Converting Channel: {best_channel}
+- Campaign Fatigue Threshold: {fatigue_threshold} contacts
+
+Provide:
+1. Performance assessment (1-2 sentences)
+2. Channel optimization recommendation (1 sentence)
+3. Fatigue mitigation strategy (1 sentence)

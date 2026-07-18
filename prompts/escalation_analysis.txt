@@ -1,0 +1,12 @@
+Analyze the following customer complaint for escalation risk.
+
+Consider:
+1. Emotional intensity (legal threats, distress, anger)
+2. Complaint severity (financial loss amount, duration of issue)
+3. Regulatory implications (CFPB, state attorney general mentions)
+4. Resolution history (previous failed attempts)
+
+Complaint:
+{narrative}
+
+Provide a brief risk assessment:

@@ -1,0 +1,6 @@
+complaint_id,product,issue,consumer_complaint_narrative,company_response,timely_response
+1,Credit card,Billing disputes,"I was charged twice for the same transaction at a gas station. I called customer service three times and no one has resolved this. I need an immediate credit.",Closed with monetary relief,Yes
+2,Credit card,Identity theft / Fraud,"Someone opened a credit card account in my name. I have filed a police report and submitted it but the company refuses to remove the account from my credit report.",Closed with explanation,Yes
+3,Mortgage,Loan modification,"I applied for a loan modification six months ago and have not received any update. My payments are becoming unmanageable and I fear foreclosure.",Closed with explanation,No
+4,Credit reporting,Incorrect information on report,"There is an incorrect late payment on my credit report from 2023. I have provided documentation proving on-time payment but the bureau has not corrected it.",Closed with non-monetary relief,Yes
+5,Debt collection,Attempts to collect debt not owed,"I keep receiving calls about a debt that is not mine. I have sent written disputes but the collection agency continues to contact me daily.",Closed with explanation,Yes

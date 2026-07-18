@@ -1,0 +1,13 @@
+Generate a brief customer intelligence insight for the following customer profile.
+
+Customer Profile:
+- Segment: {segment_name}
+- Churn Probability: {churn_probability}
+- Activity Score: {activity_score}
+- Credit Limit: {credit_limit}
+- Total Transactions: {total_trans_ct}
+
+Provide:
+1. Customer persona summary (1 sentence)
+2. Key risk indicator (1 sentence)
+3. Recommended action (1 sentence)

@@ -1,0 +1,6 @@
+cluster,count,avg_credit_limit,avg_trans_amt,avg_trans_ct,avg_utilization,avg_months_inactive,churn_pct,segment
+0,2730,6769.56,3372.63,59.37,0.14,1.55,15.68,Silent Users
+1,2451,6464.18,3324.82,57.51,0.14,3.36,29.87,At-Risk Customers
+2,869,13948.53,13834.38,108.44,0.17,2.22,1.73,Daily Spenders
+3,1194,27970.8,3798.55,60.67,0.04,2.31,17.5,Premium Customers
+4,2883,2626.7,3706.64,64.9,0.65,2.28,8.43,Deal Hunters

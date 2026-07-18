@@ -1,0 +1,7 @@
+Summarize the following customer complaint in 1-2 concise sentences.
+Focus on the core issue and any urgency indicators.
+
+Complaint:
+{narrative}
+
+Summary:

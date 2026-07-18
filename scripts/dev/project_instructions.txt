@@ -1,0 +1,1928 @@
+You are building FinSight AI, an enterprise fintech analytics platform.
+Execute all 6 phases in strict order. Complete and verify each phase before starting the next.
+
+=======================================================
+DATASET TRUTH TABLE — READ THIS FIRST
+=======================================================
+
+DATASET 1: bank_churners.csv  (rename → customer_data.csv)
+  Shape: 10,127 × 23
+  Key columns: CLIENTNUM, Attrition_Flag, Customer_Age, Gender,
+    Dependent_count, Education_Level, Marital_Status, Income_Category,
+    Card_Category, Months_on_book, Months_Inactive_12_mon,
+    Contacts_Count_12_mon, Credit_Limit, Total_Revolving_Bal,
+    Avg_Open_To_Buy, Total_Amt_Chng_Q4_Q1, Total_Trans_Amt,
+    Total_Trans_Ct, Total_Ct_Chng_Q4_Q1, Avg_Utilization_Ratio
+  PREPROCESSING RULE: Drop any column containing "Naive_Bayes" in its name
+  USED IN: Notebooks 01, 06, 07 (Part A), 08, 13
+           Modules: Customer Intelligence, Churn, Segmentation, Unified Profile
+
+DATASET 2: credit_card_transactions.csv  (rename → transactions.csv)
+  Shape: 1,296,675 × 24
+  Key columns: trans_date_trans_time, cc_num, merchant, category, amt,
+    first, last, gender, street, long, city_pop, job, dob,
+    trans_num, unix_time, merch_lat, merch_long, is_fraud, merch_zipcode
+  USED IN: Notebook 02
+           Module: Transaction Analytics / Fraud EDA
+
+DATASET 3: bank_transactions.csv  (keep name as-is)
+  Shape: 2,512 × 16
+  Key columns: TransactionID, AccountID, TransactionAmount, TransactionDate,
+    TransactionType, Location, DeviceID, IP Address, MerchantID, Channel,
+    CustomerAge, CustomerOccupation, TransactionDuration, LoginAttempts,
+    AccountBalance, PreviousTransactionDate
+  USED IN: Notebook 07 (Part B — standalone inactivity analysis)
+           Module: Inactivity Detection (secondary, no join needed)
+
+DATASET 4: bank_marketing.csv  (rename → bank_campaign.csv)
+  Shape: 100 × 22  ← ONLY 100 ROWS, NO STANDARD ML POSSIBLE
+  Key columns: age, job, marital, education, default, housing, loan,
+    contact, month, campaign, pdays, previous, poutcome,
+    emp.var.rate, cons.price.idx, cons.conf.idx, euribor3m, nr.employed, y
+  STRATEGY: EDA and pattern analysis only. Use SMOTE for ML augmentation.
+             Note this explicitly in a markdown cell in the notebook.
+  USED IN: Notebooks 03, 09
+           Module: Campaign Analytics
+
+DATASET 5: kyc_part1.csv  (keep name)
+  Shape: 50,000 × 12
+  Key columns: transaction_id, client_id, amount, transaction_type,
+    timestamp, client_country, counterparty_country, ofac_match_flag,
+    fatf_country_flag, structuring_pattern_flag, rapid_movement_flag,
+    trade_mispricing_flag
+  USED IN: Notebooks 04, 10 — merge with kyc_part2 on client_id
+
+DATASET 6: kyc_part2.csv  (keep name)
+  Shape: 2,000 × 12
+  Key columns: client_id, client_name, client_type, sector, sector_risk,
+    country, pep_flag, sanctions_flag, fatf_country_flag, ofac_country_flag,
+    sectoral_sanctions_flag, ownership_opacity_score
+  NOTE: Both datasets have fatf_country_flag — rename after merge:
+        kyc_part1's → fatf_txn_flag
+        kyc_part2's → fatf_entity_flag
+  USED IN: Notebooks 04, 10 — merge with kyc_part1 on client_id
+
+DATASET 7: cfpb_complaints.csv  (keep name)
+  Shape: 24,665 × 16
+  Key columns: Date received, Product, Sub-product, Issue, Sub-issue,
+    Consumer complaint narrative, Company public response, Company,
+    State, ZIP code, Tags, Submitted via, Date sent to company,
+    Company response to consumer, Timely response?, Complaint ID
+  USED IN: Notebooks 05, 11, 12
+           Module: Complaint Intelligence + AI Agent
+
+DATASET 8: bank_campaigning.csv  — SKIP ENTIRELY
+  Identical to bank_transactions.csv (same shape, same columns). Do not use.
+
+GLOBAL RULES:
+- Datasets are standalone. Do NOT force joins across unrelated modules.
+- seed=42 everywhere for reproducibility.
+- Relative paths from FinSight-AI/ root at all times.
+- Never hardcode API keys. Load .env with python-dotenv.
+- Every function: one-line docstring. No stub functions.
+- LLM calls: try/except, retry once after sleep(2), then return fallback string.
+- On any dataset merge failure: log a warning and continue with available data.
+
+=======================================================
+PHASE 1 — PROJECT SCAFFOLD & DATA LAYER
+=======================================================
+
+STEP 1.1 — Create exact folder structure:
+
+FinSight-AI/
+├── data/
+│   ├── raw/
+│   │   ├── customer/           ← customer_data.csv (renamed bank_churners)
+│   │   ├── transactions/       ← transactions.csv (renamed credit_card_transactions)
+│   │   ├── bank_transactions/  ← bank_transactions.csv
+│   │   ├── campaign/           ← bank_campaign.csv (renamed bank_marketing)
+│   │   ├── kyc/                ← kyc_part1.csv, kyc_part2.csv
+│   │   └── complaints/         ← cfpb_complaints.csv
+│   ├── processed/
+│   └── features/
+├── notebooks/
+├── models/
+│   ├── segmentation/
+│   ├── inactivity/
+│   ├── churn/
+│   ├── campaign/
+│   ├── kyc/
+│   └── escalation/
+├── src/
+│   ├── customer_intelligence/
+│   ├── campaign_analytics/
+│   ├── compliance/
+│   ├── complaints/
+│   └── agents/
+├── frontend/
+│   └── pages/
+├── docs/
+└── requirements.txt
+
+STEP 1.2 — requirements.txt (one package per line):
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+pandas
+numpy
+scikit-learn
+xgboost
+lightgbm
+imbalanced-learn
+transformers
+sentence-transformers
+langchain
+langgraph
+langchain-google-genai
+openai
+streamlit
+plotly
+joblib
+pyarrow
+fastparquet
+python-dotenv
+pydantic
+
+STEP 1.3 — .env.example:
+OPENAI_API_KEY=
+GOOGLE_API_KEY=
+DATABASE_URL=postgresql://user:password@localhost:5432/finsight
+LLM_PROVIDER=gemini
+BACKEND_URL=http://localhost:8000
+
+STEP 1.4 — docs/architecture.md:
+Write a full system architecture description covering:
+- All 6 modules and their purposes
+- Data flow from raw CSVs → processed → features → models → API → frontend
+- Technology stack rationale
+- LLM/agent architecture for complaint processing
+- Deployment considerations
+
+STEP 1.5 — data/README.md:
+Document every dataset: filename, shape, key columns, what it is used for,
+and which notebooks consume it.
+
+VERIFY: All directories exist. requirements.txt has all packages. .env.example created.
+
+=======================================================
+PHASE 2 — EDA NOTEBOOKS (01–05)
+=======================================================
+
+Standard notebook structure for every notebook:
+  Section 1: Imports + config (set paths, random seed=42)
+  Section 2: Load raw CSV, print shape
+  Section 3: Shape, dtypes, null counts per column
+  Section 4: Target/label distribution (where applicable)
+  Section 5: Feature distributions — Plotly only, theme='plotly_white'
+  Section 6: Correlation heatmap of all numeric columns (px.imshow)
+  Section 7: Business insights — 5+ markdown cells with findings
+  Section 8: Save cleaned output to data/processed/<name>_clean.csv
+
+Color palette for all charts:
+  Primary / segments:   #635BFF
+  Churn / risk / fraud: #E74C3C
+  Safe / loyal / low:   #27AE60
+  Neutral / info:       #3498DB
+  Warning / medium:     #F39C12
+
+---
+
+NOTEBOOK: notebooks/01_customer_eda.ipynb
+Dataset: data/raw/customer/customer_data.csv
+Actual columns: CLIENTNUM, Attrition_Flag, Customer_Age, Gender,
+  Dependent_count, Education_Level, Marital_Status, Income_Category,
+  Card_Category, Months_on_book, Months_Inactive_12_mon,
+  Contacts_Count_12_mon, Credit_Limit, Total_Revolving_Bal,
+  Avg_Open_To_Buy, Total_Amt_Chng_Q4_Q1, Total_Trans_Amt,
+  Total_Trans_Ct, Total_Ct_Chng_Q4_Q1, Avg_Utilization_Ratio,
+  + 2 Naive_Bayes columns (drop these immediately after load)
+
+Preprocessing:
+  df = df[[c for c in df.columns if 'Naive_Bayes' not in c]]
+  Encode target: Attrited Customer=1, Existing Customer=0 → new col 'churn_label'
+
+Required plots:
+  1. Attrition_Flag distribution — pie + bar side by side
+  2. Customer_Age histogram (bin_size=5)
+  3. Income_Category vs Attrition — grouped bar
+  4. Card_Category distribution — bar
+  5. Months_Inactive_12_mon — histogram
+  6. Credit_Limit box plot grouped by Card_Category
+  7. Avg_Utilization_Ratio — histogram
+  8. Total_Trans_Amt vs Total_Trans_Ct — scatter colored by Attrition_Flag
+  9. Contacts_Count_12_mon distribution — bar
+  10. Correlation heatmap — all numeric columns
+
+Business insights markdown: write observations for each plot about churn patterns,
+  credit behavior, activity levels, and income segments.
+
+Save: data/processed/customer_clean.csv
+
+---
+
+NOTEBOOK: notebooks/02_transaction_eda.ipynb
+Dataset: data/raw/transactions/transactions.csv
+Actual columns: trans_date_trans_time, cc_num, merchant, category, amt,
+  first, last, gender, street, long, city_pop, job, dob,
+  trans_num, unix_time, merch_lat, merch_long, is_fraud, merch_zipcode
+
+Preprocessing:
+  df['trans_date_trans_time'] = pd.to_datetime(df['trans_date_trans_time'])
+  df['trans_month'] = df['trans_date_trans_time'].dt.month
+  df['trans_hour']  = df['trans_date_trans_time'].dt.hour
+  df['trans_day']   = df['trans_date_trans_time'].dt.dayofweek
+  df['merch_zipcode'] = df['merch_zipcode'].fillna(0)
+  Drop: cc_num, trans_num, unix_time  (identifiers, not features)
+
+Required plots:
+  1. Transaction amount (amt) — histogram + box plot
+  2. Fraud vs legitimate (is_fraud 0/1) — bar with counts + percentage label
+  3. Mean amt by category — horizontal bar (top 15 categories)
+  4. Top 15 merchants by fraud count — bar
+  5. Transactions per month — line chart
+  6. Transactions per hour of day — bar (shows peak times)
+  7. Fraud amt distribution vs legitimate — overlaid histogram
+  8. Fraud rate by category — bar (fraud_count/total_count per category)
+  9. Gender distribution — pie
+  10. Geographic: top 15 states/cities by transaction count — bar
+  11. Correlation heatmap — numeric columns
+
+Business insights markdown: fraud patterns by category, time, amount thresholds,
+  gender differences, geographic concentration.
+
+Save: data/processed/transaction_clean.csv
+
+---
+
+NOTEBOOK: notebooks/03_campaign_eda.ipynb
+Dataset: data/raw/campaign/bank_campaign.csv
+Actual columns: index, age, job, marital, education, default, housing, loan,
+  contact, month, campaign, pdays, previous, poutcome,
+  emp.var.rate, cons.price.idx, cons.conf.idx, euribor3m, nr.employed, y
+
+IMPORTANT NOTE: Add prominent markdown cell at top:
+  "## ⚠ Dataset Size Warning
+   This dataset contains only 100 rows. This notebook performs EDA and
+   pattern analysis only. Machine learning models (Notebook 09) will use
+   SMOTE augmentation to generate synthetic training samples. All charts
+   and patterns are indicative only and should be interpreted with caution."
+
+Preprocessing:
+  df['y_binary'] = (df['y'] == 'yes').astype(int)
+  df['pdays'] = df['pdays'].replace(999, -1)
+  df = df.rename(columns={
+    'emp.var.rate': 'emp_var_rate',
+    'cons.price.idx': 'cons_price_idx',
+    'cons.conf.idx': 'cons_conf_idx'
+  })
+
+Required plots:
+  1. y distribution — pie (yes/no balance)
+  2. Conversion rate by job — horizontal bar (sorted)
+  3. Conversion rate by education — bar
+  4. Conversion rate by contact method — bar
+  5. Conversion rate by month — bar
+  6. campaign count distribution — histogram
+  7. pdays distribution (excluding -1) — histogram
+  8. poutcome vs y — grouped bar
+  9. age distribution by y — box plot
+  10. Correlation heatmap — numeric columns
+
+Save: data/processed/campaign_clean.csv
+
+---
+
+NOTEBOOK: notebooks/04_kyc_eda.ipynb
+Dataset A: data/raw/kyc/kyc_part1.csv (50,000 × 12)
+  Columns: transaction_id, client_id, amount, transaction_type, timestamp,
+    client_country, counterparty_country, ofac_match_flag, fatf_country_flag,
+    structuring_pattern_flag, rapid_movement_flag, trade_mispricing_flag
+
+Dataset B: data/raw/kyc/kyc_part2.csv (2,000 × 12)
+  Columns: client_id, client_name, client_type, sector, sector_risk,
+    country, pep_flag, sanctions_flag, fatf_country_flag, ofac_country_flag,
+    sectoral_sanctions_flag, ownership_opacity_score
+
+Merge procedure:
+  kyc1 = pd.read_csv(...)
+  kyc2 = pd.read_csv(...)
+  kyc1 = kyc1.rename(columns={'fatf_country_flag': 'fatf_txn_flag'})
+  kyc2 = kyc2.rename(columns={'fatf_country_flag': 'fatf_entity_flag'})
+  df = pd.merge(kyc1, kyc2, on='client_id', how='left')
+  Print merge stats: rows matched, unmatched client_ids
+
+Available columns after merge:
+  transaction_id, client_id, amount, transaction_type, timestamp,
+  client_country, counterparty_country, ofac_match_flag, fatf_txn_flag,
+  structuring_pattern_flag, rapid_movement_flag, trade_mispricing_flag,
+  client_name, client_type, sector, sector_risk, country, pep_flag,
+  sanctions_flag, fatf_entity_flag, ofac_country_flag,
+  sectoral_sanctions_flag, ownership_opacity_score
+
+Required plots:
+  1. sector_risk distribution — bar (Low/Medium/High)
+  2. pep_flag count — bar with percentage annotation
+  3. sanctions_flag count — bar with percentage annotation
+  4. structuring_pattern_flag distribution — bar
+  5. rapid_movement_flag distribution — bar
+  6. ofac_match_flag rate — pie
+  7. trade_mispricing_flag distribution — bar
+  8. transaction_type distribution — bar (Check/SWIFT/Wire)
+  9. Amount distribution by transaction_type — box plot
+  10. Top 15 client_country by transaction count — bar
+  11. Top 15 counterparty_country — bar
+  12. ownership_opacity_score distribution — histogram
+  13. Correlation heatmap — all numeric/binary flag columns
+  14. Heatmap: sector_risk × pep_flag co-occurrence (pivot → px.imshow)
+
+Save: data/processed/kyc_clean.csv
+
+---
+
+NOTEBOOK: notebooks/05_complaint_eda.ipynb
+Dataset: data/raw/complaints/cfpb_complaints.csv
+Actual columns: Date received, Product, Sub-product, Issue, Sub-issue,
+  Consumer complaint narrative, Company public response, Company,
+  State, ZIP code, Tags, Submitted via, Date sent to company,
+  Company response to consumer, Timely response?, Complaint ID
+
+Rename immediately after load:
+  df = df.rename(columns={
+    'Consumer complaint narrative': 'narrative',
+    'Timely response?':             'timely_response',
+    'Company response to consumer': 'company_response',
+    'Date received':                'date_received',
+    'Sub-product':                  'sub_product',
+    'Sub-issue':                    'sub_issue',
+    'ZIP code':                     'zip_code',
+    'Submitted via':                'submitted_via',
+    'Date sent to company':         'date_sent',
+    'Complaint ID':                 'complaint_id',
+    'Company public response':      'company_public_response'
+  })
+
+Preprocessing:
+  df = df.dropna(subset=['narrative'])
+  df['narrative_length'] = df['narrative'].apply(lambda x: len(str(x).split()))
+  df['date_received'] = pd.to_datetime(df['date_received'], utc=True)
+
+Required plots:
+  1. Product distribution — top 10 bar
+  2. Issue distribution — top 15 bar
+  3. company_response distribution — bar
+  4. timely_response rate — pie (Yes vs No)
+  5. narrative_length distribution — histogram
+  6. submitted_via distribution — bar
+  7. Top 20 bigrams from narrative — bar chart
+     (use CountVectorizer(ngram_range=(2,2), stop_words='english', max_features=20))
+  8. Top 15 states — bar
+  9. Monthly complaint volume — line chart (date_received)
+  10. company_response vs timely_response — grouped bar
+
+Save: data/processed/complaints_clean.csv
+
+VERIFY PHASE 2: All 5 CSVs exist in data/processed/
+
+=======================================================
+PHASE 3 — ML NOTEBOOKS (06–10)
+=======================================================
+
+---
+
+NOTEBOOK: notebooks/06_customer_segmentation.ipynb
+Input: data/processed/customer_clean.csv
+
+Feature selection (6 features for KMeans):
+  features = ['Credit_Limit', 'Total_Trans_Amt', 'Total_Trans_Ct',
+              'Avg_Utilization_Ratio', 'Total_Revolving_Bal',
+              'Months_Inactive_12_mon']
+
+Steps:
+  1. Drop rows with nulls on selected features
+  2. StandardScaler on all 6 features (fit_transform)
+  3. Elbow method: fit KMeans for k in range(2, 11)
+     Plot inertia vs k with Plotly (mark optimal k)
+  4. Silhouette scores for k=2..8: pick k with highest score
+  5. Fit KMeans(n_clusters=optimal_k, random_state=42, n_init=10)
+  6. Compute cluster means, then assign human-readable names:
+     - Cluster with highest mean(Credit_Limit + Total_Trans_Amt) → "Premium Customers"
+     - Cluster with highest mean(Total_Trans_Ct)                 → "Daily Spenders"
+     - Cluster with highest mean(Months_Inactive_12_mon)         → "At-Risk Customers"
+     - Cluster with lowest mean(Total_Revolving_Bal) + mid Trans_Ct → "Deal Hunters"
+     - Cluster with lowest overall engagement score              → "Silent Users"
+     (Use argmax/argmin on cluster mean DataFrame to assign deterministically)
+  7. Add 'cluster_id' and 'segment_name' columns to df
+  8. PCA(n_components=2, random_state=42) → 2D scatter colored by segment_name
+  9. Cluster profile table: df.groupby('segment_name')[features].mean()
+     Display as formatted DataFrame
+  10. Save model: models/segmentation/kmeans_model.pkl (save scaler too:
+      models/segmentation/scaler.pkl)
+  11. Save: data/processed/customer_with_segments.csv
+  12. Save: data/features/customer_features.parquet
+
+---
+
+NOTEBOOK: notebooks/07_inactivity_detection.ipynb
+
+═══ PART A: Inactivity scoring from bank_churners ═══
+Input: data/processed/customer_clean.csv
+Columns used: CLIENTNUM, Months_Inactive_12_mon, Total_Trans_Ct,
+              Total_Trans_Amt, Total_Revolving_Bal, Avg_Utilization_Ratio
+
+Compute:
+  inactivity_months = df['Months_Inactive_12_mon']
+  
+  def minmax(s): return (s - s.min()) / (s.max() - s.min())
+  
+  df['norm_trans_ct']       = minmax(df['Total_Trans_Ct'])
+  df['norm_trans_amt']      = minmax(df['Total_Trans_Amt'])
+  df['norm_revolving']      = minmax(df['Total_Revolving_Bal'])
+  df['norm_utilization']    = minmax(df['Avg_Utilization_Ratio'])
+  df['norm_inactivity']     = minmax(df['Months_Inactive_12_mon'])
+  
+  df['activity_score'] = (
+    0.30 * (1 - df['norm_inactivity'])  +
+    0.30 * df['norm_trans_ct']          +
+    0.20 * df['norm_trans_amt']         +
+    0.10 * df['norm_revolving']         +
+    0.10 * df['norm_utilization']
+  )
+  
+  def assign_category(score):
+    if score >= 0.70: return "Active"
+    elif score >= 0.40: return "Moderately Active"
+    elif score >= 0.20: return "Inactive"
+    else: return "High Risk"
+  
+  df['activity_category'] = df['activity_score'].apply(assign_category)
+  df['future_churn_candidate'] = (
+    (df['Months_Inactive_12_mon'] >= 3) &
+    (df['Avg_Utilization_Ratio'] < 0.15)
+  )
+
+Plots (Part A):
+  1. activity_category distribution — bar with counts
+  2. activity_score histogram
+  3. Future churn candidate: count (bar, True vs False)
+  4. Months_Inactive_12_mon vs activity_score — scatter
+  5. activity_category vs churn (if Attrition_Flag present) — grouped bar
+
+Save Part A: data/processed/inactivity_scores.csv
+  Columns: CLIENTNUM, activity_score, activity_category, future_churn_candidate
+Save model: models/inactivity/activity_scorer.pkl (save the fitted MinMaxScaler)
+
+═══ PART B: Standalone analysis of bank_transactions.csv ═══
+Input: data/raw/bank_transactions/bank_transactions.csv
+Columns: TransactionID, AccountID, TransactionAmount, TransactionDate,
+  TransactionType, Location, DeviceID, IP Address, MerchantID, Channel,
+  CustomerAge, CustomerOccupation, TransactionDuration, LoginAttempts,
+  AccountBalance, PreviousTransactionDate
+
+Preprocessing:
+  df['TransactionDate'] = pd.to_datetime(df['TransactionDate'])
+  df['PreviousTransactionDate'] = pd.to_datetime(df['PreviousTransactionDate'])
+
+Compute per account:
+  latest_date = df['TransactionDate'].max()
+  account_stats = df.groupby('AccountID').agg(
+    last_transaction=('TransactionDate', 'max'),
+    avg_amount=('TransactionAmount', 'mean'),
+    total_transactions=('TransactionID', 'count'),
+    avg_balance=('AccountBalance', 'mean'),
+    avg_login_attempts=('LoginAttempts', 'mean')
+  ).reset_index()
+  account_stats['days_since_last'] = (latest_date - account_stats['last_transaction']).dt.days
+  account_stats['high_risk_account'] = account_stats['days_since_last'] > 60
+
+Plots (Part B):
+  1. TransactionAmount distribution — histogram
+  2. AccountBalance distribution — histogram
+  3. TransactionType distribution — pie (Debit/Credit)
+  4. Channel distribution — bar (ATM/Online/etc.)
+  5. LoginAttempts distribution — bar
+  6. TransactionDuration distribution — histogram
+  7. CustomerOccupation distribution — bar (top 10)
+  8. CustomerAge distribution — histogram
+  9. days_since_last distribution — histogram
+  10. high_risk_account count — bar
+
+Save Part B: data/processed/bank_tx_activity.csv
+
+---
+
+NOTEBOOK: notebooks/08_churn_prediction.ipynb
+Input: data/processed/customer_clean.csv
+Target: Attrition_Flag → encode Attrited Customer=1, Existing Customer=0
+
+Feature list (encode categoricals first with LabelEncoder):
+  Numeric (use as-is):
+    Customer_Age, Dependent_count, Months_on_book,
+    Months_Inactive_12_mon, Contacts_Count_12_mon,
+    Credit_Limit, Total_Revolving_Bal, Avg_Open_To_Buy,
+    Total_Amt_Chng_Q4_Q1, Total_Trans_Amt, Total_Trans_Ct,
+    Total_Ct_Chng_Q4_Q1, Avg_Utilization_Ratio
+  Categorical (LabelEncode):
+    Income_Category, Card_Category, Gender,
+    Education_Level, Marital_Status
+
+Steps:
+  1. Drop Naive_Bayes columns. Encode target and categoricals.
+  2. X = all features above. y = churn_label (0/1)
+  3. train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+  4. Models:
+     a. LogisticRegression(max_iter=1000, class_weight='balanced',
+                           random_state=42, solver='lbfgs')
+     b. RandomForestClassifier(n_estimators=200, class_weight='balanced',
+                               random_state=42, n_jobs=-1)
+     c. XGBClassifier(
+           n_estimators=200, max_depth=6, learning_rate=0.05,
+           scale_pos_weight=(y==0).sum()/(y==1).sum(),
+           eval_metric='auc', random_state=42, use_label_encoder=False)
+  5. For each model: fit on train, predict on test
+     Report: Accuracy, Precision, Recall, F1, ROC-AUC
+     Print classification_report
+  6. Select best model by ROC-AUC score (store as best_model)
+  7. Plots:
+     a. ROC curves — all 3 on same Plotly figure, each a different color
+     b. Confusion matrix — best model (px.imshow)
+     c. Feature importance — RF (top 15 features, bar)
+     d. Feature importance — XGBoost (top 15 features, bar)
+     e. Churn probability distribution — histogram (XGBoost probabilities)
+     f. Churn rate by Card_Category — bar
+     g. Churn rate by Income_Category — bar
+     h. Churn rate by Gender — bar
+     i. Months_Inactive_12_mon binned vs churn rate — line chart
+  8. Add churn_probability column using XGBoost predict_proba
+  9. Save models:
+     models/churn/logistic_regression.pkl
+     models/churn/random_forest.pkl
+     models/churn/xgboost_model.pkl
+  10. Save: data/processed/churn_predictions.csv
+     Must include: CLIENTNUM, churn_probability + all input features
+
+---
+
+NOTEBOOK: notebooks/09_campaign_prediction.ipynb
+Input: data/processed/campaign_clean.csv  (100 rows)
+Target: y_binary (1=yes, 0=no)
+
+MANDATORY MARKDOWN CELL AT TOP:
+  "## Campaign ML — Note on Data Size
+   Original dataset: 100 rows. Standard train/test split not viable.
+   Strategy: Apply SMOTE oversampling to reach 500+ balanced samples,
+   then evaluate using StratifiedKFold (5 folds). All results represent
+   cross-validated performance on synthetic-augmented data."
+
+Steps:
+  1. Feature engineering:
+     df['contacted_before']    = (df['pdays'] != -1).astype(int)
+     df['campaign_intensity']  = df['campaign'] + df['previous']
+  2. Encode categoricals with LabelEncoder:
+     job, marital, education, default, housing, loan,
+     contact, month, poutcome
+  3. X = all features. y = y_binary
+  4. Apply SMOTE(random_state=42) → X_res, y_res
+     Print: original shape, resampled shape
+  5. StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+  6. Models to cross-validate:
+     a. LogisticRegression(max_iter=1000, random_state=42)
+     b. RandomForestClassifier(n_estimators=100, random_state=42)
+     c. XGBClassifier(n_estimators=100, random_state=42)
+  7. For each model: report mean ± std of Accuracy, F1, ROC-AUC
+  8. Fit best model on full X_res, y_res (best = highest mean ROC-AUC)
+  9. Plots:
+     a. y distribution before SMOTE vs after — side-by-side bar
+     b. Conversion rate by job — horizontal bar
+     c. Conversion rate by contact — bar
+     d. Conversion rate by month — bar
+     e. campaign_intensity vs conversion — line chart
+     f. Feature importance — best model (bar)
+     g. CV score distribution — box plot per metric
+  10. Save best model: models/campaign/xgboost_campaign.pkl
+  11. Save: data/features/campaign_features.parquet
+
+---
+
+NOTEBOOK: notebooks/10_kyc_risk_prediction.ipynb
+Input: data/processed/kyc_clean.csv
+
+Feature columns:
+  ofac_match_flag, fatf_txn_flag, structuring_pattern_flag,
+  rapid_movement_flag, trade_mispricing_flag, pep_flag,
+  sanctions_flag, fatf_entity_flag, ofac_country_flag,
+  sectoral_sanctions_flag, ownership_opacity_score
+
+Categorical to encode:
+  sector_risk → {'Low': 0, 'Medium': 1, 'High': 2}
+
+Target engineering:
+  df['kyc_risk_score'] = (
+    0.25 * df['pep_flag'].fillna(0) +
+    0.25 * df['sanctions_flag'].fillna(0) +
+    0.15 * df['ofac_match_flag'].fillna(0) +
+    0.10 * df['structuring_pattern_flag'].fillna(0) +
+    0.10 * df['rapid_movement_flag'].fillna(0) +
+    0.05 * df['trade_mispricing_flag'].fillna(0) +
+    0.05 * df['fatf_txn_flag'].fillna(0) +
+    0.05 * df['ownership_opacity_score'].fillna(0)
+  )
+  threshold = df['kyc_risk_score'].quantile(0.75)
+  df['kyc_risk_flag'] = (df['kyc_risk_score'] > threshold).astype(int)
+  Print: threshold value, flag distribution
+
+Steps:
+  1. Encode sector_risk as above. Fill nulls with 0 for all flag columns.
+  2. train_test_split 80/20 stratified on kyc_risk_flag
+  3. Train:
+     a. RandomForestClassifier(n_estimators=200, class_weight='balanced',
+                               random_state=42, n_jobs=-1)
+     b. XGBClassifier(scale_pos_weight=ratio, eval_metric='auc', random_state=42)
+  4. Evaluate both: Accuracy, F1, ROC-AUC, confusion matrix
+  5. Assign risk_level from predicted probability (use best model):
+     < 0.25 → "Low Risk"
+     0.25–0.50 → "Medium Risk"
+     0.50–0.75 → "High Risk"
+     > 0.75 → "Critical"
+  6. Plots:
+     a. risk_level distribution — donut chart
+     b. sector_risk vs kyc_risk_flag — grouped bar
+     c. pep_flag vs sanctions_flag co-occurrence — stacked bar
+     d. structuring_pattern_flag distribution — bar
+     e. ownership_opacity_score by risk_level — box plot
+     f. ROC curves — both models, same Plotly figure
+     g. Feature importance — RF (bar)
+     h. Top 15 client_country by high risk count — bar
+  7. Save:
+     models/kyc/random_forest_kyc.pkl
+     models/kyc/xgboost_kyc.pkl
+  8. Save: data/features/kyc_features.parquet
+     Include: client_id, kyc_risk_score, risk_level + all features
+
+VERIFY PHASE 3:
+  All .pkl files exist in models/ subdirectories.
+  All .parquet files exist in data/features/
+
+=======================================================
+PHASE 4 — GENAI + AGENTIC LAYER (11–13)
+=======================================================
+
+---
+
+NOTEBOOK: notebooks/11_complaint_sentiment.ipynb
+Input: data/processed/complaints_clean.csv
+Column 'narrative' contains complaint text.
+
+LLM setup (read LLM_PROVIDER from .env):
+  from dotenv import load_dotenv; load_dotenv()
+  provider = os.getenv("LLM_PROVIDER", "gemini")
+  if provider == "gemini":
+    from langchain_google_genai import ChatGoogleGenerativeAI
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.1)
+  else:
+    from langchain_openai import ChatOpenAI
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+
+Sample: 500 rows where narrative is not null and narrative.str.len() > 50
+  sample_df = df.dropna(subset=['narrative'])
+  sample_df = sample_df[sample_df['narrative'].str.len() > 50]
+  sample_df = sample_df.sample(n=min(500, len(sample_df)), random_state=42)
+
+STEP 1 — Complaint Summarization:
+  System: "You are a financial complaint analyst."
+  User: "Summarize this customer financial complaint in 1-2 sentences,
+         focusing on the core issue: {narrative}"
+  Store: complaint_summary
+
+STEP 2 — Classification:
+  User: "Classify this financial complaint into exactly ONE category.
+         Categories: Billing, Fraud, Card Declined, Rewards,
+         Customer Service, Service Delay, Credit Reporting, Collections.
+         Return ONLY the category name with no other text.
+         Complaint: {narrative}"
+  Store: complaint_category
+
+STEP 3 — Emotion Detection:
+  User: "Detect the dominant emotion in this financial complaint.
+         Return ONLY one word from: Anger, Frustration, Neutral, Legal Threat, Distress.
+         No other text. Complaint: {narrative}"
+  Store: emotion
+
+Processing loop for each step:
+  results = []
+  checkpoint_path = 'data/processed/complaints_nlp_checkpoint.csv'
+  
+  for i, (idx, row) in enumerate(sample_df.iterrows()):
+    try:
+      response = llm.invoke(prompt.format(narrative=row['narrative'][:1000]))
+      result = response.content.strip()
+    except Exception as e:
+      print(f"Error at row {i}: {e}")
+      time.sleep(2)
+      try:
+        response = llm.invoke(prompt.format(narrative=row['narrative'][:500]))
+        result = response.content.strip()
+      except:
+        result = fallback_value
+    results.append(result)
+    time.sleep(0.5)
+    if (i + 1) % 50 == 0:
+      temp_df = sample_df.copy()
+      temp_df['result'] = results + [None]*(len(sample_df)-len(results))
+      temp_df.to_csv(checkpoint_path, index=False)
+      print(f"Checkpoint saved at row {i+1}")
+
+Plots after all 3 steps complete:
+  1. complaint_category distribution — pie + bar
+  2. emotion distribution — bar
+  3. Category × Emotion heatmap — pivot table → px.imshow
+  4. narrative_length distribution colored by emotion — histogram
+  5. Timely response rate by complaint_category — grouped bar
+
+Save: data/processed/complaints_with_nlp.csv
+  Columns: all original + complaint_summary, complaint_category, emotion
+
+---
+
+NOTEBOOK: notebooks/12_escalation_prediction.ipynb
+Input: data/processed/complaints_with_nlp.csv
+
+Target engineering:
+  untimely_responses = ["Untimely response", "In progress",
+                        "No response", "Company can't substantiate response"]
+  high_emotion = ["Anger", "Legal Threat", "Distress"]
+  
+  df['escalation_flag'] = (
+    (df['company_response'].isin(untimely_responses)) |
+    (df['timely_response'] == 'No') |
+    (df['emotion'].isin(high_emotion))
+  ).astype(int)
+  
+  Print: escalation rate = df['escalation_flag'].mean()
+
+Feature engineering:
+  from sklearn.preprocessing import LabelEncoder
+  le_cat  = LabelEncoder()
+  le_emo  = LabelEncoder()
+  le_prod = LabelEncoder()
+  le_via  = LabelEncoder()
+  
+  df['category_encoded']  = le_cat.fit_transform(df['complaint_category'].fillna('Unknown'))
+  df['emotion_encoded']   = le_emo.fit_transform(df['emotion'].fillna('Neutral'))
+  df['product_encoded']   = le_prod.fit_transform(df['Product'].fillna('Unknown'))
+  df['via_encoded']       = le_via.fit_transform(df['submitted_via'].fillna('Unknown'))
+  df['timely_binary']     = (df['timely_response'] == 'No').astype(int)
+  df['narrative_length']  = df['narrative'].apply(lambda x: len(str(x).split()))
+
+Steps:
+  1. Features = [category_encoded, emotion_encoded, product_encoded,
+                 via_encoded, timely_binary, narrative_length]
+  2. train_test_split 80/20 stratified on escalation_flag
+  3. ratio = (y_train==0).sum()/(y_train==1).sum()
+  4. Train:
+     a. RandomForestClassifier(class_weight='balanced', n_estimators=200,
+                               random_state=42)
+     b. XGBClassifier(scale_pos_weight=ratio, eval_metric='auc',
+                      random_state=42)
+  5. Evaluate: Accuracy, F1, ROC-AUC, confusion matrix (both models)
+  6. Generate escalation_probability for full df using best model
+  7. Plots:
+     a. Escalation rate overall — pie
+     b. Escalation rate by complaint_category — bar
+     c. Escalation rate by emotion — bar
+     d. Escalation probability distribution — histogram
+     e. ROC curve — both models same figure
+     f. Feature importance — RF bar
+     g. Escalation by Product top 10 — bar
+  8. Save: models/escalation/xgboost_escalation.pkl
+  9. Save: data/processed/complaints_with_escalation.csv
+     (add escalation_probability column to existing data)
+
+---
+
+NOTEBOOK: notebooks/13_unified_customer_profile.ipynb
+Input: Multiple processed CSVs from customer intelligence modules
+
+Steps:
+  1. Load data/processed/customer_with_segments.csv
+     Verify columns: CLIENTNUM, segment_name + all customer features
+  2. Load data/processed/churn_predictions.csv
+     Keep: CLIENTNUM, churn_probability
+  3. Load data/processed/inactivity_scores.csv
+     Keep: CLIENTNUM, activity_score, activity_category, future_churn_candidate
+  4. Merge:
+     profile = customer_with_segments
+     profile = profile.merge(churn[['CLIENTNUM','churn_probability']],
+                             on='CLIENTNUM', how='left')
+     profile = profile.merge(inactivity[['CLIENTNUM','activity_score',
+                             'activity_category','future_churn_candidate']],
+                             on='CLIENTNUM', how='left')
+  5. Derive churn_risk_label:
+     def risk_label(p):
+       if p >= 0.70: return "High Risk"
+       elif p >= 0.40: return "Medium Risk"
+       else: return "Loyal"
+     profile['churn_risk_label'] = profile['churn_probability'].apply(risk_label)
+  6. Select final columns for unified profile:
+     CLIENTNUM, Customer_Age, Gender, Income_Category, Card_Category,
+     Education_Level, Marital_Status, Credit_Limit, Total_Trans_Amt,
+     Total_Trans_Ct, Avg_Utilization_Ratio, Months_Inactive_12_mon,
+     segment_name, churn_probability, churn_risk_label,
+     activity_score, activity_category, future_churn_candidate
+  7. Summary statistics (print and display as df):
+     - Count per segment_name
+     - Mean churn_probability per segment_name
+     - Mean activity_score per segment_name
+     - Total future_churn_candidate == True count
+  8. Plots:
+     a. Segment distribution — donut
+     b. Mean churn_probability by segment — bar
+     c. churn_risk_label distribution — pie
+     d. activity_category distribution — bar
+     e. future_churn_candidate count — bar
+  9. Null audit: print null count per column
+ 10. Save: data/processed/unified_customer_profile.csv
+ 11. Save: data/features/customer_features.parquet (overwrite)
+
+VERIFY: unified_customer_profile.csv has all 18 columns listed above.
+
+=======================================================
+PHASE 5 — FASTAPI BACKEND (src/ + agents/)
+=======================================================
+
+All files must be fully implemented — no stubs or pass statements.
+Every function has a one-line docstring.
+
+---
+
+FILE: src/customer_intelligence/segmentation.py
+
+import joblib, pandas as pd
+from pathlib import Path
+
+SCALER_PATH  = Path("models/segmentation/scaler.pkl")
+MODEL_PATH   = Path("models/segmentation/kmeans_model.pkl")
+PROFILE_PATH = Path("data/processed/unified_customer_profile.csv")
+
+def load_segmentation_model():
+    """Load trained KMeans model and scaler from disk."""
+    scaler = joblib.load(SCALER_PATH)
+    model  = joblib.load(MODEL_PATH)
+    return scaler, model
+
+def predict_segment(features: dict) -> str:
+    """Predict segment name for a customer given their feature dict."""
+    scaler, model = load_segmentation_model()
+    feature_order = ['Credit_Limit','Total_Trans_Amt','Total_Trans_Ct',
+                     'Avg_Utilization_Ratio','Total_Revolving_Bal',
+                     'Months_Inactive_12_mon']
+    X = pd.DataFrame([[features[k] for k in feature_order]], columns=feature_order)
+    X_scaled = scaler.transform(X)
+    cluster_id = model.predict(X_scaled)[0]
+    cluster_map = model.cluster_map_  # dict {cluster_id: segment_name}
+    return cluster_map.get(cluster_id, f"Cluster {cluster_id}")
+    # NOTE: save cluster_map as model attribute in notebook 06:
+    #   kmeans.cluster_map_ = {0: "Premium Customers", 1: "Daily Spenders", ...}
+    #   joblib.dump(kmeans, MODEL_PATH)
+
+def get_segment_distribution() -> dict:
+    """Return count of customers per segment from unified profile."""
+    df = pd.read_csv(PROFILE_PATH)
+    return df['segment_name'].value_counts().to_dict()
+
+---
+
+FILE: src/customer_intelligence/churn.py
+
+import joblib, pandas as pd
+from pathlib import Path
+
+MODEL_PATH   = Path("models/churn/xgboost_model.pkl")
+CHURN_PATH   = Path("data/processed/churn_predictions.csv")
+PROFILE_PATH = Path("data/processed/unified_customer_profile.csv")
+
+def load_churn_model():
+    """Load trained XGBoost churn model from disk."""
+    return joblib.load(MODEL_PATH)
+
+def predict_churn(features: dict) -> dict:
+    """Predict churn probability and risk label for a customer."""
+    model = load_churn_model()
+    feature_order = [
+        'Customer_Age','Dependent_count','Months_on_book',
+        'Months_Inactive_12_mon','Contacts_Count_12_mon',
+        'Credit_Limit','Total_Revolving_Bal','Avg_Open_To_Buy',
+        'Total_Amt_Chng_Q4_Q1','Total_Trans_Amt','Total_Trans_Ct',
+        'Total_Ct_Chng_Q4_Q1','Avg_Utilization_Ratio',
+        'Income_Category','Card_Category','Gender',
+        'Education_Level','Marital_Status'
+    ]
+    X = pd.DataFrame([[features.get(k, 0) for k in feature_order]],
+                     columns=feature_order)
+    prob = float(model.predict_proba(X)[0][1])
+    label = "High Risk" if prob >= 0.7 else "Medium Risk" if prob >= 0.4 else "Loyal"
+    return {"churn_probability": prob, "risk_label": label}
+
+def get_churn_distribution() -> dict:
+    """Return count of customers per churn risk label."""
+    df = pd.read_csv(PROFILE_PATH)
+    return df['churn_risk_label'].value_counts().to_dict()
+
+def get_top_churn_customers(n: int = 50) -> list:
+    """Return top n customers sorted by churn probability descending."""
+    df = pd.read_csv(PROFILE_PATH)
+    cols = ['CLIENTNUM','churn_probability','churn_risk_label','segment_name']
+    return (df[cols].sort_values('churn_probability', ascending=False)
+                    .head(n).to_dict(orient='records'))
+
+---
+
+FILE: src/customer_intelligence/inactivity.py
+
+import pandas as pd
+from pathlib import Path
+
+INACTIVITY_PATH = Path("data/processed/inactivity_scores.csv")
+BANK_TX_PATH    = Path("data/processed/bank_tx_activity.csv")
+
+def get_activity_distribution() -> dict:
+    """Return count of customers per activity category."""
+    df = pd.read_csv(INACTIVITY_PATH)
+    return df['activity_category'].value_counts().to_dict()
+
+def get_future_churn_watchlist(n: int = 100) -> list:
+    """Return top n customers flagged as future churn candidates."""
+    df = pd.read_csv(INACTIVITY_PATH)
+    watchlist = (df[df['future_churn_candidate'] == True]
+                 .sort_values('activity_score', ascending=True)
+                 .head(n))
+    return watchlist.to_dict(orient='records')
+
+def get_bank_tx_summary() -> dict:
+    """Return summary stats from bank_transactions standalone analysis."""
+    df = pd.read_csv(BANK_TX_PATH)
+    return {
+        "total_accounts": len(df),
+        "high_risk_accounts": int(df['high_risk_account'].sum()),
+        "avg_days_since_last": float(df['days_since_last'].mean()),
+        "avg_balance": float(df['avg_balance'].mean())
+    }
+
+---
+
+FILE: src/customer_intelligence/profile_builder.py
+
+import pandas as pd
+from pathlib import Path
+
+PROFILE_PATH = Path("data/processed/unified_customer_profile.csv")
+
+def get_unified_profile(client_id: str) -> dict:
+    """Return full unified profile row for a given CLIENTNUM as a dict."""
+    df = pd.read_csv(PROFILE_PATH)
+    df['CLIENTNUM'] = df['CLIENTNUM'].astype(str)
+    row = df[df['CLIENTNUM'] == str(client_id)]
+    if row.empty:
+        return {"error": f"Client {client_id} not found"}
+    return row.iloc[0].to_dict()
+
+def get_executive_kpis() -> dict:
+    """Return high-level executive KPI metrics for the dashboard."""
+    df = pd.read_csv(PROFILE_PATH)
+    total = len(df)
+    high_risk = (df['churn_risk_label'] == 'High Risk').sum()
+    active = (df['activity_category'] == 'Active').sum()
+    return {
+        "total_customers": total,
+        "churn_rate": round(high_risk / total * 100, 2),
+        "high_risk_count": int(high_risk),
+        "active_rate": round(active / total * 100, 2),
+        "avg_credit_limit": round(df['Credit_Limit'].mean(), 2)
+    }
+
+---
+
+FILE: src/campaign_analytics/campaign_analysis.py
+
+import pandas as pd
+from pathlib import Path
+
+CAMPAIGN_PATH = Path("data/processed/campaign_clean.csv")
+
+def get_campaign_success_rate() -> dict:
+    """Return overall campaign conversion rate."""
+    df = pd.read_csv(CAMPAIGN_PATH)
+    rate = df['y_binary'].mean() if 'y_binary' in df.columns else (df['y'] == 'yes').mean()
+    return {"success_rate": round(rate * 100, 2), "total_records": len(df)}
+
+def get_conversion_by_job() -> dict:
+    """Return conversion rate grouped by job type."""
+    df = pd.read_csv(CAMPAIGN_PATH)
+    target = 'y_binary' if 'y_binary' in df.columns else 'y'
+    if target == 'y': df['y_binary'] = (df['y'] == 'yes').astype(int)
+    return df.groupby('job')['y_binary'].mean().round(4).to_dict()
+
+def get_conversion_by_contact() -> dict:
+    """Return conversion rate grouped by contact method."""
+    df = pd.read_csv(CAMPAIGN_PATH)
+    if 'y_binary' not in df.columns: df['y_binary'] = (df['y'] == 'yes').astype(int)
+    return df.groupby('contact')['y_binary'].mean().round(4).to_dict()
+
+def get_conversion_by_month() -> dict:
+    """Return conversion rate grouped by month."""
+    df = pd.read_csv(CAMPAIGN_PATH)
+    if 'y_binary' not in df.columns: df['y_binary'] = (df['y'] == 'yes').astype(int)
+    return df.groupby('month')['y_binary'].mean().round(4).to_dict()
+
+---
+
+FILE: src/campaign_analytics/campaign_prediction.py
+
+import joblib, pandas as pd
+from pathlib import Path
+
+MODEL_PATH = Path("models/campaign/xgboost_campaign.pkl")
+
+def load_campaign_model():
+    """Load trained campaign conversion prediction model."""
+    return joblib.load(MODEL_PATH)
+
+def predict_campaign_success(features: dict) -> dict:
+    """Predict probability of campaign conversion for given customer features."""
+    model = load_campaign_model()
+    X = pd.DataFrame([features])
+    prob = float(model.predict_proba(X)[0][1])
+    return {"conversion_probability": round(prob, 4)}
+
+---
+
+FILE: src/compliance/kyc_prediction.py
+
+import joblib, pandas as pd
+from pathlib import Path
+
+MODEL_PATH   = Path("models/kyc/xgboost_kyc.pkl")
+FEATURES_PATH = Path("data/features/kyc_features.parquet")
+
+def load_kyc_model():
+    """Load trained KYC risk prediction model."""
+    return joblib.load(MODEL_PATH)
+
+def predict_kyc_risk(features: dict) -> dict:
+    """Predict KYC risk score, level, and recommended action for a client."""
+    model = load_kyc_model()
+    sector_map = {'Low': 0, 'Medium': 1, 'High': 2}
+    features['sector_risk'] = sector_map.get(features.get('sector_risk', 'Low'), 0)
+    X = pd.DataFrame([features])
+    prob = float(model.predict_proba(X)[0][1])
+    if prob > 0.75:
+        level = "Critical"
+        action = "Immediate freeze and compliance review required"
+    elif prob > 0.50:
+        level = "High Risk"
+        action = "Enhanced due diligence required immediately"
+    elif prob > 0.25:
+        level = "Medium Risk"
+        action = "Schedule periodic review within 30 days"
+    else:
+        level = "Low Risk"
+        action = "Standard monitoring — no immediate action"
+    return {"risk_score": round(prob, 4), "risk_level": level,
+            "recommended_action": action}
+
+def get_risk_distribution() -> dict:
+    """Return count of clients per risk level from feature store."""
+    df = pd.read_parquet(FEATURES_PATH)
+    return df['risk_level'].value_counts().to_dict()
+
+def get_high_risk_customers(n: int = 50) -> list:
+    """Return top n clients by risk score from feature store."""
+    df = pd.read_parquet(FEATURES_PATH)
+    cols = ['client_id','kyc_risk_score','risk_level']
+    available = [c for c in cols if c in df.columns]
+    return (df[available].sort_values('kyc_risk_score', ascending=False)
+                         .head(n).to_dict(orient='records'))
+
+---
+
+FILE: src/complaints/summarizer.py
+
+import os
+from dotenv import load_dotenv; load_dotenv()
+import time
+
+def _get_llm():
+    """Initialize and return the configured LLM client."""
+    provider = os.getenv("LLM_PROVIDER", "gemini")
+    if provider == "gemini":
+        from langchain_google_genai import ChatGoogleGenerativeAI
+        return ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.1)
+    else:
+        from langchain_openai import ChatOpenAI
+        return ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+
+def summarize_complaint(narrative: str) -> str:
+    """Summarize a complaint narrative in 1-2 sentences using LLM."""
+    prompt = (f"Summarize this customer financial complaint in 1-2 sentences, "
+              f"focusing on the core issue: {narrative[:1000]}")
+    try:
+        llm = _get_llm()
+        response = llm.invoke(prompt)
+        return response.content.strip()
+    except Exception as e:
+        time.sleep(2)
+        try:
+            llm = _get_llm()
+            return llm.invoke(prompt[:500]).content.strip()
+        except:
+            return "Summary unavailable"
+
+---
+
+FILE: src/complaints/classifier.py
+
+import os, time
+from dotenv import load_dotenv; load_dotenv()
+
+def classify_complaint(narrative: str) -> str:
+    """Classify a complaint narrative into a predefined category using LLM."""
+    categories = "Billing, Fraud, Card Declined, Rewards, Customer Service, Service Delay, Credit Reporting, Collections"
+    prompt = (f"Classify this financial complaint into exactly ONE category. "
+              f"Categories: {categories}. "
+              f"Return ONLY the category name with no other text. "
+              f"Complaint: {narrative[:800]}")
+    provider = os.getenv("LLM_PROVIDER", "gemini")
+    try:
+        if provider == "gemini":
+            from langchain_google_genai import ChatGoogleGenerativeAI
+            llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
+        else:
+            from langchain_openai import ChatOpenAI
+            llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+        return llm.invoke(prompt).content.strip()
+    except:
+        time.sleep(2)
+        try:
+            return llm.invoke(prompt[:400]).content.strip()
+        except:
+            return "Unknown"
+
+---
+
+FILE: src/complaints/emotion_detector.py
+
+import os, time
+from dotenv import load_dotenv; load_dotenv()
+
+def detect_emotion(narrative: str) -> str:
+    """Detect the dominant emotion in a complaint narrative using LLM."""
+    prompt = (f"Detect the dominant emotion in this financial complaint. "
+              f"Return ONLY one word from: Anger, Frustration, Neutral, Legal Threat, Distress. "
+              f"No other text. Complaint: {narrative[:800]}")
+    provider = os.getenv("LLM_PROVIDER", "gemini")
+    try:
+        if provider == "gemini":
+            from langchain_google_genai import ChatGoogleGenerativeAI
+            llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
+        else:
+            from langchain_openai import ChatOpenAI
+            llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+        return llm.invoke(prompt).content.strip()
+    except:
+        time.sleep(2)
+        try:
+            return llm.invoke(prompt[:400]).content.strip()
+        except:
+            return "Neutral"
+
+---
+
+FILE: src/complaints/escalation_model.py
+
+import joblib, pandas as pd
+from pathlib import Path
+
+MODEL_PATH = Path("models/escalation/xgboost_escalation.pkl")
+
+def load_escalation_model():
+    """Load trained escalation prediction model from disk."""
+    return joblib.load(MODEL_PATH)
+
+def predict_escalation(features: dict) -> dict:
+    """Predict escalation probability for a complaint."""
+    model = load_escalation_model()
+    X = pd.DataFrame([features])
+    prob = float(model.predict_proba(X)[0][1])
+    return {"escalation_probability": round(prob, 4)}
+
+---
+
+FILE: src/agents/complaint_agent.py
+
+import os, time
+from typing import TypedDict
+from dotenv import load_dotenv; load_dotenv()
+from langgraph.graph import StateGraph, START, END
+from src.complaints.summarizer import summarize_complaint
+from src.complaints.classifier import classify_complaint
+from src.complaints.emotion_detector import detect_emotion
+from src.complaints.escalation_model import load_escalation_model, predict_escalation
+from sklearn.preprocessing import LabelEncoder
+
+class ComplaintState(TypedDict):
+    narrative: str
+    summary: str
+    category: str
+    emotion: str
+    escalation_probability: float
+    priority_level: str
+    assigned_team: str
+    recommended_action: str
+    suggested_response: str
+
+# Label encoders must match those used in notebook 12
+CATEGORY_MAP = {
+    "Billing": 0, "Card Declined": 1, "Collections": 2,
+    "Credit Reporting": 3, "Customer Service": 4,
+    "Fraud": 5, "Rewards": 6, "Service Delay": 7, "Unknown": 8
+}
+EMOTION_MAP = {
+    "Anger": 0, "Distress": 1, "Frustration": 2,
+    "Legal Threat": 3, "Neutral": 4
+}
+
+def summarize_node(state: ComplaintState) -> ComplaintState:
+    """Call summarizer and update state with complaint summary."""
+    state['summary'] = summarize_complaint(state['narrative'])
+    return state
+
+def classify_node(state: ComplaintState) -> ComplaintState:
+    """Call classifier and update state with complaint category."""
+    state['category'] = classify_complaint(state['narrative'])
+    return state
+
+def detect_emotion_node(state: ComplaintState) -> ComplaintState:
+    """Call emotion detector and update state with detected emotion."""
+    state['emotion'] = detect_emotion(state['narrative'])
+    return state
+
+def score_escalation_node(state: ComplaintState) -> ComplaintState:
+    """Score escalation probability from current state features."""
+    features = {
+        'category_encoded': CATEGORY_MAP.get(state['category'], 8),
+        'emotion_encoded':  EMOTION_MAP.get(state['emotion'], 4),
+        'product_encoded':  0,
+        'via_encoded':      0,
+        'timely_binary':    0,
+        'narrative_length': len(state['narrative'].split())
+    }
+    result = predict_escalation(features)
+    state['escalation_probability'] = result['escalation_probability']
+    return state
+
+def route_node(state: ComplaintState) -> ComplaintState:
+    """Apply business rules to assign priority, team, and action."""
+    prob = state['escalation_probability']
+    emotion = state['emotion']
+    if prob > 0.90:
+        state['priority_level']    = "CRITICAL"
+        state['assigned_team']     = "Supervisor"
+        state['recommended_action'] = "Notify supervisor immediately"
+    elif prob > 0.80:
+        state['priority_level']    = "HIGH"
+        state['assigned_team']     = "Priority Support"
+        state['recommended_action'] = "Escalate to senior agent"
+    elif emotion in ["Legal Threat", "Distress"]:
+        state['priority_level']    = "CRITICAL"
+        state['assigned_team']     = "Legal / Compliance"
+        state['recommended_action'] = "Escalate to compliance team immediately"
+    elif emotion == "Anger" and prob > 0.60:
+        state['priority_level']    = "HIGH"
+        state['assigned_team']     = "Priority Support"
+        state['recommended_action'] = "Immediate callback required"
+    else:
+        state['priority_level']    = "STANDARD"
+        state['assigned_team']     = "General Support"
+        state['recommended_action'] = "Standard resolution process"
+    return state
+
+def generate_response_node(state: ComplaintState) -> ComplaintState:
+    """Generate a professional customer response using LLM."""
+    prompt = (
+        f"Write a professional, empathetic 2-3 sentence response to a bank customer "
+        f"whose complaint is about {state['category']}, "
+        f"emotional state is {state['emotion']}, "
+        f"and priority level is {state['priority_level']}. "
+        f"Be concise, solution-focused, and avoid making specific promises about timelines."
+    )
+    provider = os.getenv("LLM_PROVIDER", "gemini")
+    try:
+        if provider == "gemini":
+            from langchain_google_genai import ChatGoogleGenerativeAI
+            llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.3)
+        else:
+            from langchain_openai import ChatOpenAI
+            llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
+        state['suggested_response'] = llm.invoke(prompt).content.strip()
+    except Exception as e:
+        state['suggested_response'] = (
+            "Thank you for bringing this to our attention. We take your concern seriously "
+            "and a member of our team will contact you shortly to resolve this matter."
+        )
+    return state
+
+def build_complaint_graph():
+    """Build and compile the LangGraph complaint processing pipeline."""
+    graph = StateGraph(ComplaintState)
+    graph.add_node("summarize", summarize_node)
+    graph.add_node("classify", classify_node)
+    graph.add_node("detect_emotion", detect_emotion_node)
+    graph.add_node("score_escalation", score_escalation_node)
+    graph.add_node("route", route_node)
+    graph.add_node("generate_response", generate_response_node)
+    graph.add_edge(START, "summarize")
+    graph.add_edge("summarize", "classify")
+    graph.add_edge("classify", "detect_emotion")
+    graph.add_edge("detect_emotion", "score_escalation")
+    graph.add_edge("score_escalation", "route")
+    graph.add_edge("route", "generate_response")
+    graph.add_edge("generate_response", END)
+    return graph.compile()
+
+_agent = None
+
+def run_complaint_agent(narrative: str) -> dict:
+    """Run full complaint processing pipeline and return complete state."""
+    global _agent
+    if _agent is None:
+        _agent = build_complaint_graph()
+    initial_state = ComplaintState(
+        narrative=narrative,
+        summary="", category="", emotion="",
+        escalation_probability=0.0,
+        priority_level="", assigned_team="",
+        recommended_action="", suggested_response=""
+    )
+    result = _agent.invoke(initial_state)
+    return dict(result)
+
+---
+
+FILE: src/agents/orchestrator.py
+
+from src.agents.complaint_agent import run_complaint_agent
+from src.customer_intelligence.profile_builder import get_unified_profile
+from src.compliance.kyc_prediction import predict_kyc_risk
+
+def process_complaint(narrative: str) -> dict:
+    """Route a raw complaint narrative through the full AI agent pipeline."""
+    return run_complaint_agent(narrative)
+
+def get_customer_profile(client_id: str) -> dict:
+    """Retrieve the unified customer profile for a given CLIENTNUM."""
+    return get_unified_profile(client_id)
+
+def get_kyc_action(features: dict) -> dict:
+    """Assess KYC risk and return recommended compliance action."""
+    return predict_kyc_risk(features)
+
+---
+
+FILE: main.py  (FastAPI application root)
+
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import Optional
+from dotenv import load_dotenv; load_dotenv()
+
+from src.customer_intelligence import segmentation, churn, inactivity, profile_builder
+from src.campaign_analytics import campaign_analysis, campaign_prediction
+from src.compliance import kyc_prediction
+from src.agents import orchestrator
+
+app = FastAPI(title="FinSight AI", version="1.0.0",
+              description="Enterprise Fintech Analytics Platform")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class ComplaintRequest(BaseModel):
+    narrative: str
+
+class CampaignFeaturesRequest(BaseModel):
+    age: float
+    job: int
+    marital: int
+    education: int
+    default: int
+    housing: int
+    loan: int
+    contact: int
+    month: int
+    campaign: float
+    pdays: float
+    previous: float
+    poutcome: int
+    emp_var_rate: float
+    cons_price_idx: float
+    cons_conf_idx: float
+    euribor3m: float
+    nr_employed: float
+    contacted_before: int = 0
+    campaign_intensity: float = 0
+
+class KYCFeaturesRequest(BaseModel):
+    ofac_match_flag: int = 0
+    fatf_txn_flag: int = 0
+    structuring_pattern_flag: int = 0
+    rapid_movement_flag: int = 0
+    trade_mispricing_flag: int = 0
+    pep_flag: int = 0
+    sanctions_flag: int = 0
+    fatf_entity_flag: int = 0
+    ofac_country_flag: int = 0
+    sectoral_sanctions_flag: int = 0
+    ownership_opacity_score: float = 0.0
+    sector_risk: str = "Low"
+
+# ── Health ──────────────────────────────────────────────
+@app.get("/api/health")
+async def health_check():
+    return {"status": "ok", "version": "1.0.0"}
+
+# ── Customers ───────────────────────────────────────────
+@app.get("/api/customers/kpis")
+async def get_kpis():
+    return profile_builder.get_executive_kpis()
+
+@app.get("/api/customers/profile/{client_id}")
+async def get_profile(client_id: str):
+    result = profile_builder.get_unified_profile(client_id)
+    if "error" in result:
+        raise HTTPException(status_code=404, detail=result["error"])
+    return result
+
+@app.get("/api/customers/segments")
+async def get_segments():
+    return segmentation.get_segment_distribution()
+
+@app.get("/api/customers/churn/top")
+async def get_top_churn(n: int = 50):
+    return churn.get_top_churn_customers(n=n)
+
+@app.get("/api/customers/churn/distribution")
+async def get_churn_dist():
+    return churn.get_churn_distribution()
+
+@app.get("/api/customers/watchlist")
+async def get_watchlist(n: int = 100):
+    return inactivity.get_future_churn_watchlist(n=n)
+
+@app.get("/api/customers/activity")
+async def get_activity():
+    return inactivity.get_activity_distribution()
+
+# ── Campaign ────────────────────────────────────────────
+@app.get("/api/campaign/stats")
+async def get_campaign_stats():
+    return {
+        "success_rate": campaign_analysis.get_campaign_success_rate(),
+        "by_job":     campaign_analysis.get_conversion_by_job(),
+        "by_contact": campaign_analysis.get_conversion_by_contact(),
+        "by_month":   campaign_analysis.get_conversion_by_month()
+    }
+
+@app.post("/api/campaign/predict")
+async def predict_campaign(request: CampaignFeaturesRequest):
+    return campaign_prediction.predict_campaign_success(request.dict())
+
+# ── Compliance ──────────────────────────────────────────
+@app.get("/api/compliance/risk/distribution")
+async def get_risk_distribution():
+    return kyc_prediction.get_risk_distribution()
+
+@app.get("/api/compliance/risk/high")
+async def get_high_risk(n: int = 50):
+    return kyc_prediction.get_high_risk_customers(n=n)
+
+@app.post("/api/compliance/risk/predict")
+async def predict_kyc(request: KYCFeaturesRequest):
+    return kyc_prediction.predict_kyc_risk(request.dict())
+
+# ── Complaints ──────────────────────────────────────────
+@app.post("/api/complaints/process")
+async def process_complaint(request: ComplaintRequest):
+    if not request.narrative or len(request.narrative.strip()) < 20:
+        raise HTTPException(status_code=400, detail="Narrative too short (min 20 chars)")
+    return orchestrator.process_complaint(request.narrative)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+=======================================================
+PHASE 6 — STREAMLIT FRONTEND (5 pages)
+=======================================================
+
+Global rules for every page:
+  - st.set_page_config(layout="wide") MUST be first line
+  - @st.cache_data(ttl=300) on all data loading functions
+  - @st.cache_resource on all model loading functions
+  - All charts: plotly_white theme, no grid on clean charts
+  - Error handling: all API calls in try/except → st.error() on failure
+  - API base URL: os.getenv("BACKEND_URL", "http://localhost:8000")
+  - Color palette (use consistently):
+    PRIMARY   = "#635BFF"
+    RISK      = "#E74C3C"
+    SAFE      = "#27AE60"
+    NEUTRAL   = "#3498DB"
+    WARNING   = "#F39C12"
+
+---
+
+FILE: frontend/dashboard.py  (Streamlit entry point)
+
+import streamlit as st, os
+
+st.set_page_config(
+    page_title="FinSight AI",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+st.sidebar.markdown("# 📊 FinSight AI")
+st.sidebar.markdown("Enterprise Fintech Analytics")
+st.sidebar.markdown("---")
+st.sidebar.markdown("### Modules")
+st.sidebar.markdown("🏠 [Home](/) | 👥 [Customers](/1_customer_intelligence) | "
+                    "📣 [Campaign](/2_campaign_analytics) | "
+                    "🛡️ [Compliance](/3_compliance_analytics) | "
+                    "📋 [Complaints](/4_complaint_intelligence) | "
+                    "📈 [Executive](/5_executive_dashboard)")
+
+st.title("📊 FinSight AI")
+st.subheader("Enterprise Fintech Analytics Platform")
+
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    st.info("👥 **Customer Intelligence**\nChurn prediction, segmentation, activity scoring")
+with col2:
+    st.info("📣 **Campaign Analytics**\nConversion analysis, campaign effectiveness")
+with col3:
+    st.info("🛡️ **KYC / Compliance**\nAML risk scoring, regulatory flagging")
+with col4:
+    st.info("📋 **Complaint Intelligence**\nAI-powered NLP, escalation, live agent")
+
+---
+
+FILE: frontend/pages/5_executive_dashboard.py
+
+import streamlit as st, pandas as pd, plotly.express as px, requests, os
+
+st.set_page_config(layout="wide", page_title="Executive Dashboard", page_icon="📈")
+BACKEND = os.getenv("BACKEND_URL", "http://localhost:8000")
+
+st.title("📈 Executive Dashboard")
+
+@st.cache_data(ttl=300)
+def load_kpis():
+    try:
+        return requests.get(f"{BACKEND}/api/customers/kpis").json()
+    except:
+        return {"total_customers": 0, "churn_rate": 0,
+                "high_risk_count": 0, "active_rate": 0, "avg_credit_limit": 0}
+
+@st.cache_data(ttl=300)
+def load_churn_data():
+    return pd.read_csv("data/processed/churn_predictions.csv")
+
+@st.cache_data(ttl=300)
+def load_segments():
+    return pd.read_csv("data/processed/unified_customer_profile.csv")
+
+@st.cache_data(ttl=300)
+def load_kyc():
+    return pd.read_parquet("data/features/kyc_features.parquet")
+
+@st.cache_data(ttl=300)
+def load_activity():
+    return pd.read_csv("data/processed/inactivity_scores.csv")
+
+kpis = load_kpis()
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("👥 Total Customers",    f"{kpis['total_customers']:,}")
+col2.metric("⚠️ Churn Rate",          f"{kpis['churn_rate']}%")
+col3.metric("🛡️ High Risk Count",     f"{kpis['high_risk_count']:,}")
+col4.metric("✅ Active Customers",    f"{kpis['active_rate']}%")
+
+st.markdown("---")
+c1, c2 = st.columns(2)
+c3, c4 = st.columns(2)
+
+with c1:
+    df = load_churn_data()
+    if 'churn_probability' in df.columns:
+        fig = px.histogram(df, x='churn_probability', nbins=40,
+                           title="Churn Probability Distribution",
+                           color_discrete_sequence=["#E74C3C"],
+                           template="plotly_white")
+        st.plotly_chart(fig, use_container_width=True)
+
+with c2:
+    df = load_segments()
+    if 'segment_name' in df.columns:
+        seg = df['segment_name'].value_counts().reset_index()
+        seg.columns = ['segment', 'count']
+        fig = px.pie(seg, values='count', names='segment',
+                     title="Customer Segments", hole=0.4,
+                     color_discrete_sequence=px.colors.qualitative.Set2,
+                     template="plotly_white")
+        st.plotly_chart(fig, use_container_width=True)
+
+with c3:
+    df = load_kyc()
+    if 'risk_level' in df.columns:
+        risk = df['risk_level'].value_counts().reset_index()
+        risk.columns = ['level', 'count']
+        fig = px.bar(risk, x='level', y='count',
+                     title="KYC Compliance Risk Distribution",
+                     color='level', template="plotly_white",
+                     color_discrete_map={
+                         "Critical": "#E74C3C", "High Risk": "#F39C12",
+                         "Medium Risk": "#3498DB", "Low Risk": "#27AE60"
+                     })
+        st.plotly_chart(fig, use_container_width=True)
+
+with c4:
+    df = load_activity()
+    if 'activity_category' in df.columns:
+        act = df['activity_category'].value_counts().reset_index()
+        act.columns = ['category', 'count']
+        fig = px.pie(act, values='count', names='category',
+                     title="Customer Activity Distribution", hole=0.4,
+                     color_discrete_sequence=["#27AE60","#3498DB","#F39C12","#E74C3C"],
+                     template="plotly_white")
+        st.plotly_chart(fig, use_container_width=True)
+
+---
+
+FILE: frontend/pages/1_customer_intelligence.py
+
+Tabs: ["Segmentation", "Churn Predictions", "Inactivity & Watchlist"]
+
+Tab 1 — Segmentation:
+  Data: data/processed/unified_customer_profile.csv
+  Plots:
+    - Segment donut (segment_name counts)
+    - Cluster profile table (mean: Credit_Limit, Total_Trans_Amt, Total_Trans_Ct,
+      Avg_Utilization_Ratio per segment_name)
+    - PCA 2D scatter: read data/features/customer_features.parquet,
+      run PCA(n_components=2) and plot colored by segment_name
+    - Churn rate per segment: mean churn_probability per segment_name (bar)
+
+Tab 2 — Churn Predictions:
+  Data: data/processed/churn_predictions.csv +
+        data/processed/unified_customer_profile.csv
+  Plots:
+    - Churn probability histogram
+    - Churn risk label distribution (bar: High/Medium/Loyal)
+    - Churn rate by Card_Category (bar)
+    - Churn rate by Income_Category (bar)
+    - Churn rate by Gender (bar)
+  Table: Top 50 customers sorted by churn_probability desc
+    Columns: CLIENTNUM, churn_probability, churn_risk_label, segment_name
+    Color rows: High Risk=red background, Medium=yellow, Loyal=green
+
+Tab 3 — Inactivity & Watchlist:
+  Data: data/processed/inactivity_scores.csv +
+        data/processed/bank_tx_activity.csv
+  Plots:
+    - Activity category bar (Active/Moderately Active/Inactive/High Risk)
+    - Activity score histogram
+    - future_churn_candidate bar (True vs False count)
+    - Months_Inactive_12_mon: read from customer_clean.csv, histogram
+    - bank_tx_activity: AccountBalance distribution (histogram)
+    - bank_tx_activity: TransactionType distribution (pie from bank_transactions)
+  Table: Future churn watchlist (future_churn_candidate==True, sorted by
+         activity_score asc, top 100, sortable with st.dataframe)
+
+---
+
+FILE: frontend/pages/2_campaign_analytics.py
+
+Tabs: ["Overview", "Conversion Analysis", "Campaign Predictor"]
+
+Tab 1 — Overview:
+  Data: data/processed/campaign_clean.csv via API /api/campaign/stats
+  Layout:
+    - Big st.metric: "Overall Conversion Rate" (format as %)
+    - Conversion by contact method (bar)
+    - Conversion by month (bar, sorted by calendar month)
+    - campaign_intensity distribution (histogram)
+
+Tab 2 — Conversion Analysis:
+  Data: data/processed/campaign_clean.csv (load directly, @st.cache_data)
+  Plots:
+    - Conversion rate by job — horizontal bar, sorted descending
+    - Conversion rate by education — bar
+    - y distribution by marital status — pie
+    - poutcome vs conversion — grouped bar
+
+Tab 3 — Campaign Predictor:
+  Input form (use st.columns for layout):
+    Row 1: age (slider 18-95), campaign (slider 1-50), previous (slider 0-10)
+    Row 2: job (selectbox), marital (selectbox), education (selectbox)
+    Row 3: contact (selectbox), month (selectbox), poutcome (selectbox)
+    Row 4: emp_var_rate (slider -4.0 to 2.0, step 0.1),
+            cons_price_idx (slider 92.0 to 95.0, step 0.1),
+            cons_conf_idx (slider -51.0 to -26.0, step 0.5)
+    Row 5: euribor3m (slider 0.0 to 6.0, step 0.1),
+            nr_employed (slider 4900 to 5300, step 10),
+            pdays (slider -1 to 400)
+
+  Button: "🎯 Predict Campaign Success"
+  On click: POST to /api/campaign/predict with encoded features
+  Display:
+    col_a, col_b = st.columns(2)
+    col_a: st.metric("Conversion Probability", f"{prob:.1%}")
+    col_b: Plotly go.Indicator gauge:
+      go.Indicator(mode="gauge+number", value=prob*100,
+                   gauge={"axis":{"range":[0,100]},
+                          "bar":{"color": "#27AE60" if prob>0.5 else
+                                          "#E74C3C" if prob<0.3 else "#F39C12"},
+                          "steps":[{"range":[0,30],"color":"#FADBD8"},
+                                   {"range":[30,50],"color":"#FDEBD0"},
+                                   {"range":[50,100],"color":"#D5F5E3"}]})
+
+---
+
+FILE: frontend/pages/3_compliance_analytics.py
+
+Tabs: ["Risk Overview", "High Risk Customers", "AML Insights", "KYC Predictor"]
+
+Tab 1 — Risk Overview:
+  Data: data/features/kyc_features.parquet
+  Plots:
+    - Risk level donut (Critical/High/Medium/Low)
+    - sector_risk distribution (bar: Low/Medium/High)
+    - pep_flag rate (st.metric: "PEP Flagged %")
+    - sanctions_flag rate (st.metric: "Sanctions Flagged %")
+    - ofac_match_flag rate (st.metric: "OFAC Match Rate %")
+    - structuring_pattern_flag distribution (bar)
+
+Tab 2 — High Risk Customers:
+  Data: from /api/compliance/risk/high (n=50)
+  Display as styled DataFrame. Apply row colors:
+    Critical → background #FADBD8 (light red)
+    High Risk → background #FDEBD0 (light orange)
+    Medium Risk → background #FEF9E7 (light yellow)
+    Low Risk → background #D5F5E3 (light green)
+  (Use st.dataframe with column config, or pd.Styler)
+  Columns shown: client_id, kyc_risk_score, risk_level, recommended_action
+
+Tab 3 — AML Insights:
+  Data: data/processed/kyc_clean.csv
+  Plots:
+    - structuring_pattern_flag distribution (bar)
+    - rapid_movement_flag distribution (bar)
+    - trade_mispricing_flag distribution (bar)
+    - Heatmap: pivot client_country vs sector_risk, count → px.imshow
+    - ownership_opacity_score by risk_level — box plot
+    - ofac_match_flag by transaction_type — grouped bar
+
+Tab 4 — KYC Predictor:
+  Input form:
+    col1: pep_flag (checkbox), sanctions_flag (checkbox),
+           ofac_match_flag (checkbox), fatf_txn_flag (checkbox)
+    col2: structuring_pattern_flag (checkbox), rapid_movement_flag (checkbox),
+           trade_mispricing_flag (checkbox), sectoral_sanctions_flag (checkbox)
+    col3: ownership_opacity_score (slider 0.0–1.0, step 0.05),
+           sector_risk (selectbox: Low/Medium/High)
+  Button: "🛡️ Assess KYC Risk"
+  On click: POST to /api/compliance/risk/predict
+  Display:
+    Level indicator: st.error() for Critical, st.warning() for High,
+                     st.info() for Medium, st.success() for Low
+    st.metric("Risk Score", f"{result['risk_score']:.2%}")
+    st.metric("Risk Level", result['risk_level'])
+    st.write(f"**Recommended Action:** {result['recommended_action']}")
+
+---
+
+FILE: frontend/pages/4_complaint_intelligence.py
+
+Tabs: ["Analytics", "Live AI Agent", "Escalation Dashboard"]
+
+Tab 1 — Analytics:
+  Data: data/processed/complaints_with_escalation.csv
+  Plots:
+    - complaint_category donut (if column exists, else Product)
+    - emotion distribution bar (if emotion column exists)
+    - Category × Emotion heatmap:
+        pivot = df.groupby(['complaint_category','emotion']).size().unstack(fill_value=0)
+        px.imshow(pivot, color_continuous_scale='Purples', template='plotly_white')
+    - escalation_probability histogram
+    - Escalation rate by complaint_category (bar)
+    - timely_response pie (Yes vs No)
+
+Tab 2 — Live AI Agent:
+  narrative = st.text_area("📝 Paste customer complaint narrative",
+                            height=200,
+                            placeholder="Enter the full complaint text here...")
+  if st.button("🤖 Run AI Agent"):
+    if len(narrative.strip()) < 20:
+      st.warning("Please enter a complaint with at least 20 characters.")
+    else:
+      with st.spinner("🤖 AI Agent processing complaint..."):
+        try:
+          response = requests.post(
+            f"{BACKEND}/api/complaints/process",
+            json={"narrative": narrative},
+            timeout=60
+          )
+          result = response.json()
+          
+          st.success(f"**📋 Summary:** {result.get('summary','N/A')}")
+          st.markdown("---")
+          
+          col1, col2, col3 = st.columns(3)
+          col1.metric("🏷️ Category",    result.get('category','N/A'))
+          col2.metric("😤 Emotion",     result.get('emotion','N/A'))
+          col3.metric("⚡ Escalation",  f"{result.get('escalation_probability',0):.0%}")
+          
+          priority = result.get('priority_level', 'STANDARD')
+          if priority == "CRITICAL":
+            st.error(f"🔴 Priority: {priority}")
+          elif priority == "HIGH":
+            st.warning(f"🟡 Priority: {priority}")
+          else:
+            st.info(f"🟢 Priority: {priority}")
+          
+          col_a, col_b = st.columns(2)
+          col_a.info(f"👥 **Assigned Team:** {result.get('assigned_team','N/A')}")
+          col_b.info(f"✅ **Action:** {result.get('recommended_action','N/A')}")
+          
+          st.subheader("💬 Suggested Customer Response")
+          st.write(result.get('suggested_response','N/A'))
+          
+        except requests.exceptions.Timeout:
+          st.error("Request timed out. The AI agent is taking too long. Try again.")
+        except Exception as e:
+          st.error(f"Error processing complaint: {str(e)}")
+
+Tab 3 — Escalation Dashboard:
+  Data: data/processed/complaints_with_escalation.csv
+  Add priority_level column:
+    conditions:
+      escalation_probability > 0.90 → "CRITICAL"
+      escalation_probability > 0.80 → "HIGH"
+      else → "STANDARD"
+  Display:
+    - 3 st.metric cards: CRITICAL count, HIGH count, STANDARD count
+    - Top 50 escalation risk table:
+        Sort by escalation_probability desc
+        Columns: complaint_id, Product, complaint_category, emotion,
+                 escalation_probability, priority_level
+        st.dataframe with use_container_width=True
+    - Escalation rate by Product top 10 (bar, color by rate)
+    - Escalation probability by emotion (box plot)
+
+=======================================================
+FINAL VERIFICATION CHECKLIST
+=======================================================
+
+Run in order. Do not mark complete until ALL pass:
+
+[ ] data/raw/ — all 7 datasets present in correct subfolders
+[ ] All 13 notebooks execute top-to-bottom without errors (run each with kernel restart)
+[ ] data/processed/ contains all 5 cleaned CSVs:
+    customer_clean.csv, transaction_clean.csv, campaign_clean.csv,
+    kyc_clean.csv, complaints_clean.csv
+[ ] data/processed/ also contains:
+    customer_with_segments.csv, churn_predictions.csv,
+    inactivity_scores.csv, bank_tx_activity.csv,
+    unified_customer_profile.csv, complaints_with_nlp.csv,
+    complaints_with_escalation.csv
+[ ] data/features/ contains all 3 parquets:
+    customer_features.parquet, campaign_features.parquet, kyc_features.parquet
+[ ] models/ subdirectories each contain .pkl files:
+    segmentation/kmeans_model.pkl + scaler.pkl
+    inactivity/activity_scorer.pkl
+    churn/logistic_regression.pkl + random_forest.pkl + xgboost_model.pkl
+    campaign/xgboost_campaign.pkl
+    kyc/random_forest_kyc.pkl + xgboost_kyc.pkl
+    escalation/xgboost_escalation.pkl
+[ ] python -c "from src.agents.complaint_agent import run_complaint_agent" — no errors
+[ ] python main.py starts cleanly → GET /api/health returns {"status":"ok"}
+[ ] All 5 FastAPI routers return valid JSON (test each endpoint)
+[ ] streamlit run frontend/dashboard.py — loads without exceptions
+[ ] All 5 Streamlit pages load without exceptions
+[ ] Live AI Agent tab: process test complaint → complete state returned
+[ ] Executive dashboard: all 4 KPI metrics show non-zero values
