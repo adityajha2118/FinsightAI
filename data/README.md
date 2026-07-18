@@ -4,7 +4,7 @@
 
 All raw datasets are stored in Google Drive.
 
-**Download Link:** [FinSight AI Datasets — Google Drive](INSERT YOUR GOOGLE DRIVE FOLDER LINK HERE after uploading)
+**Download Link:** [FinSight AI Datasets — Google Drive](https://drive.google.com/drive/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3?usp=drive_link)
 
 ### How to Download
 

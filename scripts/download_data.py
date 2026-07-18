@@ -18,13 +18,13 @@ import sys
 # File ID is the part after /d/ in the shareable link:
 # https://drive.google.com/file/d/FILE_ID_HERE/view
 DRIVE_FILES = {
-    "data/raw/customer/customer_data.csv":             None,  # REPLACE
-    "data/raw/transactions/transactions.csv":           None,  # REPLACE
-    "data/raw/transactions/bank_transactions.csv":      None,  # REPLACE
-    "data/raw/campaign/bank_campaign.csv":              None,  # REPLACE
-    "data/raw/kyc/kyc_part1.csv":                      None,  # REPLACE
-    "data/raw/kyc/kyc_part2.csv":                      None,  # REPLACE
-    "data/raw/complaints/cfpb_complaints.csv":          None,  # REPLACE
+    "data/raw/customer/customer_data.csv":             "195VAF0kajMmNt-JhlxDTymZHlV_QgSkV",
+    "data/raw/transactions/transactions.csv":           "1MYxnhhHq1dGfZeJ8NP697xtjeGBlYg8e",
+    "data/raw/transactions/bank_transactions.csv":      "1p3_Ft5RPtyS2bldOb7W56giwSsb_MTNY",
+    "data/raw/campaign/bank_campaign.csv":              "1TcYuAAbAN7oKDfsYkvtnzJkYjx3Tcb3c",
+    "data/raw/kyc/kyc_part1.csv":                      "1r6KtRFSI8I7C_uTzHJKvaw-Y1F9MQNZ8",
+    "data/raw/kyc/kyc_part2.csv":                      "1STgf5eQg9_N94Jr1r-a3SEMjBM6jgLSz",
+    "data/raw/complaints/cfpb_complaints.csv":          "14-2JpcvjEYra0Oy77R8CFFYn053uMVsG",
 }
 
 
