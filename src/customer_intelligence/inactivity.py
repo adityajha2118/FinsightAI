@@ -13,7 +13,18 @@ def get_activity_distribution() -> dict:
 def get_future_churn_watchlist(n: int = 100) -> list:
     """Return top n future churn candidates sorted by activity_score ascending."""
     df = pd.read_csv(INACTIVITY_PATH)
-    return df[df['future_churn_candidate'] == True].sort_values('activity_score', ascending=True).head(n).to_dict(orient='records')
+    watchlist = df[df['future_churn_candidate'] == True].sort_values('activity_score', ascending=True).head(n)
+    
+    # Add days_since_last_tx if not present (frontend expects this)
+    if 'days_since_last_tx' not in watchlist.columns:
+        if 'Months_Inactive_12_mon' in watchlist.columns:
+            watchlist = watchlist.copy()
+            watchlist['days_since_last_tx'] = (watchlist['Months_Inactive_12_mon'] * 30).astype(int)
+        else:
+            watchlist = watchlist.copy()
+            watchlist['days_since_last_tx'] = 0
+    
+    return watchlist.to_dict(orient='records')
 
 def get_bank_tx_summary() -> dict:
     """Return summary stats from bank_tx_activity.csv."""

@@ -32,12 +32,19 @@ def predict_churn(features: dict) -> dict:
     return {"churn_probability": prob, "risk_label": label}
 
 def get_churn_distribution() -> dict:
-    """Return {risk_label: count} from unified profile churn_risk_label column."""
+    """Return {risk_label: count} from unified profile risk_label column."""
     df = pd.read_csv(PROFILE_PATH)
-    return df['churn_risk_label'].value_counts().to_dict()
+    col = 'risk_label' if 'risk_label' in df.columns else 'churn_risk_label'
+    return df[col].value_counts().to_dict()
 
 def get_top_churn_customers(n: int = 50) -> list:
     """Return top n customers by churn_probability as list of dicts."""
     df = pd.read_csv(PROFILE_PATH)
-    cols = ['CLIENTNUM', 'churn_probability', 'churn_risk_label', 'segment_name']
-    return df[cols].sort_values('churn_probability', ascending=False).head(n).to_dict(orient='records')
+    # Map to expected column names for the frontend
+    risk_col = 'risk_label' if 'risk_label' in df.columns else 'churn_risk_label'
+    seg_col = 'segment' if 'segment' in df.columns else 'segment_name'
+    cols = ['CLIENTNUM', 'churn_probability', risk_col, seg_col]
+    result = df[cols].sort_values('churn_probability', ascending=False).head(n)
+    # Rename to consistent names expected by frontend
+    result = result.rename(columns={risk_col: 'churn_risk_label', seg_col: 'segment_name'})
+    return result.to_dict(orient='records')
