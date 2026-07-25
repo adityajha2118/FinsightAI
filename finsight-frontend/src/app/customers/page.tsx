@@ -45,6 +45,19 @@ export default function CustomerAnalyticsPage() {
           <span className="text-slate-600">|</span>
           <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">bank_transactions.csv</a>
         </div>
+        </div>
+        <div className="mt-1 flex flex-wrap gap-2 text-xs">
+          <span className="text-slate-500">Related Notebooks:</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/01_customer_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">01_customer_eda.ipynb</a>
+          <span className="text-slate-600">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/02_transaction_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">02_transaction_eda.ipynb</a>
+          <span className="text-slate-600">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/06_customer_segmentation.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">06_customer_segmentation.ipynb</a>
+          <span className="text-slate-600">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/07_inactivity_detection.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">07_inactivity_detection.ipynb</a>
+          <span className="text-slate-600">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/08_churn_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">08_churn_prediction.ipynb</a>
+        </div>
       </div>
 
       {/* KPIs */}

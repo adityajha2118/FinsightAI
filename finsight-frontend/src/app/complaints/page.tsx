@@ -52,6 +52,14 @@ export default function ComplaintAnalyticsPage() {
           <span className="text-slate-500">Source Datasets:</span>
           <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">cfpb_complaints.csv</a>
         </div>
+        <div className="mt-1 flex flex-wrap gap-2 text-xs">
+          <span className="text-slate-500">Related Notebooks:</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/05_complaint_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">05_complaint_eda.ipynb</a>
+          <span className="text-slate-600">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/11_complaint_sentiment.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">11_complaint_sentiment.ipynb</a>
+          <span className="text-slate-600">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/12_escalation_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">12_escalation_prediction.ipynb</a>
+        </div>
       </div>
 
       {/* KPIs */}
