@@ -45,22 +45,8 @@ export default function Sidebar() {
         <p className="px-6 mb-2 text-[10px] font-semibold text-slate-500 uppercase tracking-widest">
           Modules
         </p>
-        {NAV_ITEMS.map(({ href, label, icon: Icon, external }) => {
+        {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
           const isActive = pathname === href;
-          if (external) {
-            return (
-              <a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="sidebar-link mt-4 opacity-80 hover:opacity-100"
-              >
-                <Icon className="w-4 h-4 flex-shrink-0" />
-                <span>{label}</span>
-              </a>
-            );
-          }
           return (
             <Link
               key={href}
