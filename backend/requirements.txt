@@ -1,0 +1,41 @@
+# ──────────────────────────────────────────────────────────
+# FinSight AI — Python Dependencies (v2.0)
+# ──────────────────────────────────────────────────────────
+# No LLMs. No LangChain. No transformers. No Streamlit.
+# PostgreSQL is the single source of truth.
+# ──────────────────────────────────────────────────────────
+
+# ── Core Framework ───────────────────────────────────────
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# ── Database ─────────────────────────────────────────────
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.9
+
+# ── Data Processing ──────────────────────────────────────
+pandas>=2.1.0
+numpy>=1.26.0
+
+# ── Machine Learning ─────────────────────────────────────
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+imbalanced-learn>=0.11.0
+joblib>=1.3.0
+
+# ── Statistics ───────────────────────────────────────────
+scipy>=1.11.0
+statsmodels>=0.14.0
+
+# ── NLP (VADER only) ─────────────────────────────────────
+nltk>=3.8.0
+
+# ── Utilities ────────────────────────────────────────────
+python-dotenv>=1.0.0
+python-multipart>=0.0.6
+
+# ── Development & Testing ───────────────────────────────
+pytest>=7.4.0
+httpx>=0.25.0
