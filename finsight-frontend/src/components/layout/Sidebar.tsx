@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   { href: "/campaigns", label: "Campaign Analytics", icon: Megaphone },
   { href: "/compliance", label: "Compliance Analytics", icon: ShieldCheck },
   { href: "/experimentation", label: "Experimentation", icon: FlaskConical },
-  { href: "https://github.com/adityajha2118/AMEX_FinsightAI/tree/main/FinSight-AI/notebooks", label: "Jupyter Notebooks", icon: BookOpen, external: true },
+  { href: "https://github.com/adityajha2118/FinsightAI/tree/main/notebooks", label: "Jupyter Notebooks", icon: BookOpen, external: true },
 ];
 
 export default function Sidebar() {
