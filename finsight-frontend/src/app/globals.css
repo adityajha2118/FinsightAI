@@ -186,3 +186,8 @@ body {
 
 /* ── Plotly overrides ────────────────────────────────────── */
 .js-plotly-plot .plotly .main-svg { background: transparent !important; }
+
+/* ── 3D Card Effects ────────────────────────────────────── */
+.perspective-1000 {
+  perspective: 1000px;
+}

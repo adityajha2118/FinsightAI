@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Executive Dashboard", icon: LayoutDashboard },
+  { href: "/dashboard", label: "Executive Dashboard", icon: LayoutDashboard },
   { href: "/customers", label: "Customer Analytics", icon: Users },
   { href: "/complaints", label: "Complaint Analytics", icon: MessageSquareWarning },
   { href: "/campaigns", label: "Campaign Analytics", icon: Megaphone },

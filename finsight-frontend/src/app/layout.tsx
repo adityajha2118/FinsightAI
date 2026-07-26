@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Sidebar from "@/components/layout/Sidebar";
-
 export const metadata: Metadata = {
   title: "FinSight AI — Enterprise Customer Analytics",
   description:
@@ -22,8 +20,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <Sidebar />
-        <main className="main-content">{children}</main>
+        {children}
       </body>
     </html>
   );
