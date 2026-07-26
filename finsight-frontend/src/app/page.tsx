@@ -1,8 +1,12 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Users, Megaphone, ShieldCheck, MessageSquareWarning,
   FlaskConical, LayoutDashboard
 } from "lucide-react";
+import { api } from "@/lib/api";
 
 const MODULES = [
   {
@@ -50,8 +54,20 @@ const TECH = [
 ];
 
 export default function LandingPage() {
+  const [customerOverview, setCustomerOverview] = useState<any>(null);
+  const [complaintKpis, setComplaintKpis] = useState<any>(null);
+
+  useEffect(() => {
+    api.customers.getOverview().then(setCustomerOverview).catch(() => {});
+    api.complaints.getKpis().then(setComplaintKpis).catch(() => {});
+  }, []);
+
+  const totalCustomers = customerOverview?.total_customers;
+  const churnRatePct = customerOverview?.churn_rate_pct;
+  const totalComplaints = complaintKpis?.total_complaints;
+
   return (
-    <div style={{ background: "#FFFFFF", color: "#1A1A1A", fontFamily: '"Helvetica Neue", Arial, sans-serif' }}>
+    <div>
 
       {/* ── Hero Section ─────────────────────────────────── */}
       <section className="lp-hero" id="overview">
@@ -115,16 +131,22 @@ export default function LandingPage() {
       <div className="lp-kpi-strip">
         <div className="lp-kpi-strip-inner">
           <div className="lp-kpi-item">
-            <div className="lp-kpi-val">100,000+</div>
+            <div className="lp-kpi-val">
+              {totalCustomers ? totalCustomers.toLocaleString() : "—"}
+            </div>
             <div className="lp-kpi-lbl">Customers Analyzed</div>
           </div>
           <div className="lp-kpi-item">
-            <div className="lp-kpi-val">15.2%</div>
+            <div className="lp-kpi-val">
+              {churnRatePct != null ? `${churnRatePct}%` : "—"}
+            </div>
             <div className="lp-kpi-lbl">Churn Rate Detected</div>
           </div>
           <div className="lp-kpi-item">
-            <div className="lp-kpi-val">6</div>
-            <div className="lp-kpi-lbl">Analytics Modules</div>
+            <div className="lp-kpi-val">
+              {totalComplaints ? totalComplaints.toLocaleString() : "—"}
+            </div>
+            <div className="lp-kpi-lbl">Complaints Processed</div>
           </div>
           <div className="lp-kpi-item">
             <div className="lp-kpi-val">AI-Powered</div>
