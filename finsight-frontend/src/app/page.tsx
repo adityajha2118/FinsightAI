@@ -53,39 +53,6 @@ export default function LandingPage() {
   return (
     <div style={{ background: "#FFFFFF", color: "#1A1A1A", fontFamily: '"Helvetica Neue", Arial, sans-serif' }}>
 
-      {/* ── Centurion Stripe ─────────────────────────────── */}
-      <div className="centurion-stripe" />
-
-      {/* ── Navigation ───────────────────────────────────── */}
-      <nav className="lp-nav">
-        <div className="lp-nav-inner">
-          <Link href="/" className="lp-nav-logo">
-            <div className="lp-nav-logo-box">AMEX</div>
-            <span className="lp-nav-logo-text">FinSight AI</span>
-          </Link>
-
-          <div className="lp-nav-links">
-            <Link href="#overview" className="lp-nav-link active">Overview</Link>
-            <Link href="/customers" className="lp-nav-link">Customer Intelligence</Link>
-            <Link href="/campaigns" className="lp-nav-link">Campaign Analytics</Link>
-            <Link href="/compliance" className="lp-nav-link">Compliance</Link>
-            <Link href="/complaints" className="lp-nav-link">Complaint Intelligence</Link>
-          </div>
-
-          <div className="lp-nav-right">
-            <span className="lp-nav-author">Built by Aditya Kumar Jha</span>
-            <a
-              href="https://github.com/adityajha2118/FinsightAI"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lp-btn lp-btn-primary"
-            >
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </nav>
-
       {/* ── Hero Section ─────────────────────────────────── */}
       <section className="lp-hero" id="overview">
         <div className="lp-hero-inner">

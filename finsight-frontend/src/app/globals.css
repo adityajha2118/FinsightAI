@@ -3,26 +3,26 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #111827;
-  --bg-card: #1a1f35;
-  --bg-card-hover: #222842;
-  --border: #2a3050;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --accent-blue: #3b82f6;
-  --accent-indigo: #6366f1;
-  --accent-emerald: #10b981;
-  --accent-amber: #f59e0b;
-  --accent-rose: #f43f5e;
-  --accent-purple: #8b5cf6;
-  --gradient-primary: linear-gradient(135deg, #6366f1, #3b82f6);
-  --gradient-success: linear-gradient(135deg, #10b981, #059669);
-  --gradient-danger: linear-gradient(135deg, #f43f5e, #e11d48);
-  --gradient-warning: linear-gradient(135deg, #f59e0b, #d97706);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F5;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F5F5F5;
+  --border: #D9D9D9;
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --accent-blue: #006FCF;
+  --accent-indigo: #006FCF;
+  --accent-emerald: #008000;
+  --accent-amber: #C07000;
+  --accent-rose: #C0001A;
+  --accent-purple: #6366f1;
+  --gradient-primary: linear-gradient(135deg, #006FCF, #004A8F);
+  --gradient-success: linear-gradient(135deg, #008000, #006600);
+  --gradient-danger: linear-gradient(135deg, #C0001A, #900014);
+  --gradient-warning: linear-gradient(135deg, #C07000, #995900);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 4px 16px rgba(0, 111, 207, 0.12);
 }
 
 * {
@@ -36,22 +36,22 @@ html {
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family: "Helvetica Neue", Arial, "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── Scrollbar ──────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+::-webkit-scrollbar-track { background: #F5F5F5; }
+::-webkit-scrollbar-thumb { background: #D9D9D9; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #999999; }
 
 /* ── KPI Card ───────────────────────────────────────────── */
 .kpi-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 1.25rem 1.5rem;
   transition: all 0.2s ease;
   box-shadow: var(--shadow-card);
@@ -91,20 +91,23 @@ body {
 .chart-container {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 1.25rem;
   box-shadow: var(--shadow-card);
 }
 
-/* ── AG Grid Dark Theme Override ─────────────────────────── */
-.ag-theme-alpine-dark {
-  --ag-background-color: var(--bg-card) !important;
-  --ag-header-background-color: var(--bg-secondary) !important;
-  --ag-odd-row-background-color: rgba(255, 255, 255, 0.02) !important;
-  --ag-row-hover-color: rgba(99, 102, 241, 0.08) !important;
-  --ag-border-color: var(--border) !important;
-  --ag-font-family: "Inter", system-ui, sans-serif !important;
+/* ── AG Grid Theme Override ──────────────────────────────── */
+.ag-theme-alpine-dark,
+.ag-theme-alpine {
+  --ag-background-color: #FFFFFF !important;
+  --ag-header-background-color: #F5F5F5 !important;
+  --ag-odd-row-background-color: #FAFAFA !important;
+  --ag-row-hover-color: rgba(0, 111, 207, 0.08) !important;
+  --ag-border-color: #D9D9D9 !important;
+  --ag-font-family: "Helvetica Neue", Arial, sans-serif !important;
   --ag-font-size: 13px !important;
+  --ag-foreground-color: #1A1A1A !important;
+  --ag-secondary-foreground-color: #666666 !important;
 }
 
 /* ── Sidebar ─────────────────────────────────────────────── */
@@ -143,9 +146,15 @@ body {
   border-left-color: var(--accent-indigo);
 }
 .main-content {
-  margin-left: 260px;
-  padding: 2rem;
-  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 24px;
+  min-height: calc(100vh - 75px);
+}
+
+/* ── Page Content Offset ───────────────────────────────── */
+.page-content {
+  padding-top: 75px;
 }
 
 /* ── Status Badges ──────────────────────────────────────── */
@@ -167,9 +176,9 @@ body {
 
 /* ── Recommendation Box ─────────────────────────────────── */
 .recommendation-box {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(59, 130, 246, 0.08));
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  border-radius: 12px;
+  background: rgba(0, 111, 207, 0.04);
+  border: 1px solid rgba(0, 111, 207, 0.2);
+  border-radius: 4px;
   padding: 1.25rem;
 }
 .recommendation-box h3 {
@@ -316,9 +325,8 @@ body {
 
 /* ── Hero Section ──────────────────────────────────────── */
 .lp-hero {
-  padding: 80px 0 64px;
+  padding: 64px 0;
   background: #FFFFFF;
-  padding-top: 155px;
 }
 .lp-hero-inner {
   max-width: 1200px;
