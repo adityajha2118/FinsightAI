@@ -1,158 +1,276 @@
 import Link from "next/link";
-import { Activity, LayoutDashboard } from "lucide-react";
+import {
+  Users, Megaphone, ShieldCheck, MessageSquareWarning,
+  FlaskConical, LayoutDashboard
+} from "lucide-react";
+
+const MODULES = [
+  {
+    icon: Users,
+    title: "Customer Intelligence",
+    desc: "XGBoost-powered churn prediction, customer segmentation, and lifetime value analysis across 100,000+ cardmember profiles.",
+    href: "/customers",
+  },
+  {
+    icon: Megaphone,
+    title: "Campaign Analytics",
+    desc: "Multi-channel campaign performance tracking with ROI attribution, channel optimization, and real-time conversion metrics.",
+    href: "/campaigns",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Compliance Analytics",
+    desc: "Automated regulatory compliance monitoring with risk scoring, anomaly detection, and audit-ready reporting dashboards.",
+    href: "/compliance",
+  },
+  {
+    icon: MessageSquareWarning,
+    title: "Complaint Intelligence",
+    desc: "NLP-driven complaint classification and sentiment analysis with AI-powered routing and resolution time optimization.",
+    href: "/complaints",
+  },
+  {
+    icon: FlaskConical,
+    title: "Experimentation Hub",
+    desc: "A/B testing framework with statistical significance calculations, variant analysis, and experiment lifecycle management.",
+    href: "/experimentation",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Executive Dashboard",
+    desc: "Unified command center with real-time KPIs, cross-module insights, and drill-down analytics for leadership decision-making.",
+    href: "/dashboard",
+  },
+];
+
+const TECH = [
+  "Next.js", "React", "TypeScript", "Tailwind CSS",
+  "FastAPI", "Python", "PostgreSQL", "SQLAlchemy",
+  "XGBoost", "scikit-learn", "Plotly", "Render", "Vercel",
+];
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white selection:bg-blue-500/30">
-      {/* Top Navigation */}
-      <nav className="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/20">
-            <Activity className="w-5 h-5 text-white" />
+    <div style={{ background: "#FFFFFF", color: "#1A1A1A", fontFamily: '"Helvetica Neue", Arial, sans-serif' }}>
+
+      {/* ── Centurion Stripe ─────────────────────────────── */}
+      <div className="centurion-stripe" />
+
+      {/* ── Navigation ───────────────────────────────────── */}
+      <nav className="lp-nav">
+        <div className="lp-nav-inner">
+          <Link href="/" className="lp-nav-logo">
+            <div className="lp-nav-logo-box">AMEX</div>
+            <span className="lp-nav-logo-text">FinSight AI</span>
+          </Link>
+
+          <div className="lp-nav-links">
+            <Link href="#overview" className="lp-nav-link active">Overview</Link>
+            <Link href="/customers" className="lp-nav-link">Customer Intelligence</Link>
+            <Link href="/campaigns" className="lp-nav-link">Campaign Analytics</Link>
+            <Link href="/compliance" className="lp-nav-link">Compliance</Link>
+            <Link href="/complaints" className="lp-nav-link">Complaint Intelligence</Link>
           </div>
-          <div>
-            <h1 className="text-xl font-bold tracking-tight">FinSight AI</h1>
-            <p className="text-[10px] text-blue-400 font-semibold tracking-widest uppercase">
-              Enterprise
-            </p>
-          </div>
-        </div>
 
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <Link href="#overview" className="hover:text-white transition-colors">Overview</Link>
-          <Link href="#features" className="hover:text-white transition-colors">Platform Features</Link>
-          <Link href="#architecture" className="hover:text-white transition-colors">Architecture</Link>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <a href="https://github.com/adityajha2118/FinsightAI" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-300 hover:text-white flex items-center gap-2 transition-colors">
-            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            GitHub
-          </a>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-8 pt-20 pb-32 grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide uppercase mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
-            Enterprise Fintech Analytics
-          </div>
-          
-          <h2 className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]">
-            Customer <br />
-            Intelligence, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
-              Reimagined.
-            </span>
-          </h2>
-          
-          <p className="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed">
-            FinSight AI simulates how American Express analyzes customer behavior — 
-            predicting churn, detecting compliance risk, and surfacing decision intelligence 
-            for every level of the organization using production-grade machine learning.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4">
-            <Link 
-              href="/dashboard" 
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-lg shadow-lg shadow-blue-500/25 transition-all hover:-translate-y-0.5"
-            >
-              <LayoutDashboard className="w-4 h-4" />
-              Explore Dashboard
-            </Link>
-            <a 
+          <div className="lp-nav-right">
+            <span className="lp-nav-author">Built by Aditya Kumar Jha</span>
+            <a
               href="https://github.com/adityajha2118/FinsightAI"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-lg border border-slate-700 transition-all"
+              className="lp-btn lp-btn-primary"
             >
-              View Architecture
+              View on GitHub
             </a>
           </div>
         </div>
+      </nav>
 
-        {/* CSS Credit Card Illustration */}
-        <div className="relative perspective-1000">
-          <div className="relative w-full max-w-[500px] mx-auto aspect-[1.586/1] rounded-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 shadow-2xl p-8 flex flex-col justify-between overflow-hidden border border-white/10 transform rotate-y-[-10deg] rotate-x-[5deg] hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700 group">
-            
-            {/* Card Background Patterns */}
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.2),transparent_70%)]" />
-            <div className="absolute -right-20 -top-20 w-64 h-64 bg-blue-400 rounded-full mix-blend-overlay blur-3xl opacity-50 group-hover:opacity-70 transition-opacity" />
-            
-            {/* Card Header */}
-            <div className="relative flex justify-between items-start z-10">
-              <div className="text-white font-black tracking-widest text-xl opacity-90">
-                AMEX
-              </div>
-              {/* Contactless Icon */}
-              <div className="flex flex-col gap-1 opacity-70">
-                <div className="w-1.5 h-1.5 rounded-full bg-white ml-auto" />
-                <div className="w-2.5 h-1.5 rounded-full border-t-2 border-white ml-auto" />
-                <div className="w-3.5 h-2 rounded-full border-t-2 border-white ml-auto" />
-                <div className="w-4.5 h-2.5 rounded-full border-t-2 border-white ml-auto" />
-              </div>
+      {/* ── Hero Section ─────────────────────────────────── */}
+      <section className="lp-hero" id="overview">
+        <div className="lp-hero-inner">
+          {/* Left column */}
+          <div>
+            <p className="lp-hero-eyebrow">Enterprise Fintech Analytics</p>
+            <h1 className="lp-hero-headline">
+              Customer Intelligence,<br />Reimagined.
+            </h1>
+            <p className="lp-hero-sub">
+              FinSight AI simulates how American Express analyzes customer behavior
+              — predicting churn, detecting compliance risk, routing complaints with AI,
+              and surfacing intelligence for every level of the organization.
+            </p>
+            <div className="lp-hero-buttons">
+              <Link href="/dashboard" className="lp-btn lp-btn-primary">
+                Explore Dashboard
+              </Link>
+              <a
+                href="https://github.com/adityajha2118/FinsightAI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lp-btn lp-btn-outline"
+              >
+                View Architecture
+              </a>
             </div>
+          </div>
 
-            {/* Abstract Centered Logo / EMV Chip */}
-            <div className="relative flex flex-col items-center justify-center gap-2 z-10">
-               <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center bg-white/5 backdrop-blur-sm">
-                 <div className="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center">
-                   <div className="w-8 h-4 bg-white/60 rounded-full" />
-                 </div>
-               </div>
-            </div>
-
-            {/* Card Footer */}
-            <div className="relative flex justify-between items-end z-10">
-              <div>
-                <p className="text-white/60 text-xs font-semibold tracking-widest uppercase mb-1">Authorized User</p>
-                <p className="text-white text-lg font-medium tracking-widest">FINSIGHT AI PLATFORM</p>
+          {/* Right column — Amex card */}
+          <div>
+            <div className="amex-card">
+              <div className="amex-card-watermark">AMEX</div>
+              <div className="amex-card-brand">American Express</div>
+              <div className="amex-card-center">
+                <div className="amex-card-centurion">
+                  <div className="amex-card-centurion-inner">
+                    <div className="amex-card-centurion-face" />
+                  </div>
+                </div>
               </div>
-              
-              {/* Gold Chip */}
-              <div className="w-12 h-9 rounded bg-gradient-to-br from-yellow-300 to-yellow-600 flex overflow-hidden opacity-90">
-                 <div className="flex-1 border-r border-yellow-700/30" />
-                 <div className="flex-1 flex flex-col">
-                   <div className="flex-1 border-b border-yellow-700/30" />
-                   <div className="flex-1" />
-                 </div>
+              <div className="amex-card-bottom">
+                <div>
+                  <p className="amex-card-label">Analytics Platform</p>
+                  <p className="amex-card-title">FinSight AI Platform</p>
+                </div>
+                <div className="amex-card-chip">
+                  <div className="amex-card-chip-left" />
+                  <div className="amex-card-chip-right">
+                    <div /><div />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          
-          {/* Decorative glows behind card */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-500/20 blur-[100px] -z-10 rounded-full" />
         </div>
-      </main>
+      </section>
 
-      {/* Metrics Bar */}
-      <div className="border-t border-slate-800 bg-slate-900/50 backdrop-blur-xl py-12">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-800">
-          <div className="text-center px-4">
-            <p className="text-4xl font-bold text-white mb-2">100k+</p>
-            <p className="text-xs font-bold text-slate-500 tracking-widest uppercase">Customers Analyzed</p>
+      {/* ── KPI Strip ────────────────────────────────────── */}
+      <div className="lp-kpi-strip">
+        <div className="lp-kpi-strip-inner">
+          <div className="lp-kpi-item">
+            <div className="lp-kpi-val">100,000+</div>
+            <div className="lp-kpi-lbl">Customers Analyzed</div>
           </div>
-          <div className="text-center px-4">
-            <p className="text-4xl font-bold text-white mb-2">100%</p>
-            <p className="text-xs font-bold text-slate-500 tracking-widest uppercase">Cloud Deployed</p>
+          <div className="lp-kpi-item">
+            <div className="lp-kpi-val">15.2%</div>
+            <div className="lp-kpi-lbl">Churn Rate Detected</div>
           </div>
-          <div className="text-center px-4">
-            <p className="text-4xl font-bold text-white mb-2">5</p>
-            <p className="text-xs font-bold text-slate-500 tracking-widest uppercase">Analytics Modules</p>
+          <div className="lp-kpi-item">
+            <div className="lp-kpi-val">6</div>
+            <div className="lp-kpi-lbl">Analytics Modules</div>
           </div>
-          <div className="text-center px-4">
-            <p className="text-4xl font-bold text-white mb-2">XGBoost</p>
-            <p className="text-xs font-bold text-slate-500 tracking-widest uppercase">ML Predictions</p>
+          <div className="lp-kpi-item">
+            <div className="lp-kpi-val">AI-Powered</div>
+            <div className="lp-kpi-lbl">Complaint Routing</div>
           </div>
         </div>
       </div>
+
+      {/* ── Platform Modules ─────────────────────────────── */}
+      <section className="lp-section" style={{ background: "#FFFFFF" }}>
+        <div className="lp-section-inner">
+          <p className="lp-section-label">Platform Modules</p>
+          <h2 className="lp-section-title">Six Integrated Analytics Engines</h2>
+          <p className="lp-section-sub">
+            Each module connects to a shared PostgreSQL data layer, powering
+            real-time dashboards with production-grade machine learning.
+          </p>
+          <div className="lp-cards-grid">
+            {MODULES.map(({ icon: Icon, title, desc, href }) => (
+              <div className="lp-card" key={title}>
+                <div className="lp-card-icon">
+                  <Icon />
+                </div>
+                <h3>{title}</h3>
+                <p>{desc}</p>
+                <Link href={href} className="lp-card-link">
+                  Explore →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section Stripe ───────────────────────────────── */}
+      <div className="lp-section-stripe" />
+
+      {/* ── Tech Stack ───────────────────────────────────── */}
+      <div className="lp-tech-strip">
+        <div className="lp-tech-inner">
+          <p className="lp-tech-label">Built With</p>
+          <div className="lp-tech-badges">
+            {TECH.map((t) => (
+              <span className="lp-tech-badge" key={t}>{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Footer ───────────────────────────────────────── */}
+      <footer className="lp-footer">
+        <div className="lp-footer-inner">
+          <div className="lp-footer-grid">
+            {/* Column 1 — Brand */}
+            <div>
+              <div className="lp-footer-logo">
+                <div className="lp-footer-logo-box">AMEX</div>
+                <span className="lp-footer-logo-text">FinSight AI</span>
+              </div>
+              <p className="lp-footer-desc">
+                An enterprise-grade analytics simulation inspired by
+                American Express, built to demonstrate full-stack data
+                engineering, machine learning, and modern frontend development.
+              </p>
+            </div>
+
+            {/* Column 2 — Quick Links */}
+            <div>
+              <h4>Quick Links</h4>
+              <div className="lp-footer-links">
+                <Link href="/dashboard">Executive Dashboard</Link>
+                <a href="https://github.com/adityajha2118/FinsightAI" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                <Link href="/customers">Customer Analytics</Link>
+                <Link href="/complaints">Complaint Analytics</Link>
+              </div>
+            </div>
+
+            {/* Column 3 — Modules */}
+            <div>
+              <h4>Analytics Modules</h4>
+              <div className="lp-footer-links">
+                <Link href="/customers">Customer Intelligence</Link>
+                <Link href="/campaigns">Campaign Analytics</Link>
+                <Link href="/compliance">Compliance</Link>
+                <Link href="/experimentation">Experimentation</Link>
+              </div>
+            </div>
+
+            {/* Column 4 — Connect */}
+            <div>
+              <h4>Connect</h4>
+              <div className="lp-footer-author">
+                Aditya Kumar Jha<br />
+                Data Science &amp; Analytics<br />
+              </div>
+              <div className="lp-footer-social">
+                <a href="https://github.com/adityajha2118" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/adityajha2118" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="lp-footer-bottom">
+          <div className="lp-footer-bottom-inner">
+            <p>© 2025 FinSight AI — Portfolio Project by Aditya Kumar Jha</p>
+            <p>Not affiliated with American Express Company</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

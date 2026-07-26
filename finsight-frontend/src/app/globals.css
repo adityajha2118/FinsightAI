@@ -187,7 +187,586 @@ body {
 /* ── Plotly overrides ────────────────────────────────────── */
 .js-plotly-plot .plotly .main-svg { background: transparent !important; }
 
-/* ── 3D Card Effects ────────────────────────────────────── */
-.perspective-1000 {
-  perspective: 1000px;
+/* ═══════════════════════════════════════════════════════════
+   AMEX LANDING PAGE STYLES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Centurion Stripe ──────────────────────────────────── */
+.centurion-stripe {
+  height: 3px;
+  background: #006FCF;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+}
+
+/* ── Landing Navigation ────────────────────────────────── */
+.lp-nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #D9D9D9;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+.lp-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.lp-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.lp-nav-logo-box {
+  width: 48px;
+  height: 30px;
+  background: #006FCF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.lp-nav-logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+.lp-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.lp-nav-link {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1A1A1A;
+  text-decoration: none;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.lp-nav-link:hover {
+  color: #006FCF;
+}
+.lp-nav-link.active {
+  color: #006FCF;
+  font-weight: 600;
+  border-bottom-color: #006FCF;
+}
+.lp-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.lp-nav-author {
+  font-size: 13px;
+  color: #666666;
+  white-space: nowrap;
+}
+.lp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.lp-btn-primary {
+  background: #006FCF;
+  color: #FFFFFF;
+}
+.lp-btn-primary:hover {
+  background: #004A8F;
+  color: #FFFFFF;
+}
+.lp-btn-outline {
+  background: transparent;
+  color: #006FCF;
+  border: 1px solid #006FCF;
+}
+.lp-btn-outline:hover {
+  background: #006FCF;
+  color: #FFFFFF;
+}
+
+/* ── Hero Section ──────────────────────────────────────── */
+.lp-hero {
+  padding: 80px 0 64px;
+  background: #FFFFFF;
+  padding-top: 155px;
+}
+.lp-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 48px;
+  align-items: center;
+}
+.lp-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #006FCF;
+  margin-bottom: 16px;
+}
+.lp-hero-headline {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #1A1A1A;
+  margin-bottom: 24px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+.lp-hero-sub {
+  font-size: 16px;
+  color: #666666;
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+.lp-hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ── Amex Card Mockup ──────────────────────────────────── */
+.amex-card {
+  width: 340px;
+  height: 210px;
+  background: linear-gradient(135deg, #006FCF 0%, #004A8F 100%);
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,111,207,0.35);
+  position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: auto;
+  overflow: hidden;
+}
+.amex-card-brand {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.amex-card-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.amex-card-centurion {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+}
+.amex-card-centurion-inner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.amex-card-centurion-face {
+  width: 32px;
+  height: 16px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 16px;
+}
+.amex-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.amex-card-title {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: 400;
+}
+.amex-card-label {
+  font-size: 9px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.amex-card-chip {
+  width: 28px;
+  height: 22px;
+  background: linear-gradient(135deg, #E8C547, #C9A84C);
+  border-radius: 3px;
+  display: flex;
+  overflow: hidden;
+}
+.amex-card-chip-left {
+  flex: 1;
+  border-right: 1px solid rgba(160,120,40,0.3);
+}
+.amex-card-chip-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.amex-card-chip-right > div:first-child {
+  flex: 1;
+  border-bottom: 1px solid rgba(160,120,40,0.3);
+}
+.amex-card-chip-right > div:last-child {
+  flex: 1;
+}
+.amex-card-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.04);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+/* ── KPI Strip ─────────────────────────────────────────── */
+.lp-kpi-strip {
+  background: #006FCF;
+  padding: 28px 0;
+}
+.lp-kpi-strip-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.lp-kpi-item {
+  text-align: center;
+  color: #FFFFFF;
+  flex: 1;
+  position: relative;
+}
+.lp-kpi-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: rgba(255,255,255,0.3);
+}
+.lp-kpi-val {
+  font-size: 28px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.lp-kpi-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  margin-top: 4px;
+  color: #FFFFFF;
+}
+
+/* ── Module Cards Section ──────────────────────────────── */
+.lp-section {
+  padding: 64px 0;
+}
+.lp-section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.lp-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #006FCF;
+  margin-bottom: 8px;
+}
+.lp-section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+}
+.lp-section-sub {
+  font-size: 16px;
+  color: #666666;
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+.lp-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.lp-card {
+  background: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 32px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.lp-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+.lp-card-icon {
+  width: 48px;
+  height: 48px;
+  background: #006FCF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.lp-card-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #FFFFFF;
+}
+.lp-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+}
+.lp-card p {
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.lp-card-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #006FCF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lp-card-link:hover {
+  color: #004A8F;
+}
+
+/* ── Tech Strip ────────────────────────────────────────── */
+.lp-tech-strip {
+  background: #F5F5F5;
+  padding: 40px 0;
+}
+.lp-tech-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.lp-tech-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #666666;
+  margin-bottom: 20px;
+}
+.lp-tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.lp-tech-badge {
+  background: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.lp-footer {
+  background: #1A1A1A;
+  color: #FFFFFF;
+  padding: 64px 0 0;
+}
+.lp-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.lp-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+.lp-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.lp-footer-logo-box {
+  width: 40px;
+  height: 25px;
+  background: #006FCF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+}
+.lp-footer-logo-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+.lp-footer-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+.lp-footer h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 16px;
+}
+.lp-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lp-footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lp-footer-links a:hover {
+  color: #FFFFFF;
+}
+.lp-footer-author {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+}
+.lp-footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+.lp-footer-social a {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.lp-footer-social a:hover {
+  background: #006FCF;
+  border-color: #006FCF;
+  color: #FFFFFF;
+}
+.lp-footer-social a svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+.lp-footer-bottom {
+  background: #004A8F;
+  margin-top: 48px;
+  padding: 14px 0;
+}
+.lp-footer-bottom-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lp-footer-bottom p {
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+/* ── Section Stripe ────────────────────────────────────── */
+.lp-section-stripe {
+  height: 3px;
+  background: #006FCF;
+  width: 100%;
+}
+
+/* ── Landing Responsive ────────────────────────────────── */
+@media (max-width: 1024px) {
+  .lp-nav-links { gap: 20px; }
+  .lp-nav-link { font-size: 13px; }
+  .lp-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  .lp-nav-links { display: none; }
+  .lp-nav-author { display: none; }
+  .lp-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .lp-hero-headline { font-size: 36px; }
+  .amex-card { margin: 0 auto; width: 280px; height: 175px; }
+  .lp-cards-grid { grid-template-columns: 1fr; }
+  .lp-kpi-strip-inner { flex-direction: column; gap: 16px; }
+  .lp-kpi-item:not(:last-child)::after { display: none; }
+  .lp-footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .lp-footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
+  .lp-hero { padding-top: 120px; }
+}
+@media (max-width: 480px) {
+  .lp-hero-buttons { flex-direction: column; }
+  .lp-hero-buttons .lp-btn { width: 100%; }
+  .lp-hero-headline { font-size: 32px; }
 }
