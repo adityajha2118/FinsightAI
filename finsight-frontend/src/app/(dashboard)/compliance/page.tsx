@@ -24,35 +24,35 @@ export default function ComplianceAnalyticsPage() {
     ]).catch(console.error).finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="flex items-center justify-center h-96"><p className="text-slate-400">Loading compliance analytics...</p></div>;
+  if (loading) return <div className="flex items-center justify-center h-96"><p className="text-amex-gray-600">Loading compliance analytics...</p></div>;
 
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Compliance Analytics</h1>
-        <p className="text-sm text-slate-400 mt-1">AML/KYC risk assessment, PEP monitoring, and sanctions screening</p>
+        <h1 className="text-2xl font-bold text-amex-gray-900">Compliance Analytics</h1>
+        <p className="text-sm text-amex-gray-600 mt-1">AML/KYC risk assessment, PEP monitoring, and sanctions screening</p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Source Datasets:</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">kyc_part1.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">kyc_part2.csv</a>
+          <span className="text-amex-gray-600">Source Datasets:</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">kyc_part1.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">kyc_part2.csv</a>
         </div>
         <div className="mt-1 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Related Notebooks:</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/04_kyc_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">04_kyc_eda.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/10_kyc_risk_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">10_kyc_risk_prediction.ipynb</a>
+          <span className="text-amex-gray-600">Related Notebooks:</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/04_kyc_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">04_kyc_eda.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/10_kyc_risk_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">10_kyc_risk_prediction.ipynb</a>
         </div>
       </div>
 
       {/* KPIs */}
       {kpis && (
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-          <KpiCard label="Total Profiles" value={formatNumber(kpis.total_profiles)} icon="🛡️" accentColor="#6366f1" />
-          <KpiCard label="High Risk" value={formatNumber(kpis.high_risk_count)} icon="🚨" accentColor="#f43f5e" />
-          <KpiCard label="PEP Flagged" value={formatNumber(kpis.pep_count)} icon="👔" accentColor="#f59e0b" />
+          <KpiCard label="Total Profiles" value={formatNumber(kpis.total_profiles)} icon="🛡️" accentColor="#006FCF" />
+          <KpiCard label="High Risk" value={formatNumber(kpis.high_risk_count)} icon="🚨" accentColor="#C0001A" />
+          <KpiCard label="PEP Flagged" value={formatNumber(kpis.pep_count)} icon="👔" accentColor="#C07000" />
           <KpiCard label="Sanctions Match" value={formatNumber(kpis.sanctions_count)} icon="⛔" accentColor="#e11d48" />
-          <KpiCard label="Risk Rate" value={formatPct(kpis.compliance_risk_pct)} icon="📊" accentColor="#8b5cf6" />
+          <KpiCard label="Risk Rate" value={formatPct(kpis.compliance_risk_pct)} icon="📊" accentColor="#004A8F" />
         </div>
       )}
 
@@ -67,12 +67,12 @@ export default function ComplianceAnalyticsPage() {
               values: riskDist.map(d => d.profile_count),
               type: "pie" as const, hole: 0.5,
               textinfo: "label+percent",
-              textfont: { color: "#f1f5f9", size: 11 },
+              textfont: { color: "#ffffff", size: 11 },
               marker: {
                 colors: riskDist.map(d =>
                   d.risk_tier === "Critical" ? "#e11d48" :
-                  d.risk_tier === "High" ? "#f43f5e" :
-                  d.risk_tier === "Medium" ? "#f59e0b" : "#10b981"
+                  d.risk_tier === "High" ? "#C0001A" :
+                  d.risk_tier === "Medium" ? "#C07000" : "#008000"
                 ),
               },
             }]}
@@ -87,19 +87,19 @@ export default function ComplianceAnalyticsPage() {
                 x: countryRisk.slice(0, 12).map(d => d.country),
                 y: countryRisk.slice(0, 12).map(d => d.profile_count),
                 type: "bar" as const, name: "Profiles",
-                marker: { color: "#6366f1" },
+                marker: { color: "#006FCF" },
               },
               {
                 x: countryRisk.slice(0, 12).map(d => d.country),
                 y: countryRisk.slice(0, 12).map(d => d.pep_count),
                 type: "bar" as const, name: "PEP",
-                marker: { color: "#f59e0b" },
+                marker: { color: "#C07000" },
               },
               {
                 x: countryRisk.slice(0, 12).map(d => d.country),
                 y: countryRisk.slice(0, 12).map(d => d.sanctions_count),
                 type: "bar" as const, name: "Sanctions",
-                marker: { color: "#f43f5e" },
+                marker: { color: "#C0001A" },
               },
             ]}
             layout={{ barmode: "group" as const, xaxis: { tickangle: -45 } }}
@@ -120,13 +120,13 @@ export default function ComplianceAnalyticsPage() {
             type: "bar" as const,
             marker: {
               color: sectorRisk.map(d =>
-                d.sector_risk === "High" ? "#f43f5e" :
-                d.sector_risk === "Medium" ? "#f59e0b" : "#10b981"
+                d.sector_risk === "High" ? "#C0001A" :
+                d.sector_risk === "Medium" ? "#C07000" : "#008000"
               ),
             },
             text: sectorRisk.map(d => d.sector_risk),
             textposition: "auto" as const,
-            textfont: { color: "#f1f5f9", size: 9 },
+            textfont: { color: "#ffffff", size: 9 },
           }]}
           layout={{ xaxis: { tickangle: -45 } }}
           height={320}
@@ -139,7 +139,7 @@ export default function ComplianceAnalyticsPage() {
           <h3 className="text-sm font-semibold text-slate-200 mb-3">🚨 High Risk Entities — Requires Enhanced Due Diligence</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-slate-400 uppercase border-b border-slate-700">
+              <thead className="text-xs text-amex-gray-600 uppercase border-b border-slate-700">
                 <tr>
                   <th className="py-2 px-3">Client ID</th>
                   <th className="py-2 px-3">Name</th>
@@ -161,7 +161,7 @@ export default function ComplianceAnalyticsPage() {
                     <td className="py-2 px-3">{r.pep_flag ? <span className="badge badge-warning">PEP</span> : "—"}</td>
                     <td className="py-2 px-3">{r.sanctions_flag ? <span className="badge badge-danger">YES</span> : "—"}</td>
                     <td className="py-2 px-3">{(r.ownership_opacity_score || 0).toFixed(2)}</td>
-                    <td className="py-2 px-3 font-bold text-rose-400">{r.total_flags}</td>
+                    <td className="py-2 px-3 font-bold text-amex-red">{r.total_flags}</td>
                   </tr>
                 ))}
               </tbody>

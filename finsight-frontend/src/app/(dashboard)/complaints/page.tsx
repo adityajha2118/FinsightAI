@@ -30,7 +30,7 @@ export default function ComplaintAnalyticsPage() {
     ]).catch(console.error).finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="flex items-center justify-center h-96"><p className="text-slate-400">Loading complaint analytics...</p></div>;
+  if (loading) return <div className="flex items-center justify-center h-96"><p className="text-amex-gray-600">Loading complaint analytics...</p></div>;
 
   const products = Array.from(new Set(sentimentByProduct.map(d => d.product))).slice(0, 8);
   const formattedProducts = products.map(formatCategory);
@@ -46,30 +46,30 @@ export default function ComplaintAnalyticsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Complaint Analytics</h1>
-        <p className="text-sm text-slate-400 mt-1">Identify product issues, sentiment trends, and response efficiency</p>
+        <h1 className="text-2xl font-bold text-amex-gray-900">Complaint Analytics</h1>
+        <p className="text-sm text-amex-gray-600 mt-1">Identify product issues, sentiment trends, and response efficiency</p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Source Datasets:</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">cfpb_complaints.csv</a>
+          <span className="text-amex-gray-600">Source Datasets:</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">cfpb_complaints.csv</a>
         </div>
         <div className="mt-1 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Related Notebooks:</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/05_complaint_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">05_complaint_eda.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/11_complaint_sentiment.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">11_complaint_sentiment.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/12_escalation_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">12_escalation_prediction.ipynb</a>
+          <span className="text-amex-gray-600">Related Notebooks:</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/05_complaint_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">05_complaint_eda.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/11_complaint_sentiment.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">11_complaint_sentiment.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/12_escalation_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">12_escalation_prediction.ipynb</a>
         </div>
       </div>
 
       {/* KPIs */}
       {kpis && (
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-          <KpiCard label="Total Complaints" value={formatNumber(kpis.total_complaints)} icon="📋" accentColor="#6366f1" />
-          <KpiCard label="Complaint Growth" value={formatPct(kpis.complaint_growth_pct)} icon="📈" accentColor={kpis.complaint_growth_pct > 0 ? "#f43f5e" : "#10b981"} />
-          <KpiCard label="Avg Resolution" value={`${(kpis.avg_resolution_days || 0).toFixed(1)}d`} icon="⏱️" accentColor="#3b82f6" />
-          <KpiCard label="Timely Response" value={formatPct(kpis.timely_response_pct)} icon="✅" accentColor="#10b981" />
-          <KpiCard label="Negative Sentiment" value={formatPct(kpis.negative_sentiment_pct)} icon="😤" accentColor="#f43f5e" />
+          <KpiCard label="Total Complaints" value={formatNumber(kpis.total_complaints)} icon="📋" accentColor="#006FCF" />
+          <KpiCard label="Complaint Growth" value={formatPct(kpis.complaint_growth_pct)} icon="📈" accentColor={kpis.complaint_growth_pct > 0 ? "#C0001A" : "#008000"} />
+          <KpiCard label="Avg Resolution" value={`${(kpis.avg_resolution_days || 0).toFixed(1)}d`} icon="⏱️" accentColor="#006FCF" />
+          <KpiCard label="Timely Response" value={formatPct(kpis.timely_response_pct)} icon="✅" accentColor="#008000" />
+          <KpiCard label="Negative Sentiment" value={formatPct(kpis.negative_sentiment_pct)} icon="😤" accentColor="#C0001A" />
         </div>
       )}
 
@@ -84,7 +84,7 @@ export default function ComplaintAnalyticsPage() {
               y: trends.map(d => d.complaint_count),
               type: "scatter" as const, mode: "lines+markers" as const,
               fill: "tozeroy", fillcolor: "rgba(99,102,241,0.1)",
-              line: { color: "#6366f1", width: 2 }, marker: { size: 4 },
+              line: { color: "#006FCF", width: 2 }, marker: { size: 4 },
             }]}
           />
         )}
@@ -97,11 +97,11 @@ export default function ComplaintAnalyticsPage() {
               values: sentiment.map(d => d.complaint_count),
               type: "pie" as const, hole: 0.5,
               textinfo: "label+percent",
-              textfont: { color: "#f1f5f9", size: 11 },
+              textfont: { color: "#ffffff", size: 11 },
               marker: {
                 colors: sentiment.map(d =>
-                  d.sentiment_label === "Negative" ? "#f43f5e" :
-                  d.sentiment_label === "Positive" ? "#10b981" : "#64748b"
+                  d.sentiment_label === "Negative" ? "#C0001A" :
+                  d.sentiment_label === "Positive" ? "#008000" : "#64748b"
                 ),
               },
             }]}
@@ -119,7 +119,7 @@ export default function ComplaintAnalyticsPage() {
               y: byProduct.slice(0, 10).map(d => formatCategory(d.product)),
               x: byProduct.slice(0, 10).map(d => d.complaint_count),
               type: "bar" as const, orientation: "h" as const,
-              marker: { color: "#6366f1" },
+              marker: { color: "#006FCF" },
             }]}
             layout={{ yaxis: { automargin: true }, margin: { l: 180 } }}
             height={380}
@@ -133,7 +133,7 @@ export default function ComplaintAnalyticsPage() {
               y: byIssue.slice(0, 10).map(d => d.issue),
               x: byIssue.slice(0, 10).map(d => d.complaint_count),
               type: "bar" as const, orientation: "h" as const,
-              marker: { color: "#3b82f6" },
+              marker: { color: "#006FCF" },
             }]}
             layout={{ yaxis: { automargin: true }, margin: { l: 200 } }}
             height={380}
@@ -148,8 +148,8 @@ export default function ComplaintAnalyticsPage() {
             title="Sentiment by Product"
             subtitle="Positive vs Negative sentiment breakdown across top products"
             data={[
-              { x: formattedProducts, y: posData, name: 'Positive', type: "bar" as const, marker: { color: "#10b981" } },
-              { x: formattedProducts, y: negData, name: 'Negative', type: "bar" as const, marker: { color: "#f43f5e" } }
+              { x: formattedProducts, y: posData, name: 'Positive', type: "bar" as const, marker: { color: "#008000" } },
+              { x: formattedProducts, y: negData, name: 'Negative', type: "bar" as const, marker: { color: "#C0001A" } }
             ]}
             layout={{ xaxis: { tickangle: -25, tickfont: { size: 10 } }, barmode: 'stack' }}
             height={380}
@@ -163,7 +163,7 @@ export default function ComplaintAnalyticsPage() {
               y: responses.slice(0, 10).map(d => d.company_response),
               x: responses.slice(0, 10).map(d => d.response_count),
               type: "bar" as const, orientation: "h" as const,
-              marker: { color: "#f59e0b" },
+              marker: { color: "#C07000" },
             }]}
             layout={{ yaxis: { automargin: true }, margin: { l: 180 } }}
             height={380}

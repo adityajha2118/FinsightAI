@@ -26,32 +26,32 @@ export default function CampaignAnalyticsPage() {
     ]).catch(console.error).finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="flex items-center justify-center h-96"><p className="text-slate-400">Loading campaign analytics...</p></div>;
+  if (loading) return <div className="flex items-center justify-center h-96"><p className="text-amex-gray-600">Loading campaign analytics...</p></div>;
 
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Campaign Analytics</h1>
-        <p className="text-sm text-slate-400 mt-1">Analyze conversion rates, demographic performance, and communication channels</p>
+        <h1 className="text-2xl font-bold text-amex-gray-900">Campaign Analytics</h1>
+        <p className="text-sm text-amex-gray-600 mt-1">Analyze conversion rates, demographic performance, and communication channels</p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Source Datasets:</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">bank_campaign.csv</a>
+          <span className="text-amex-gray-600">Source Datasets:</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">bank_campaign.csv</a>
         </div>
         <div className="mt-1 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Related Notebooks:</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/03_campaign_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">03_campaign_eda.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/09_campaign_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">09_campaign_prediction.ipynb</a>
+          <span className="text-amex-gray-600">Related Notebooks:</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/03_campaign_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">03_campaign_eda.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/09_campaign_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">09_campaign_prediction.ipynb</a>
         </div>
       </div>
 
       {/* KPIs */}
       {kpis && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <KpiCard label="Total Contacts" value={formatNumber(kpis.total_contacts)} icon="📞" accentColor="#6366f1" />
-          <KpiCard label="Conversions" value={formatNumber(kpis.conversions)} icon="✅" accentColor="#10b981" />
-          <KpiCard label="Success Rate" value={formatPct(kpis.success_rate_pct)} icon="🎯" accentColor="#8b5cf6" />
-          <KpiCard label="Non-Conversions" value={formatNumber((kpis.total_contacts || 0) - (kpis.conversions || 0))} icon="❌" accentColor="#f43f5e" />
+          <KpiCard label="Total Contacts" value={formatNumber(kpis.total_contacts)} icon="📞" accentColor="#006FCF" />
+          <KpiCard label="Conversions" value={formatNumber(kpis.conversions)} icon="✅" accentColor="#008000" />
+          <KpiCard label="Success Rate" value={formatPct(kpis.success_rate_pct)} icon="🎯" accentColor="#004A8F" />
+          <KpiCard label="Non-Conversions" value={formatNumber((kpis.total_contacts || 0) - (kpis.conversions || 0))} icon="❌" accentColor="#C0001A" />
         </div>
       )}
 
@@ -65,10 +65,10 @@ export default function CampaignAnalyticsPage() {
               x: monthly.map(d => d.month),
               y: monthly.map(d => d.conversion_rate),
               type: "bar" as const,
-              marker: { color: "#6366f1" },
+              marker: { color: "#006FCF" },
               text: monthly.map(d => `${d.conversion_rate}%`),
               textposition: "auto" as const,
-              textfont: { color: "#f1f5f9", size: 10 },
+              textfont: { color: "#ffffff", size: 10 },
             }]}
             layout={{ yaxis: { title: "Conversion Rate (%)" } }}
           />
@@ -81,10 +81,10 @@ export default function CampaignAnalyticsPage() {
               x: byContact.map(d => d.contact),
               y: byContact.map(d => d.conversion_rate),
               type: "bar" as const,
-              marker: { color: ["#10b981", "#3b82f6"] },
+              marker: { color: ["#008000", "#006FCF"] },
               text: byContact.map(d => `${d.conversion_rate}% (${d.conversions}/${d.total})`),
               textposition: "auto" as const,
-              textfont: { color: "#f1f5f9", size: 10 },
+              textfont: { color: "#ffffff", size: 10 },
             }]}
             layout={{ yaxis: { title: "Conversion Rate (%)" } }}
           />
@@ -101,7 +101,7 @@ export default function CampaignAnalyticsPage() {
               y: byJob.map(d => formatCategory(d.job)),
               x: byJob.map(d => d.conversion_rate),
               type: "bar" as const, orientation: "h" as const,
-              marker: { color: "#8b5cf6" },
+              marker: { color: "#004A8F" },
             }]}
             layout={{ yaxis: { automargin: true }, margin: { l: 120 } }}
             height={380}
@@ -115,7 +115,7 @@ export default function CampaignAnalyticsPage() {
               y: byEdu.map(d => formatCategory(d.education)),
               x: byEdu.map(d => d.conversion_rate),
               type: "bar" as const, orientation: "h" as const,
-              marker: { color: "#3b82f6" },
+              marker: { color: "#006FCF" },
             }]}
             layout={{ yaxis: { automargin: true }, margin: { l: 140 } }}
             height={380}
@@ -135,7 +135,7 @@ export default function CampaignAnalyticsPage() {
               y: fatigue.map(d => d.conversion_rate),
               type: "scatter" as const, mode: "lines+markers" as const,
               name: "Conversion Rate",
-              line: { color: "#6366f1", width: 2.5 },
+              line: { color: "#006FCF", width: 2.5 },
               marker: { size: 6 },
               yaxis: "y",
             },

@@ -14,8 +14,8 @@ export default function ExperimentationPage() {
     api.experimentation.getResults().then(setResults).catch(console.error).finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="flex items-center justify-center h-96"><p className="text-slate-400">Loading experimentation results...</p></div>;
-  if (!results || results.error) return <div className="text-rose-400">No experiment data found.</div>;
+  if (loading) return <div className="flex items-center justify-center h-96"><p className="text-amex-gray-600">Loading experimentation results...</p></div>;
+  if (!results || results.error) return <div className="text-amex-red">No experiment data found.</div>;
 
   const ctrl = results.group_metrics?.control;
   const treat = results.group_metrics?.treatment;
@@ -27,27 +27,27 @@ export default function ExperimentationPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Experimentation Analytics</h1>
-        <p className="text-sm text-slate-400 mt-1">A/B test analysis with statistical rigor — T-Test, Chi-Square, confidence intervals, effect size</p>
+        <h1 className="text-2xl font-bold text-amex-gray-900">Experimentation Analytics</h1>
+        <p className="text-sm text-amex-gray-600 mt-1">A/B test analysis with statistical rigor — T-Test, Chi-Square, confidence intervals, effect size</p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Source Datasets:</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">bank_campaign.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">customer_data.csv</a>
+          <span className="text-amex-gray-600">Source Datasets:</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">bank_campaign.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">customer_data.csv</a>
         </div>
         <div className="mt-1 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Related Notebooks:</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/03_campaign_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">03_campaign_eda.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/09_campaign_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">09_campaign_prediction.ipynb</a>
+          <span className="text-amex-gray-600">Related Notebooks:</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/03_campaign_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">03_campaign_eda.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/09_campaign_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">09_campaign_prediction.ipynb</a>
         </div>
       </div>
 
       {/* Experiment Header */}
       <div className="chart-container mb-6 flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-bold text-indigo-400">{results.experiment_name}</h2>
-          <p className="text-sm text-slate-400">{formatNumber(results.total_participants)} participants</p>
+          <h2 className="text-lg font-bold text-amex-blue">{results.experiment_name}</h2>
+          <p className="text-sm text-amex-gray-600">{formatNumber(results.total_participants)} participants</p>
         </div>
         <div className={`badge ${results.recommendation_status === "positive" ? "badge-success" : results.recommendation_status === "negative" ? "badge-danger" : "badge-warning"}`} style={{ fontSize: "0.8rem", padding: "0.4rem 1rem" }}>
           {results.recommendation_status === "positive" ? "✅ Significant Improvement" :
@@ -57,11 +57,11 @@ export default function ExperimentationPage() {
 
       {/* KPIs */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-        <KpiCard label="Lift" value={`${results.lift_pct > 0 ? "+" : ""}${results.lift_pct}%`} icon="📈" accentColor={results.lift_pct > 0 ? "#10b981" : "#f43f5e"} />
-        <KpiCard label="P-Value (χ²)" value={chi?.p_value?.toFixed(4) || "N/A"} icon="📊" accentColor={chi?.significant ? "#10b981" : "#f59e0b"} />
-        <KpiCard label="Effect Size" value={`${eff?.cohens_h?.toFixed(3)} (${eff?.cohens_h_interpretation})`} icon="📐" accentColor="#8b5cf6" />
-        <KpiCard label="CI (95%)" value={`[${ci?.ci_lower?.toFixed(3)}, ${ci?.ci_upper?.toFixed(3)}]`} icon="📏" accentColor="#3b82f6" />
-        <KpiCard label="Power" value={results.statistical_power ? formatPct(results.statistical_power * 100) : "N/A"} icon="⚡" accentColor="#6366f1" />
+        <KpiCard label="Lift" value={`${results.lift_pct > 0 ? "+" : ""}${results.lift_pct}%`} icon="📈" accentColor={results.lift_pct > 0 ? "#008000" : "#C0001A"} />
+        <KpiCard label="P-Value (χ²)" value={chi?.p_value?.toFixed(4) || "N/A"} icon="📊" accentColor={chi?.significant ? "#008000" : "#C07000"} />
+        <KpiCard label="Effect Size" value={`${eff?.cohens_h?.toFixed(3)} (${eff?.cohens_h_interpretation})`} icon="📐" accentColor="#004A8F" />
+        <KpiCard label="CI (95%)" value={`[${ci?.ci_lower?.toFixed(3)}, ${ci?.ci_upper?.toFixed(3)}]`} icon="📏" accentColor="#006FCF" />
+        <KpiCard label="Power" value={results.statistical_power ? formatPct(results.statistical_power * 100) : "N/A"} icon="⚡" accentColor="#006FCF" />
       </div>
 
       {/* Control vs Treatment Comparison */}
@@ -73,10 +73,10 @@ export default function ExperimentationPage() {
             x: ["Control", "Treatment"],
             y: [ctrl?.conversion_rate * 100, treat?.conversion_rate * 100],
             type: "bar" as const,
-            marker: { color: ["#64748b", "#6366f1"] },
+            marker: { color: ["#64748b", "#006FCF"] },
             text: [`${(ctrl?.conversion_rate * 100).toFixed(1)}%`, `${(treat?.conversion_rate * 100).toFixed(1)}%`],
             textposition: "auto" as const,
-            textfont: { color: "#f1f5f9", size: 14, family: "Inter" },
+            textfont: { color: "#ffffff", size: 14, family: "Inter" },
           }]}
           layout={{ yaxis: { title: "Conversion Rate (%)" } }}
         />
@@ -88,10 +88,10 @@ export default function ExperimentationPage() {
             x: ["Control", "Treatment"],
             y: [ctrl?.avg_revenue, treat?.avg_revenue],
             type: "bar" as const,
-            marker: { color: ["#64748b", "#10b981"] },
+            marker: { color: ["#64748b", "#008000"] },
             text: [`$${ctrl?.avg_revenue?.toFixed(2)}`, `$${treat?.avg_revenue?.toFixed(2)}`],
             textposition: "auto" as const,
-            textfont: { color: "#f1f5f9", size: 14, family: "Inter" },
+            textfont: { color: "#ffffff", size: 14, family: "Inter" },
           }]}
           layout={{ yaxis: { title: "Avg Revenue ($)" } }}
         />
@@ -102,7 +102,7 @@ export default function ExperimentationPage() {
         <h3 className="text-sm font-semibold text-slate-200 mb-3">Group Metrics Comparison</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
-            <thead className="text-xs text-slate-400 uppercase border-b border-slate-700">
+            <thead className="text-xs text-amex-gray-600 uppercase border-b border-slate-700">
               <tr>
                 <th className="py-2 px-4">Metric</th>
                 <th className="py-2 px-4">Control</th>
@@ -123,8 +123,8 @@ export default function ExperimentationPage() {
                 <tr key={row.name} className="border-b border-slate-800">
                   <td className="py-2 px-4 font-medium">{row.name}</td>
                   <td className="py-2 px-4 text-slate-300">{row.c}</td>
-                  <td className="py-2 px-4 text-indigo-400 font-medium">{row.t}</td>
-                  <td className="py-2 px-4 text-emerald-400">{row.d || "—"}</td>
+                  <td className="py-2 px-4 text-amex-blue font-medium">{row.t}</td>
+                  <td className="py-2 px-4 text-amex-green">{row.d || "—"}</td>
                 </tr>
               ))}
             </tbody>
@@ -136,30 +136,30 @@ export default function ExperimentationPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <div className="chart-container">
           <h3 className="text-sm font-semibold text-slate-200 mb-2">Chi-Square Test</h3>
-          <p className="text-xs text-slate-400 mb-3">Tests whether conversion proportions differ significantly</p>
+          <p className="text-xs text-amex-gray-600 mb-3">Tests whether conversion proportions differ significantly</p>
           <div className="space-y-2 text-sm">
-            <p>χ² Statistic: <span className="text-indigo-400 font-mono">{chi?.statistic?.toFixed(4)}</span></p>
-            <p>P-Value: <span className={`font-mono font-bold ${chi?.significant ? "text-emerald-400" : "text-amber-400"}`}>{chi?.p_value?.toFixed(6)}</span></p>
-            <p>Significant: <span className={chi?.significant ? "text-emerald-400" : "text-amber-400"}>{chi?.significant ? "Yes ✅" : "No ⏳"}</span></p>
+            <p>χ² Statistic: <span className="text-amex-blue font-mono">{chi?.statistic?.toFixed(4)}</span></p>
+            <p>P-Value: <span className={`font-mono font-bold ${chi?.significant ? "text-amex-green" : "text-amex-amber"}`}>{chi?.p_value?.toFixed(6)}</span></p>
+            <p>Significant: <span className={chi?.significant ? "text-amex-green" : "text-amex-amber"}>{chi?.significant ? "Yes ✅" : "No ⏳"}</span></p>
           </div>
         </div>
 
         <div className="chart-container">
           <h3 className="text-sm font-semibold text-slate-200 mb-2">Welch&apos;s T-Test (Revenue)</h3>
-          <p className="text-xs text-slate-400 mb-3">Tests whether mean revenue differs significantly</p>
+          <p className="text-xs text-amex-gray-600 mb-3">Tests whether mean revenue differs significantly</p>
           <div className="space-y-2 text-sm">
-            <p>T Statistic: <span className="text-indigo-400 font-mono">{tt?.statistic?.toFixed(4)}</span></p>
-            <p>P-Value: <span className={`font-mono font-bold ${tt?.significant ? "text-emerald-400" : "text-amber-400"}`}>{tt?.p_value?.toFixed(6)}</span></p>
-            <p>Significant: <span className={tt?.significant ? "text-emerald-400" : "text-amber-400"}>{tt?.significant ? "Yes ✅" : "No ⏳"}</span></p>
+            <p>T Statistic: <span className="text-amex-blue font-mono">{tt?.statistic?.toFixed(4)}</span></p>
+            <p>P-Value: <span className={`font-mono font-bold ${tt?.significant ? "text-amex-green" : "text-amex-amber"}`}>{tt?.p_value?.toFixed(6)}</span></p>
+            <p>Significant: <span className={tt?.significant ? "text-amex-green" : "text-amex-amber"}>{tt?.significant ? "Yes ✅" : "No ⏳"}</span></p>
           </div>
         </div>
 
         <div className="chart-container">
           <h3 className="text-sm font-semibold text-slate-200 mb-2">Effect Size</h3>
-          <p className="text-xs text-slate-400 mb-3">Practical significance of the observed difference</p>
+          <p className="text-xs text-amex-gray-600 mb-3">Practical significance of the observed difference</p>
           <div className="space-y-2 text-sm">
-            <p>Cohen&apos;s h: <span className="text-indigo-400 font-mono">{eff?.cohens_h?.toFixed(4)}</span> ({eff?.cohens_h_interpretation})</p>
-            <p>Cohen&apos;s d (Revenue): <span className="text-indigo-400 font-mono">{eff?.cohens_d_revenue?.toFixed(4)}</span> ({eff?.cohens_d_interpretation})</p>
+            <p>Cohen&apos;s h: <span className="text-amex-blue font-mono">{eff?.cohens_h?.toFixed(4)}</span> ({eff?.cohens_h_interpretation})</p>
+            <p>Cohen&apos;s d (Revenue): <span className="text-amex-blue font-mono">{eff?.cohens_d_revenue?.toFixed(4)}</span> ({eff?.cohens_d_interpretation})</p>
             <p>95% CI: <span className="text-blue-400 font-mono">[{ci?.ci_lower?.toFixed(4)}, {ci?.ci_upper?.toFixed(4)}]</span></p>
           </div>
         </div>

@@ -17,25 +17,25 @@ export default function ExecutiveDashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="text-slate-400 text-lg">Loading executive dashboard...</div>
+        <div className="text-amex-gray-600 text-lg">Loading executive dashboard...</div>
       </div>
     );
   }
 
   if (!data) {
-    return <div className="text-rose-400">Failed to load dashboard data. Is the backend running?</div>;
+    return <div className="text-amex-red">Failed to load dashboard data. Is the backend running?</div>;
   }
 
   const kpis = [
-    { label: "Total Customers", value: formatNumber(data.total_customers), icon: "👥", accent: "#6366f1" },
-    { label: "Total Complaints", value: formatNumber(data.total_complaints), icon: "📋", accent: "#f59e0b" },
-    { label: "Complaint Growth", value: formatPct(data.complaint_growth_pct), icon: "📈", accent: data.complaint_growth_pct > 0 ? "#f43f5e" : "#10b981", dir: data.complaint_growth_pct > 0 ? "up" as const : "down" as const },
-    { label: "Avg Resolution Time", value: `${data.avg_resolution_days?.toFixed(1) || 0}d`, icon: "⏱️", accent: "#3b82f6" },
-    { label: "Timely Response", value: formatPct(data.timely_response_pct), icon: "✅", accent: "#10b981" },
-    { label: "Customer Churn", value: formatPct(data.churn_rate_pct), icon: "⚠️", accent: "#f43f5e" },
-    { label: "Campaign Success", value: formatPct(data.campaign_success_pct), icon: "🎯", accent: "#8b5cf6" },
-    { label: "Compliance Risk", value: formatPct(data.compliance_risk_pct), icon: "🛡️", accent: "#f59e0b" },
-    { label: "Negative Sentiment", value: formatPct(data.negative_sentiment_pct), icon: "😤", accent: "#f43f5e" },
+    { label: "Total Customers", value: formatNumber(data.total_customers), icon: "👥", accent: "#006FCF" },
+    { label: "Total Complaints", value: formatNumber(data.total_complaints), icon: "📋", accent: "#C07000" },
+    { label: "Complaint Growth", value: formatPct(data.complaint_growth_pct), icon: "📈", accent: data.complaint_growth_pct > 0 ? "#C0001A" : "#008000", dir: data.complaint_growth_pct > 0 ? "up" as const : "down" as const },
+    { label: "Avg Resolution Time", value: `${data.avg_resolution_days?.toFixed(1) || 0}d`, icon: "⏱️", accent: "#006FCF" },
+    { label: "Timely Response", value: formatPct(data.timely_response_pct), icon: "✅", accent: "#008000" },
+    { label: "Customer Churn", value: formatPct(data.churn_rate_pct), icon: "⚠️", accent: "#C0001A" },
+    { label: "Campaign Success", value: formatPct(data.campaign_success_pct), icon: "🎯", accent: "#004A8F" },
+    { label: "Compliance Risk", value: formatPct(data.compliance_risk_pct), icon: "🛡️", accent: "#C07000" },
+    { label: "Negative Sentiment", value: formatPct(data.negative_sentiment_pct), icon: "😤", accent: "#C0001A" },
     { label: "High Risk Entities", value: formatNumber(data.high_risk_count), icon: "🚨", accent: "#e11d48" },
   ];
 
@@ -43,29 +43,29 @@ export default function ExecutiveDashboard() {
     <div>
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Executive Dashboard</h1>
-        <p className="text-sm text-slate-400 mt-1">
+        <h1 className="text-2xl font-bold text-amex-gray-900">Executive Dashboard</h1>
+        <p className="text-sm text-amex-gray-600 mt-1">
           C-level overview across all analytics domains — powered by PostgreSQL
         </p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Source Datasets:</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">customer_data.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">transactions.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">bank_transactions.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">cfpb_complaints.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">bank_campaign.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">kyc_part1.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">kyc_part2.csv</a>
+          <span className="text-amex-gray-600">Source Datasets:</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">customer_data.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">transactions.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">bank_transactions.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">cfpb_complaints.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">bank_campaign.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">kyc_part1.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">kyc_part2.csv</a>
         </div>
         <div className="mt-1 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Related Notebooks:</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/13_unified_customer_profile.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">13_unified_customer_profile.ipynb</a>
+          <span className="text-amex-gray-600">Related Notebooks:</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/13_unified_customer_profile.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">13_unified_customer_profile.ipynb</a>
         </div>
       </div>
 
@@ -90,7 +90,7 @@ export default function ExecutiveDashboard() {
               mode: "lines+markers" as const,
               fill: "tozeroy",
               fillcolor: "rgba(99,102,241,0.1)",
-              line: { color: "#6366f1", width: 2.5 },
+              line: { color: "#006FCF", width: 2.5 },
               marker: { size: 4 },
             }]}
             layout={{ xaxis: { title: "Month" }, yaxis: { title: "Complaints" } }}
@@ -108,7 +108,7 @@ export default function ExecutiveDashboard() {
               type: "bar" as const,
               orientation: "h" as const,
               marker: {
-                color: "#8b5cf6",
+                color: "#004A8F",
                 borderRadius: 4,
               },
             }]}
@@ -133,8 +133,8 @@ export default function ExecutiveDashboard() {
               type: "bar" as const,
               marker: {
                 color: data.customer_health_distribution.map((d: any) =>
-                  d.risk_label === "High Risk" ? "#f43f5e" :
-                  d.risk_label === "Medium Risk" ? "#f59e0b" : "#10b981"
+                  d.risk_label === "High Risk" ? "#C0001A" :
+                  d.risk_label === "Medium Risk" ? "#C07000" : "#008000"
                 ),
                 borderRadius: 6,
               },
@@ -152,11 +152,11 @@ export default function ExecutiveDashboard() {
               values: data.sentiment_distribution.map((d: any) => d.complaint_count),
               type: "pie" as const,
               hole: 0.5,
-              textfont: { color: "#f1f5f9", size: 11 },
+              textfont: { color: "#ffffff", size: 11 },
               marker: {
                 colors: data.sentiment_distribution.map((d: any) =>
-                  d.sentiment_label === "Negative" ? "#f43f5e" :
-                  d.sentiment_label === "Positive" ? "#10b981" : "#64748b"
+                  d.sentiment_label === "Negative" ? "#C0001A" :
+                  d.sentiment_label === "Positive" ? "#008000" : "#64748b"
                 ),
               },
             }]}
@@ -175,8 +175,8 @@ export default function ExecutiveDashboard() {
               marker: {
                 color: data.risk_distribution.map((d: any) =>
                   d.risk_tier === "Critical" ? "#e11d48" :
-                  d.risk_tier === "High" ? "#f43f5e" :
-                  d.risk_tier === "Medium" ? "#f59e0b" : "#10b981"
+                  d.risk_tier === "High" ? "#C0001A" :
+                  d.risk_tier === "Medium" ? "#C07000" : "#008000"
                 ),
               },
             }]}
@@ -195,7 +195,7 @@ export default function ExecutiveDashboard() {
               y: data.segment_distribution.map((d: any) => d.customer_count),
               type: "bar" as const,
               marker: {
-                color: ["#6366f1", "#3b82f6", "#10b981", "#f59e0b", "#8b5cf6"],
+                color: ["#006FCF", "#006FCF", "#008000", "#C07000", "#004A8F"],
               },
             }]}
             height={300}

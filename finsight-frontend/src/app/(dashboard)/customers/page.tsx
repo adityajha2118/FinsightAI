@@ -29,44 +29,44 @@ export default function CustomerAnalyticsPage() {
   }, []);
 
   if (loading) {
-    return <div className="flex items-center justify-center h-96"><p className="text-slate-400">Loading customer analytics...</p></div>;
+    return <div className="flex items-center justify-center h-96"><p className="text-amex-gray-600">Loading customer analytics...</p></div>;
   }
 
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Customer Analytics</h1>
-        <p className="text-sm text-slate-400 mt-1">Segmentation, churn prediction, health scoring, and inactivity detection</p>
+        <h1 className="text-2xl font-bold text-amex-gray-900">Customer Analytics</h1>
+        <p className="text-sm text-amex-gray-600 mt-1">Segmentation, churn prediction, health scoring, and inactivity detection</p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Source Datasets:</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">customer_data.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">transactions.csv</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">bank_transactions.csv</a>
+          <span className="text-amex-gray-600">Source Datasets:</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">customer_data.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">transactions.csv</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://drive.google.com/drive/u/0/folders/1ykHLArsfczJXl5yDcc2nJncw0jGG4dD3" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">bank_transactions.csv</a>
         </div>
         <div className="mt-1 flex flex-wrap gap-2 text-xs">
-          <span className="text-slate-500">Related Notebooks:</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/01_customer_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">01_customer_eda.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/02_transaction_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">02_transaction_eda.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/06_customer_segmentation.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">06_customer_segmentation.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/07_inactivity_detection.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">07_inactivity_detection.ipynb</a>
-          <span className="text-slate-600">|</span>
-          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/08_churn_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline">08_churn_prediction.ipynb</a>
+          <span className="text-amex-gray-600">Related Notebooks:</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/01_customer_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">01_customer_eda.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/02_transaction_eda.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">02_transaction_eda.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/06_customer_segmentation.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">06_customer_segmentation.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/07_inactivity_detection.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">07_inactivity_detection.ipynb</a>
+          <span className="text-amex-gray-300">|</span>
+          <a href="https://github.com/adityajha2118/FinsightAI/tree/main/notebooks/01_data_understanding/08_churn_prediction.ipynb" target="_blank" rel="noopener noreferrer" className="text-amex-blue hover:text-amex-blue-dark hover:underline">08_churn_prediction.ipynb</a>
         </div>
       </div>
 
       {/* KPIs */}
       {overview && (
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-          <KpiCard label="Total Customers" value={formatNumber(overview.total_customers)} icon="👥" accentColor="#6366f1" />
-          <KpiCard label="Churn Rate" value={formatPct(overview.churn_rate_pct)} icon="⚠️" accentColor="#f43f5e" />
-          <KpiCard label="Avg Credit Limit" value={formatCurrency(overview.avg_credit_limit)} icon="💳" accentColor="#3b82f6" />
-          <KpiCard label="Avg Utilization" value={formatPct((overview.avg_utilization || 0) * 100)} icon="📊" accentColor="#10b981" />
-          <KpiCard label="Churned Customers" value={formatNumber(overview.churned_customers)} icon="🚪" accentColor="#f59e0b" />
+          <KpiCard label="Total Customers" value={formatNumber(overview.total_customers)} icon="👥" accentColor="#006FCF" />
+          <KpiCard label="Churn Rate" value={formatPct(overview.churn_rate_pct)} icon="⚠️" accentColor="#C0001A" />
+          <KpiCard label="Avg Credit Limit" value={formatCurrency(overview.avg_credit_limit)} icon="💳" accentColor="#006FCF" />
+          <KpiCard label="Avg Utilization" value={formatPct((overview.avg_utilization || 0) * 100)} icon="📊" accentColor="#008000" />
+          <KpiCard label="Churned Customers" value={formatNumber(overview.churned_customers)} icon="🚪" accentColor="#C07000" />
         </div>
       )}
 
@@ -82,8 +82,8 @@ export default function CustomerAnalyticsPage() {
               type: "pie" as const,
               hole: 0.45,
               textinfo: "label+percent",
-              textfont: { color: "#f1f5f9", size: 10 },
-              marker: { colors: ["#6366f1", "#3b82f6", "#10b981", "#f59e0b", "#8b5cf6"] },
+              textfont: { color: "#ffffff", size: 10 },
+              marker: { colors: ["#006FCF", "#006FCF", "#008000", "#C07000", "#004A8F"] },
             }]}
           />
         )}
@@ -97,8 +97,8 @@ export default function CustomerAnalyticsPage() {
               type: "bar" as const,
               marker: {
                 color: churnDist.map(d =>
-                  d.risk_label === "High Risk" ? "#f43f5e" :
-                  d.risk_label === "Medium Risk" ? "#f59e0b" : "#10b981"
+                  d.risk_label === "High Risk" ? "#C0001A" :
+                  d.risk_label === "Medium Risk" ? "#C07000" : "#008000"
                 ),
               },
             }]}
@@ -112,7 +112,7 @@ export default function CustomerAnalyticsPage() {
           <h3 className="text-sm font-semibold text-slate-200 mb-3">Segment Profiles — Average Metrics</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-slate-400 uppercase border-b border-slate-700">
+              <thead className="text-xs text-amex-gray-600 uppercase border-b border-slate-700">
                 <tr>
                   <th className="py-2 px-3">Segment</th>
                   <th className="py-2 px-3">Count</th>
@@ -126,7 +126,7 @@ export default function CustomerAnalyticsPage() {
               <tbody>
                 {segProfiles.map((s: any) => (
                   <tr key={s.segment_name} className="border-b border-slate-800 hover:bg-slate-800/30">
-                    <td className="py-2 px-3 font-medium text-indigo-400">{s.segment_name}</td>
+                    <td className="py-2 px-3 font-medium text-amex-blue">{s.segment_name}</td>
                     <td className="py-2 px-3">{formatNumber(s.customer_count)}</td>
                     <td className="py-2 px-3">{formatCurrency(s.avg_credit_limit)}</td>
                     <td className="py-2 px-3">{formatCurrency(s.avg_trans_amt)}</td>
@@ -151,7 +151,7 @@ export default function CustomerAnalyticsPage() {
             x: transactions.map(d => formatCategory(d.category)),
             y: transactions.map(d => d.total_amount),
             type: "bar" as const,
-            marker: { color: "#6366f1" },
+            marker: { color: "#006FCF" },
           }]}
           layout={{ xaxis: { tickangle: -45 }, yaxis: { title: "Total Amount ($)" } }}
           height={320}
@@ -164,7 +164,7 @@ export default function CustomerAnalyticsPage() {
           <h3 className="text-sm font-semibold text-slate-200 mb-3">🚨 High Churn Risk Customers</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-slate-400 uppercase border-b border-slate-700">
+              <thead className="text-xs text-amex-gray-600 uppercase border-b border-slate-700">
                 <tr>
                   <th className="py-2 px-3">Client ID</th>
                   <th className="py-2 px-3">Churn Prob</th>
@@ -178,13 +178,13 @@ export default function CustomerAnalyticsPage() {
                 {topChurn.slice(0, 15).map((c: any) => (
                   <tr key={c.client_id} className="border-b border-slate-800 hover:bg-slate-800/30">
                     <td className="py-2 px-3 font-mono text-xs">{c.client_id}</td>
-                    <td className="py-2 px-3 font-semibold text-rose-400">{(c.churn_probability || 0).toFixed(3)}</td>
+                    <td className="py-2 px-3 font-semibold text-amex-red">{(c.churn_probability || 0).toFixed(3)}</td>
                     <td className="py-2 px-3">
                       <span className={`badge ${c.risk_label === "High Risk" ? "badge-danger" : c.risk_label === "Medium Risk" ? "badge-warning" : "badge-success"}`}>
                         {c.risk_label}
                       </span>
                     </td>
-                    <td className="py-2 px-3 text-indigo-400">{c.segment_name}</td>
+                    <td className="py-2 px-3 text-amex-blue">{c.segment_name}</td>
                     <td className="py-2 px-3">{c.income_category}</td>
                     <td className="py-2 px-3">{c.months_inactive_12_mon}</td>
                   </tr>
