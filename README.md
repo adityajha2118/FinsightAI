@@ -2,7 +2,7 @@
 
 # 📊 FinSight AI: Unified Customer Intelligence & Retention Analytics Platform
 
-**An enterprise fintech analytics platform combining predictive machine learning, generative AI, and full-stack engineering to solve critical financial sector challenges including churn prevention, compliance monitoring, and customer support operations.**
+**An enterprise fintech analytics platform combining predictive machine learning, NLP, and full-stack engineering to solve critical financial sector challenges including churn prevention, compliance monitoring, and customer support operations.**
 
 [🚀 Project Overview](#project-overview) · [💼 Business Problems Solved](#business-problems-solved) · [🏛️ System Architecture](#system-architecture) · [🗄️ Datasets](#datasets-section) · [🧠 Modules](#modules) · [💻 Local Setup](#local-setup)
 
@@ -12,14 +12,14 @@
 
 ## 🎯 PROJECT OVERVIEW
 
-FinSight AI simulates the advanced data analytics infrastructure of a modern, top-tier financial institution like American Express. By leveraging massive datasets, machine learning, generative AI, and a modern React/FastAPI stack, this unified intelligence platform completely modernizes customer lifecycle management.
+FinSight AI simulates the advanced data analytics infrastructure of a modern, top-tier financial institution like American Express. By leveraging massive datasets, machine learning, Natural Language Processing (NLP), and a modern React/FastAPI stack, this unified intelligence platform completely modernizes customer lifecycle management.
 
 Rather than relying on siloed data systems, FinSight AI combines multiple independent analytics engines into a single **Unified Intelligence Platform** with a sleek, Amex-branded interface:
 * **Customer Lifecycle Management**: Tracking customers from acquisition through daily usage to long-term loyalty.
 * **Customer Retention & Churn Prevention**: Proactively identifying at-risk customers before they close their accounts.
 * **Campaign Optimization**: Targeting the right customers with the right marketing messages at the right time.
 * **Compliance Monitoring**: Automating Anti-Money Laundering (AML) and Know Your Customer (KYC) risk detection.
-* **Complaint Intelligence**: Utilizing Large Language Models (LLMs) to resolve customer grievances.
+* **Complaint Intelligence**: Utilizing Natural Language Processing (NLTK VADER) to classify emotions and resolve customer grievances.
 * **Executive Decision Support**: Providing C-suite leadership with a real-time, interactive Next.js dashboard of portfolio health.
 
 ---
@@ -46,7 +46,7 @@ Financial institutions lose billions annually due to fragmented data and reactiv
 
 ### 5. Customer Complaint Escalation
 * **Why it matters:** Unresolved complaints escalate to regulatory bodies like the CFPB, incurring legal costs.
-* **How FinSight solves it:** A generative AI layer (Groq/Gemini fallback to VADER) classifies incoming complaints, detects emotional distress, and routes high-risk cases.
+* **How FinSight solves it:** An NLP layer using VADER sentiment analysis classifies incoming complaints, detects severe emotional distress, and routes high-risk cases to priority teams.
 
 ### 6. Lack of Customer Segmentation
 * **Why it matters:** Treating all customers equally ignores vast differences in profitability and risk.
@@ -62,7 +62,7 @@ FinSight AI employs a highly modular, modern full-stack architecture.
 * **Backend:** **FastAPI (Python)** serving REST endpoints, executing business logic, and querying the database.
 * **Database:** **PostgreSQL** database utilizing SQL Views (e.g., `v_executive_kpis`) to aggregate massive datasets instantly for the frontend.
 * **Machine Learning & EDA:** 21 **Jupyter Notebooks** using Scikit-Learn, XGBoost, and Plotly. (Notebooks are pre-configured with Kaleido to natively render static PNG graphs on GitHub).
-* **Generative AI:** Groq (LLaMA 3) integration for NLP complaint routing, with a built-in VADER sentiment analysis fallback.
+* **NLP Layer:** NLTK VADER sentiment analysis for emotion detection, combined with rule-based categorization for complaint routing.
 
 ---
 
