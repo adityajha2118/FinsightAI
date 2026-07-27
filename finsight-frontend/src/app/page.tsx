@@ -149,7 +149,7 @@ export default function LandingPage() {
             <div className="lp-kpi-lbl">Complaints Processed</div>
           </div>
           <div className="lp-kpi-item">
-            <div className="lp-kpi-val">AI-Powered</div>
+            <div className="lp-kpi-val">NLP-Powered</div>
             <div className="lp-kpi-lbl">Complaint Routing</div>
           </div>
         </div>
